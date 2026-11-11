@@ -13,6 +13,11 @@ channels:
   - conda-forge
 dependencies:
   - python>=3.10,<3.14
+  # torch and lightgbm come from conda-forge, not pip, so they share the env's
+  # single OpenMP runtime. pip's torch wheel bundles its own libomp.dylib, and
+  # two copies abort at import on macOS ("OMP: Error #15").
+  - pytorch>=2.5
+  - lightgbm>=4.4
   - numpy
   - scipy
   - scikit-learn

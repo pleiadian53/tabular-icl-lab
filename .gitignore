@@ -1,0 +1,36 @@
+# Private development notes — never shared (incl. dev/papers, dev/references, dev/research)
+/dev/
+
+# Datasets: keep the folder structure + any docs, never the data files
+# (datasets are large and/or sensitive; share documentation, not data).
+/data/**
+!/data/**/
+!/data/**/*.md
+
+# Per-run training artifacts (regeneratable). The curated record lives under
+# examples/<topic>/results/ instead (committed: figures, metric tables, README).
+/output/
+/runs/
+
+# Model checkpoints / large binaries
+*.pt
+*.pth
+*.ckpt
+
+# Python / tooling / OS
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+.DS_Store
+.env
+.venv/
+build/
+dist/
+
+# mkdocs build output (regeneratable)
+/site/
+
+# TabPFN weights and token caches, if pointed inside the repo
+*.safetensors

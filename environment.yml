@@ -1,0 +1,25 @@
+# Conda/mamba environment for tabular-icl-lab.
+#
+#   mamba env create -f environment.yml     # (or: conda env create -f environment.yml)
+#   conda activate tabicllab
+#
+# TabPFN is installed editable from a local clone next to this repository
+# (../TabPFN), so upstream changes are picked up with `git pull` there. To use
+# the released package instead, replace the `-e ../TabPFN` line with `tabpfn`.
+#
+# CPU is the local default; GPU runs go to the pod.
+name: tabicllab
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.10,<3.14
+  - numpy
+  - scipy
+  - scikit-learn
+  - pandas
+  - matplotlib
+  - pytest
+  - pip
+  - pip:
+      - -e ../TabPFN
+      - -e .

@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tabicllab"
+version = "0.1.0"
+description = "Tabular foundation models and in-context learning lab: TabPFN-style learners as references, probes and domain-prior models for computational biology."
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    # Installed editable from a local clone (../TabPFN) by environment.yml so
+    # upstream can be followed with git pull; pip falls back to PyPI otherwise.
+    "tabpfn>=9.2",
+    "torch>=2.5",
+    "numpy",
+    "scipy",
+    "scikit-learn",
+    "pandas",
+    "matplotlib",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

@@ -24,7 +24,7 @@ A tabular foundation model such as [TabPFN](https://github.com/PriorLabs/TabPFN)
 
 ## Why tabular-icl-lab exists
 
-tabular-icl-lab is a spin-off of its sibling project [ssl-lab](https://github.com/pleiadian53/ssl-lab), a research lab for self-supervised learning whose flagship application is single-cell perturbation response. Work there showed that a training-free additive reference beats every learned model on predicting the mean effect of unseen gene combinations, which made a strong, tuning-free small-data learner the obvious next reference to bring in. Tabular ICL turned out to be a field worth its own lab, with applications across the sibling projects: [ssl-lab](https://github.com/pleiadian53/ssl-lab) (perturbation response, evaluation probes), [protein-ml-lab](https://github.com/pleiadian53/protein-ml-lab) (protein fitness), and [genai-lab](https://github.com/pleiadian53/genai-lab) (generative models for computational biology).
+tabular-icl-lab is a spin-off of its sibling project [ssl-lab](https://github.com/pleiadian53/ssl-lab), a research lab for self-supervised learning whose flagship application is single-cell perturbation response. Work there showed that a training-free additive reference beats every learned model on predicting the mean effect of unseen gene combinations, which made a strong, tuning-free small-data learner the obvious next reference to bring in. Tabular ICL turned out to be a field worth its own lab, with applications across the sibling projects: [ssl-lab](https://github.com/pleiadian53/ssl-lab) (perturbation response, evaluation probes), protein-ml-lab (protein fitness), and [genai-lab](https://github.com/pleiadian53/genai-lab) (generative models for computational biology).
 
 ## Relationship to TabPFN
 

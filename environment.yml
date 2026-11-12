@@ -24,6 +24,10 @@ dependencies:
   - pandas
   - matplotlib
   - pytest
+  # Notebooks: a kernel for this env and a headless runner to check them.
+  # Register once with: python -m ipykernel install --user --name tabicllab
+  - ipykernel
+  - nbclient
   - pip
   - pip:
       - -e ../TabPFN

@@ -1,6 +1,6 @@
 # tabular-icl-lab
 
-A research lab for **tabular foundation models and in-context learning (ICL)**. The aim is to understand how these models work, find out where they beat the methods biologists and clinicians already use, and take them a step further by fitting such models to priors built for a scientific domain.
+tabular-icl-lab develops new methods built on **tabular foundation models and in-context learning (ICL)** for scientific data. Much of computational biology and medicine ends up as small, structured tables: a few hundred measured perturbations, a few thousand labeled protein variants, a cohort of patients. The lab turns in-context learners into calibrated, tuning-free tools for those settings, measures where they beat the methods biologists and clinicians already use, and goes past current models by fitting them to priors built from how a scientific system works.
 
 ## The idea in one paragraph
 
@@ -24,7 +24,7 @@ A tabular foundation model such as [TabPFN](https://github.com/PriorLabs/TabPFN)
 
 ## Why tabular-icl-lab exists
 
-tabular-icl-lab is a spin-off of its sibling project [ssl-lab](https://github.com/pleiadian53/ssl-lab), a research lab for self-supervised learning whose flagship application is single-cell perturbation response. Work there showed that a training-free additive reference beats every learned model on predicting the mean effect of unseen gene combinations, which made a strong, tuning-free small-data learner the obvious next reference to bring in. Tabular ICL turned out to be a field worth its own lab, with applications across the sibling projects: [ssl-lab](https://github.com/pleiadian53/ssl-lab) (perturbation response, evaluation probes), [protein-ml-lab](https://github.com/pleiadian53/protein-ml-lab) (protein fitness), and [genai-lab](https://github.com/pleiadian53/genai-lab) (generative models for computational biology).
+tabular-icl-lab is a spin-off of its sibling project [ssl-lab](https://github.com/pleiadian53/ssl-lab), which develops self-supervised and generative methods for producing biological data that can be trusted like measured data, with single-cell perturbation response as its flagship. Work there showed that a training-free additive reference beats every learned model on predicting the mean effect of unseen gene combinations, which made a strong, tuning-free small-data learner the obvious next reference to bring in. Tabular ICL turned out to be a field worth its own lab, with applications across the sibling projects: [ssl-lab](https://github.com/pleiadian53/ssl-lab) (perturbation response, evaluation probes), [protein-ml-lab](https://github.com/pleiadian53/protein-ml-lab) (protein fitness), and [genai-lab](https://github.com/pleiadian53/genai-lab) (generative models for computational biology).
 
 ## Relationship to TabPFN
 

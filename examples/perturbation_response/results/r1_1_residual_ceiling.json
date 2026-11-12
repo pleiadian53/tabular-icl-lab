@@ -1,0 +1,473 @@
+{
+ "protocol": "R1.1, fixed in this script's docstring before any number was computed",
+ "settings": {
+  "reps": 50,
+  "seed": 0,
+  "top_k": 20,
+  "limit": null,
+  "phi_threshold": 0.5,
+  "continue_if_at_least": 10,
+  "stop_if_at_most": 4
+ },
+ "data": {
+  "de_genes.json": "9844c2c25d2903872e1c0a92c722f105",
+  "splits.json": "82f1f43952731c64551629701c5dc041"
+ },
+ "summary": {
+  "n_pairs": 20,
+  "n_reliable": 18,
+  "reliable_pairs": [
+   "AHR+KLF1",
+   "BCL2L11+TGFBR2",
+   "CBFA2T3+POU3F2",
+   "CBL+CNN1",
+   "CBL+TGFBR2",
+   "CEBPE+FOSB",
+   "CEBPE+RUNX1T1",
+   "DLX2+ZBTB10",
+   "FOSB+UBASH3B",
+   "FOXA1+FOXF1",
+   "FOXL2+HOXB9",
+   "IGDCC3+ZBTB25",
+   "KLF1+MAP2K6",
+   "OSR2+UBASH3B",
+   "PTPN12+ZBTB10",
+   "SAMD1+ZBTB1",
+   "TBX2+TBX3",
+   "UBASH3A+UBASH3B"
+  ],
+  "decision": "continue",
+  "median_phi": 0.8183889037303251,
+  "median_phi_fixed_genes_half": 0.8731455314443225,
+  "median_rho_full_split_sb": 0.8780688548971531,
+  "median_rho_pair_only_sb": 0.9405395871739486,
+  "median_phi_fixed_genes_full_data": 0.8836907923543462,
+  "median_rel_gi": 0.272374073058575,
+  "median_ep_floor_analytic": 0.07356488872803477,
+  "median_ep_floor_split": 0.07076046884148388,
+  "mean_rel_gi": 0.2890959583925055,
+  "mean_ep_floor_analytic": 0.07911134088508856
+ },
+ "global_scale_training_pairs": {
+  "n_pairs": 91,
+  "beta": 0.9066963061329778,
+  "share_explained_loo": 0.08469465270538157,
+  "lambda_per_pair": {
+   "AHR+FEV": 1.0374245905534103,
+   "BAK1+BCL2L11": 0.9597704840655721,
+   "BAK1+KLF1": 0.9532205362878715,
+   "BAK1+TMSB4X": 0.9561711320247289,
+   "BPGM+SAMD1": 0.8223278505666795,
+   "BPGM+ZBTB1": 0.7543744350884598,
+   "C19orf26+TGFBR2": 1.4327031019964116,
+   "C3orf72+FOXL2": 0.7331951423184735,
+   "CBFA2T3+PRDM1": 1.1464038990029441,
+   "CBL+PTPN12": 1.1194042636354122,
+   "CBL+PTPN9": 1.1010065085219225,
+   "CBL+UBASH3A": 1.5964415587957825,
+   "CBL+UBASH3B": 1.4352272210328394,
+   "CDKN1A+CDKN1B": 0.732258284934295,
+   "CDKN1B+CDKN1C": 0.719155554759936,
+   "CEBPA+CEBPB": 0.64113134388884,
+   "CEBPA+JUN": 1.0439314547708798,
+   "CEBPA+KLF1": 0.8696229559005828,
+   "CEBPA+ZC3HAV1": 0.9010234432321899,
+   "CEBPB+FOSB": 1.027838306928285,
+   "CEBPB+JUN": 1.101068831236707,
+   "CEBPB+LYL1": 0.9323237160992286,
+   "CEBPB+MAPK1": 0.6949966865274683,
+   "CEBPB+OSR2": 0.843184074521019,
+   "CEBPB+PTPN12": 0.8245237251479469,
+   "CEBPE+ETS2": 0.7821515925713296,
+   "CEBPE+PTPN12": 0.5786274258871981,
+   "CEBPE+SET": 0.6795700189194566,
+   "CEBPE+SPI1": 0.8863043691654964,
+   "CEBPE+ZC3HAV1": 0.542089433442263,
+   "CNN1+ETS2": 0.9048152441312557,
+   "CNN1+MAPK1": 0.8325518801764671,
+   "CNN1+UBASH3A": 1.4219346832976425,
+   "CNN1+UBASH3B": 1.2696690009833913,
+   "COL2A1+KLF1": 0.9489239015697485,
+   "DLX2+SNAI1": 0.9039959255109149,
+   "DUSP9+ETS2": 0.9349714118291984,
+   "DUSP9+MAPK1": 0.6647384014725262,
+   "DUSP9+PRTG": 0.7616118327010908,
+   "DUSP9+SNAI1": 1.2099710436533853,
+   "ELMSAN1+LHX1": 0.9977318781169539,
+   "ELMSAN1+MAP2K3": 1.0877651400881871,
+   "ELMSAN1+MAP2K6": 1.0159474141077347,
+   "ELMSAN1+ZBTB10": 1.1828843019019648,
+   "ETS2+IGDCC3": 0.8989318922191284,
+   "ETS2+IKZF3": 1.05978840363252,
+   "ETS2+MAP7D1": 1.006881331067694,
+   "ETS2+MAPK1": 0.8190045897151658,
+   "ETS2+PRTG": 0.9670590973154565,
+   "ETS2+TGFBR2": 0.8631462773845688,
+   "FEV+ISL2": 1.1404823252174852,
+   "FEV+MAP7D1": 1.0176098825966922,
+   "FOSB+IKZF3": 0.7827739265211823,
+   "FOSB+OSR2": 0.9937346387186065,
+   "FOSB+PTPN12": 0.9397921869511442,
+   "FOXA1+FOXA3": 1.0695694750169007,
+   "FOXA1+FOXL2": 0.9909529670671077,
+   "FOXA1+HOXB9": 1.2324696421491739,
+   "FOXA1+KLF1": 0.916181646050611,
+   "FOXA3+FOXF1": 1.0698123509336,
+   "FOXA3+FOXL2": 1.208362445420183,
+   "FOXF1+FOXL2": 1.1927052771940307,
+   "FOXF1+HOXB9": 1.1358670890047122,
+   "FOXL2+MEIS1": 1.1215236089756289,
+   "FOXL2+POU3F2": 1.1121451940751814,
+   "FOXL2+ZNF318": 0.9392146897573687,
+   "HOXC13+ZC3HAV1": 0.9945008214508912,
+   "IER5L+LYL1": 0.9840008949216441,
+   "IGDCC3+MAPK1": 0.7874874175587172,
+   "IGDCC3+PRTG": 0.6205004254818067,
+   "IKZF3+MAP2K3": 0.9762893388886188,
+   "IKZF3+MAP2K6": 0.9868130912262859,
+   "IKZF3+MAPK1": 0.8313255001733871,
+   "IRF1+SET": 0.957708122977394,
+   "KIF18B+KIF2C": 0.9494424541073581,
+   "MAP2K3+MAP2K6": 0.6903049811703597,
+   "MAP2K6+SPI1": 0.6898910798146904,
+   "MAPK1+PRTG": 0.8261703352620434,
+   "MAPK1+TGFBR2": 0.8701248270030286,
+   "PRTG+TGFBR2": 0.8867162655350337,
+   "PTPN12+SAMD1": 0.9972980462992664,
+   "PTPN12+SNAI1": 0.9185057776784507,
+   "PTPN12+UBASH3A": 1.8369729217300013,
+   "PTPN12+UBASH3B": 1.2089884768222077,
+   "PTPN12+ZBTB25": 1.1287128868427942,
+   "RHOXF2+ZBTB25": 0.9010812045851647,
+   "S1PR2+SGK1": 0.9211222433286149,
+   "SAMD1+TGFBR2": 1.0928127782681767,
+   "SGK1+TBX2": 0.8660785655944694,
+   "SNAI1+UBASH3B": 1.0208596865574608,
+   "UBASH3B+ZBTB25": 1.2364599480184901
+  }
+ },
+ "per_pair": {
+  "AHR+KLF1": {
+   "n_cells": {
+    "pair": 476,
+    "A": 556,
+    "B": 1929,
+    "control": 11726
+   },
+   "phi": 0.9123245025049777,
+   "phi_fixed_genes_half": 0.9052249751711845,
+   "rho_full_split_sb": 0.8819932205681414,
+   "rho_pair_only_sb": 0.9505525990255538,
+   "phi_fixed_genes_full_data": 0.9089273707204161,
+   "rel_gi": 0.21581921445008076,
+   "ep_floor_analytic": 0.04397984714523286,
+   "ep_floor_split": 0.040958852643426205
+  },
+  "BCL2L11+TGFBR2": {
+   "n_cells": {
+    "pair": 459,
+    "A": 575,
+    "B": 640,
+    "control": 11726
+   },
+   "phi": 0.7685950013844084,
+   "phi_fixed_genes_half": 0.8115585415892239,
+   "rho_full_split_sb": 0.8539789712830428,
+   "rho_pair_only_sb": 0.9439715492665384,
+   "phi_fixed_genes_full_data": 0.8279850673887327,
+   "rel_gi": 0.3831848682107899,
+   "ep_floor_analytic": 0.10159835648176574,
+   "ep_floor_split": 0.10045717263542392
+  },
+  "CBFA2T3+POU3F2": {
+   "n_cells": {
+    "pair": 214,
+    "A": 647,
+    "B": 356,
+    "control": 11726
+   },
+   "phi": 0.7427492673281626,
+   "phi_fixed_genes_half": 0.8662658088037722,
+   "rho_full_split_sb": 0.8503232108339522,
+   "rho_pair_only_sb": 0.9139239508943298,
+   "phi_fixed_genes_full_data": 0.8739854779842905,
+   "rel_gi": 0.3215930915691871,
+   "ep_floor_analytic": 0.08816405901069128,
+   "ep_floor_split": 0.08544050418551662
+  },
+  "CBL+CNN1": {
+   "n_cells": {
+    "pair": 345,
+    "A": 656,
+    "B": 753,
+    "control": 11726
+   },
+   "phi": 0.9634742934679348,
+   "phi_fixed_genes_half": 0.9644051784065202,
+   "rho_full_split_sb": 0.9630368295014099,
+   "rho_pair_only_sb": 0.9795294322451017,
+   "phi_fixed_genes_full_data": 0.9656739947361909,
+   "rel_gi": 0.2727535827272518,
+   "ep_floor_analytic": 0.03963210973481294,
+   "ep_floor_split": 0.03960313659107942
+  },
+  "CBL+TGFBR2": {
+   "n_cells": {
+    "pair": 186,
+    "A": 656,
+    "B": 640,
+    "control": 11726
+   },
+   "phi": 0.8706557864709288,
+   "phi_fixed_genes_half": 0.8800252540848728,
+   "rho_full_split_sb": 0.9198293519075277,
+   "rho_pair_only_sb": 0.9446811531642912,
+   "phi_fixed_genes_full_data": 0.894179812884206,
+   "rel_gi": 0.2991215413565789,
+   "ep_floor_analytic": 0.08108518067160579,
+   "ep_floor_split": 0.07928968220848495
+  },
+  "CEBPE+FOSB": {
+   "n_cells": {
+    "pair": 150,
+    "A": 1200,
+    "B": 625,
+    "control": 11726
+   },
+   "phi": 0.90342671467821,
+   "phi_fixed_genes_half": 0.9065531498086625,
+   "rho_full_split_sb": 0.9130441998195932,
+   "rho_pair_only_sb": 0.9371076250813587,
+   "phi_fixed_genes_full_data": 0.9110380480209502,
+   "rel_gi": 0.26216641313674066,
+   "ep_floor_analytic": 0.06999860873534544,
+   "ep_floor_split": 0.06612099842693248
+  },
+  "CEBPE+RUNX1T1": {
+   "n_cells": {
+    "pair": 1198,
+    "A": 1200,
+    "B": 764,
+    "control": 11726
+   },
+   "phi": 0.9869642743106959,
+   "phi_fixed_genes_half": 0.9867973011967096,
+   "rho_full_split_sb": 0.9904219277964014,
+   "rho_pair_only_sb": 0.9973762901723093,
+   "phi_fixed_genes_full_data": 0.9870130562054185,
+   "rel_gi": 0.5411987833495564,
+   "ep_floor_analytic": 0.0344538419201501,
+   "ep_floor_split": 0.03394554104293556
+  },
+  "DLX2+ZBTB10": {
+   "n_cells": {
+    "pair": 87,
+    "A": 727,
+    "B": 157,
+    "control": 11726
+   },
+   "phi": 0.775856663033496,
+   "phi_fixed_genes_half": 0.8878755154675807,
+   "rho_full_split_sb": 0.9355406873443572,
+   "rho_pair_only_sb": 0.9555274456519521,
+   "phi_fixed_genes_full_data": 0.9003201101239142,
+   "rel_gi": 0.37706648551595945,
+   "ep_floor_analytic": 0.10043301443391861,
+   "ep_floor_split": 0.09524781762221926
+  },
+  "FOSB+UBASH3B": {
+   "n_cells": {
+    "pair": 422,
+    "A": 625,
+    "B": 1179,
+    "control": 11726
+   },
+   "phi": 0.8930414535187466,
+   "phi_fixed_genes_half": 0.8872616503688971,
+   "rho_full_split_sb": 0.9087978341092757,
+   "rho_pair_only_sb": 0.9540920849482613,
+   "phi_fixed_genes_full_data": 0.8933961067244021,
+   "rel_gi": 0.3729499296376859,
+   "ep_floor_analytic": 0.08583971313943475,
+   "ep_floor_split": 0.08451928891678824
+  },
+  "FOXA1+FOXF1": {
+   "n_cells": {
+    "pair": 267,
+    "A": 831,
+    "B": 862,
+    "control": 11726
+   },
+   "phi": 0.7890588086236301,
+   "phi_fixed_genes_half": 0.8216051047042268,
+   "rho_full_split_sb": 0.8689970047031241,
+   "rho_pair_only_sb": 0.9181141170311088,
+   "phi_fixed_genes_full_data": 0.8420948342349429,
+   "rel_gi": 0.26921749512754556,
+   "ep_floor_analytic": 0.08869584774974246,
+   "ep_floor_split": 0.08693782608358692
+  },
+  "FOXL2+HOXB9": {
+   "n_cells": {
+    "pair": 92,
+    "A": 648,
+    "B": 691,
+    "control": 11726
+   },
+   "phi": 0.6395229512919459,
+   "phi_fixed_genes_half": 0.7049743078418084,
+   "rho_full_split_sb": 0.8057085944123357,
+   "rho_pair_only_sb": 0.8477845605360054,
+   "phi_fixed_genes_full_data": 0.7746508973431583,
+   "rel_gi": 0.27199456338989814,
+   "ep_floor_analytic": 0.11950321487038441,
+   "ep_floor_split": 0.11942314166554563
+  },
+  "IGDCC3+ZBTB25": {
+   "n_cells": {
+    "pair": 141,
+    "A": 604,
+    "B": 732,
+    "control": 11726
+   },
+   "phi": 0.7095593020013521,
+   "phi_fixed_genes_half": 0.7371769746626465,
+   "rho_full_split_sb": 0.8029163663380053,
+   "rho_pair_only_sb": 0.8500915372191484,
+   "phi_fixed_genes_full_data": 0.7642201864752342,
+   "rel_gi": 0.17182966541781947,
+   "ep_floor_analytic": 0.07234953520262151,
+   "ep_floor_split": 0.0722586822277569
+  },
+  "KLF1+MAP2K6": {
+   "n_cells": {
+    "pair": 260,
+    "A": 1929,
+    "B": 875,
+    "control": 11726
+   },
+   "phi": 0.8476461213383175,
+   "phi_fixed_genes_half": 0.8349942789801953,
+   "rho_full_split_sb": 0.874144489226165,
+   "rho_pair_only_sb": 0.9143397768415737,
+   "phi_fixed_genes_full_data": 0.8470623489345045,
+   "rel_gi": 0.19257770704962157,
+   "ep_floor_analytic": 0.06359166150174467,
+   "ep_floor_split": 0.06022805395155634
+  },
+  "OSR2+UBASH3B": {
+   "n_cells": {
+    "pair": 775,
+    "A": 980,
+    "B": 1179,
+    "control": 11726
+   },
+   "phi": 0.9269391144279822,
+   "phi_fixed_genes_half": 0.9271948649052147,
+   "rho_full_split_sb": 0.9266232554651905,
+   "rho_pair_only_sb": 0.9709118343742142,
+   "phi_fixed_genes_full_data": 0.9287937970756817,
+   "rel_gi": 0.28536618816065423,
+   "ep_floor_analytic": 0.04830893244730953,
+   "ep_floor_split": 0.047074758714078874
+  },
+  "PLK4+STIL": {
+   "n_cells": {
+    "pair": 81,
+    "A": 110,
+    "B": 298,
+    "control": 11726
+   },
+   "phi": -2.3632902158887363,
+   "phi_fixed_genes_half": -0.04690167015756009,
+   "rho_full_split_sb": 0.42310948465031384,
+   "rho_pair_only_sb": 0.6991053634950616,
+   "phi_fixed_genes_full_data": 0.3745915899529004,
+   "rel_gi": 0.3407625610542988,
+   "ep_floor_analytic": 0.20177065602229963,
+   "ep_floor_split": 0.19787295154479045
+  },
+  "PTPN12+ZBTB10": {
+   "n_cells": {
+    "pair": 259,
+    "A": 443,
+    "B": 157,
+    "control": 11726
+   },
+   "phi": 0.5609586733520746,
+   "phi_fixed_genes_half": 0.5672575253782466,
+   "rho_full_split_sb": 0.6327435521443172,
+   "rho_pair_only_sb": 0.8821803475480325,
+   "phi_fixed_genes_full_data": 0.6132026427689816,
+   "rel_gi": 0.20217209801847397,
+   "ep_floor_analytic": 0.07173210990131364,
+   "ep_floor_split": 0.06926225545521086
+  },
+  "SAMD1+ZBTB1": {
+   "n_cells": {
+    "pair": 181,
+    "A": 489,
+    "B": 657,
+    "control": 11726
+   },
+   "phi": 0.7891316861223326,
+   "phi_fixed_genes_half": 0.771326512185286,
+   "rho_full_split_sb": 0.8417831556244452,
+   "rho_pair_only_sb": 0.9039971688379115,
+   "phi_fixed_genes_full_data": 0.7909125787838139,
+   "rel_gi": 0.20343935952281506,
+   "ep_floor_analytic": 0.07478024225344801,
+   "ep_floor_split": 0.06821068199640487
+  },
+  "SNAI1+ZBTB10": {
+   "n_cells": {
+    "pair": 97,
+    "A": 458,
+    "B": 157,
+    "control": 11726
+   },
+   "phi": 0.25309517507896945,
+   "phi_fixed_genes_half": 0.4561585018628654,
+   "rho_full_split_sb": 0.5836585630677135,
+   "rho_pair_only_sb": 0.7418963789116458,
+   "phi_fixed_genes_full_data": 0.5456487044000115,
+   "rel_gi": 0.20183273949860014,
+   "ep_floor_analytic": 0.10825252776125417,
+   "ep_floor_split": 0.10414232270289368
+  },
+  "TBX2+TBX3": {
+   "n_cells": {
+    "pair": 1145,
+    "A": 682,
+    "B": 677,
+    "control": 11726
+   },
+   "phi": 0.9681421108598667,
+   "phi_fixed_genes_half": 0.9686344237952532,
+   "rho_full_split_sb": 0.9764832681272748,
+   "rho_pair_only_sb": 0.9936814345760863,
+   "phi_fixed_genes_full_data": 0.9691330284655211,
+   "rel_gi": 0.26738313932921626,
+   "ep_floor_analytic": 0.023460547464484012,
+   "ep_floor_split": 0.02335372359000985
+  },
+  "UBASH3A+UBASH3B": {
+   "n_cells": {
+    "pair": 540,
+    "A": 806,
+    "B": 1179,
+    "control": 11726
+   },
+   "phi": 0.904222460485472,
+   "phi_fixed_genes_half": 0.9163235897505931,
+   "rho_full_split_sb": 0.9286792013108326,
+   "rho_pair_only_sb": 0.9652924417674177,
+   "phi_fixed_genes_full_data": 0.9205918645398365,
+   "rel_gi": 0.32948974132733583,
+   "ep_floor_analytic": 0.06459681125421157,
+   "ep_floor_split": 0.06636561848852497
+  }
+ },
+ "runtime_s": 400.4,
+ "peak_rss_gb": 0.0
+}

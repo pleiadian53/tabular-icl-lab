@@ -6,4 +6,10 @@
 
 **Plan.** The learner sees, as context, training combinations whose residuals were measured, and predicts the residual for held-out combinations. Its prediction is added back to the additive one and scored on the same twenty held-out pairs and the same endpoints as ssl-lab, so the numbers are directly comparable. The protocol is fixed in writing before any number is computed.
 
-**Status.** Being designed; no results yet.
+## Results
+
+| Step | Question | Answer | Page |
+|---|---|---|---|
+| R1.1 | Is the residual reproducible, or mostly measurement noise? | Mostly signal: 18 of 20 pairs at least half signal (median 0.82). A perfect residual predictor would cut the size-aware error from 0.289 to about 0.08. | [the residual ceiling](results/r1-1-residual-ceiling.md) |
+
+**Next.** The first scored round: TabPFN-3.5 predicting the residual, against additivity, a scaled and a shrunk additive reference, and tuned conventional learners, with its protocol fixed before any model is scored.

@@ -1,0 +1,94 @@
+{
+ "source": "ssl-lab, read-only, at 1da9818: per-pair delta_r from output/norman_additive/reports/effect_size_additive.json (script 18, which subtracts the control in float32, so it differs from a float64 computation by up to ~3e-9); per-pair rel_err and mean_delta_r_round8_float64 from output/round8_compare.json (ssllab.eval.interaction.pair_metrics, float64), the computation this lab reproduces",
+ "data": {
+  "de_genes_md5": "9844c2c25d2903872e1c0a92c722f105",
+  "splits_md5": "82f1f43952731c64551629701c5dc041"
+ },
+ "top_k": 20,
+ "min_test_cells": 20,
+ "mean_delta_r": 0.9606328294312491,
+ "mean_rel_err": 0.2890959583925055,
+ "per_pair": {
+  "AHR+KLF1": {
+   "delta_r": 0.9756681272789042,
+   "rel_err": 0.21581921445008076
+  },
+  "BCL2L11+TGFBR2": {
+   "delta_r": 0.9422289426334153,
+   "rel_err": 0.3831848682107899
+  },
+  "CBFA2T3+POU3F2": {
+   "delta_r": 0.9648719319287342,
+   "rel_err": 0.3215930915691871
+  },
+  "CBL+CNN1": {
+   "delta_r": 0.9546380089533649,
+   "rel_err": 0.2727535827272518
+  },
+  "CBL+TGFBR2": {
+   "delta_r": 0.9702770593889174,
+   "rel_err": 0.2991215413565789
+  },
+  "CEBPE+FOSB": {
+   "delta_r": 0.9775583437274875,
+   "rel_err": 0.26216641313674066
+  },
+  "CEBPE+RUNX1T1": {
+   "delta_r": 0.9884278697656098,
+   "rel_err": 0.5411987833495564
+  },
+  "DLX2+ZBTB10": {
+   "delta_r": 0.950311507108976,
+   "rel_err": 0.37706648551595945
+  },
+  "FOSB+UBASH3B": {
+   "delta_r": 0.942570862347866,
+   "rel_err": 0.3729499296376859
+  },
+  "FOXA1+FOXF1": {
+   "delta_r": 0.971153677664363,
+   "rel_err": 0.26921749512754556
+  },
+  "FOXL2+HOXB9": {
+   "delta_r": 0.9692951852820998,
+   "rel_err": 0.27199456338989814
+  },
+  "IGDCC3+ZBTB25": {
+   "delta_r": 0.9840972936209732,
+   "rel_err": 0.17182966541781947
+  },
+  "KLF1+MAP2K6": {
+   "delta_r": 0.9734897398818376,
+   "rel_err": 0.19257770704962157
+  },
+  "OSR2+UBASH3B": {
+   "delta_r": 0.9548103486012038,
+   "rel_err": 0.28536618816065423
+  },
+  "PLK4+STIL": {
+   "delta_r": 0.8060352192382109,
+   "rel_err": 0.3407625610542988
+  },
+  "PTPN12+ZBTB10": {
+   "delta_r": 0.9807753114553527,
+   "rel_err": 0.20217209801847397
+  },
+  "SAMD1+ZBTB1": {
+   "delta_r": 0.9802784981440334,
+   "rel_err": 0.20343935952281506
+  },
+  "SNAI1+ZBTB10": {
+   "delta_r": 0.9801530328830403,
+   "rel_err": 0.20183273949860014
+  },
+  "TBX2+TBX3": {
+   "delta_r": 0.9903695314060249,
+   "rel_err": 0.26738313932921626
+  },
+  "UBASH3A+UBASH3B": {
+   "delta_r": 0.9556460973145624,
+   "rel_err": 0.32948974132733583
+  }
+ },
+ "mean_delta_r_round8_float64": 0.9606328296541156
+}

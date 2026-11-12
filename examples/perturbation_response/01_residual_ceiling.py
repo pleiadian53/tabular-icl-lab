@@ -263,7 +263,9 @@ def main() -> None:
         "global_scale_training_pairs": global_scale(cache, args.top_k, deltas),
         "per_pair": out_pairs,
         "runtime_s": round(time.time() - t0, 1),
-        "peak_rss_gb": round(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1e9, 2),
+        # ru_maxrss is bytes on macOS and kilobytes on Linux
+        "peak_rss_gb": round(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+                             / (1e9 if sys.platform == "darwin" else 1e6), 2),
     }
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)

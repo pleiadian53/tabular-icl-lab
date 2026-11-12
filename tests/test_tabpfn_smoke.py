@@ -1,7 +1,8 @@
 """Smoke test: TabPFN is installed, its weights load, and it predicts sensibly.
 
-Uses the TabPFN-2 regressor (Apache-2.0-based license with attribution, no
-account needed once cached) on CPU, on a small synthetic table whose target is
+Runs the TabPFN-3.5 regressor (the lab's main model, non-commercial license,
+gated) and the TabPFN-2 regressor (Apache-2.0-based license with attribution,
+no account needed once cached) on CPU, on a small synthetic table whose target is
 a known nonlinear function of two of five features. A working install should
 explain most of the variance from 200 context rows. If the weights cannot be
 loaded (no network, no cached checkpoint), the test is skipped with the reason
@@ -21,7 +22,13 @@ def _make_table(n: int, seed: int) -> tuple[np.ndarray, np.ndarray]:
     return x, y
 
 
-def test_tabpfn_v2_regressor_fits_on_cpu() -> None:
+@pytest.mark.parametrize("version", ["v3.5", "v2"])
+def test_tabpfn_regressor_fits_on_cpu(version: str) -> None:
+    """TabPFN-3.5 is the lab's main model; TabPFN-2 is the optional robustness arm.
+
+    TabPFN-3.5's weights are gated: the test skips until its license has been
+    accepted once (browser flow or ``TABPFN_TOKEN``).
+    """
     tabpfn = pytest.importorskip("tabpfn")
     from tabpfn import TabPFNRegressor
     from tabpfn.constants import ModelVersion
@@ -30,12 +37,12 @@ def test_tabpfn_v2_regressor_fits_on_cpu() -> None:
     x_qry, y_qry = _make_table(100, seed=1)
 
     model = TabPFNRegressor.create_default_for_version(
-        ModelVersion.V2, device="cpu", random_state=0, n_estimators=2
+        ModelVersion(version), device="cpu", random_state=0, n_estimators=2
     )
     try:
         model.fit(x_ctx, y_ctx)
     except Exception as exc:  # weights download or license gate
-        pytest.skip(f"TabPFN {tabpfn.__version__} weights unavailable: {exc}")
+        pytest.skip(f"TabPFN {tabpfn.__version__} {version} weights unavailable: {exc}")
 
     y_hat = model.predict(x_qry)
     assert y_hat.shape == y_qry.shape

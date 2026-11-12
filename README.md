@@ -28,7 +28,7 @@ tabular-icl-lab is a spin-off of its sibling project [ssl-lab](https://github.co
 
 ## Relationship to TabPFN
 
-This lab builds on TabPFN as a library and does not fork it. TabPFN's code is released under the Apache License 2.0. Its model weights are licensed separately: the TabPFN-2 weights under an Apache-2.0-based license with an attribution requirement, and the newer TabPFN-2.5 to 3.5 weights under non-commercial licenses that require accepting the terms on first use. Everything in this repository uses TabPFN through its public interface, and results state which model version and weights produced them.
+This lab builds on TabPFN as a library and does not fork it. TabPFN's code is released under the Apache License 2.0. Its model weights are licensed separately: the TabPFN-2 weights under an Apache-2.0-based license with an attribution requirement, and the newer TabPFN-2.5 to 3.5 weights under non-commercial licenses that require accepting the terms on first use. This lab is for research only and uses TabPFN-3.5 under its non-commercial license. Everything in this repository uses TabPFN through its public interface, and results state which model version and weights produced them.
 
 ## Layout
 
@@ -49,7 +49,13 @@ conda activate tabicllab
 pytest
 ```
 
-The environment installs TabPFN from a local clone next to this repository (`../TabPFN`), so upstream changes can be followed with `git pull`. To install the released package instead, replace that line in `environment.yml` with `tabpfn`. On first use TabPFN opens a browser to accept the weights' license; on a headless machine, set `TABPFN_TOKEN` instead (see TabPFN's README).
+The environment installs TabPFN from a local clone next to this repository (`../TabPFN`), so upstream changes can be followed with `git pull`. To install the released package instead, replace that line in `environment.yml` with `tabpfn`. The lab's main model is TabPFN-3.5, whose weights are gated behind a one-time license acceptance. Run this once; it opens a browser to log in at Prior Labs and accept the license, caches a token, and downloads the weights:
+
+```bash
+python -c "from tabpfn import TabPFNRegressor; TabPFNRegressor().fit([[0.0], [1.0], [2.0]], [0.0, 1.0, 2.0])"
+```
+
+On a headless machine such as a GPU pod, accept the license at https://ux.priorlabs.ai and set `TABPFN_TOKEN` instead. Until then the TabPFN-3.5 smoke test skips with the reason; the TabPFN-2 case runs without an account.
 
 ## Status
 

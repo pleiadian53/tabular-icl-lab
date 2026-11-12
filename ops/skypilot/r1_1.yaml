@@ -1,0 +1,32 @@
+# R1.1, the residual-ceiling analysis, on a RunPod pod via SkyPilot.
+#
+# R1.1 is numpy only, so any GPU node works; the GPU list exists for the pod's CPU
+# and memory and for availability. SkyPilot tries the accelerators in order and
+# falls back when one is not available. The pod mounts the shared RunPod network
+# volume, reads the Norman cache read-only from ssl-lab's staged copy there, and
+# writes to this lab's own namespace, /runpod-volume/tabular-icl-lab/.
+#
+# Launch from the repo root (see ops/README.md):
+#   sky launch -c ticl-r1 ops/skypilot/r1_1.yaml --idle-minutes-to-autostop 30 --down -y
+name: ticl-r1-1
+workdir: .
+resources:
+  cloud: runpod
+  image_id: docker:nvcr.io/nvidia/pytorch:25.02-py3
+  ordered:
+    - accelerators: A40:1
+    - accelerators: RTXA6000:1
+    - accelerators: L40S:1
+    - accelerators: L40:1
+    - accelerators: RTXA5000:1
+    - accelerators: A100-80GB:1
+volumes:
+  /runpod-volume: AI lab extension
+setup: |
+  unset PIP_CONSTRAINT 2>/dev/null || true
+  export PIP_CACHE_DIR=/runpod-volume/tabular-icl-lab/pip-cache
+  mkdir -p "$PIP_CACHE_DIR" /runpod-volume/tabular-icl-lab/output
+  pip install --no-deps .
+  pip install scipy
+run: |
+  bash examples/perturbation_response/run_r1_1_pod.sh

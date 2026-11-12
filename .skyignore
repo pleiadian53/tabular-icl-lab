@@ -1,0 +1,15 @@
+# Keep the SkyPilot workdir upload lean and private notes local. Patterns are
+# anchored to the repo root with a leading slash, so they cannot match a
+# same-named subpackage deeper in src/.
+/data
+/output
+/runs
+/dev
+/notebooks
+.git
+__pycache__
+*.pyc
+.pytest_cache
+.DS_Store
+*.egg-info
+.ipynb_checkpoints

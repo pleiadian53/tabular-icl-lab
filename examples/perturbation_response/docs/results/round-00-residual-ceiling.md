@@ -1,4 +1,6 @@
-# R1.1: the interaction residual is mostly signal
+# Round 0 — the interaction residual is mostly signal
+
+*Part of [the results ledger](index.md), which holds the standing verdict, the scoreboard and the settings every round shares. This is route item R1.1, run before any model was scored. Next: [round 1](round-01-tabpfn-residual.md).*
 
 **Question.** On the twenty held-out Norman (2019) gene pairs, is the part of a pair's effect that the additive prediction misses reproducible, or is it mostly measurement noise? If it were noise, no model could beat additivity on these pairs, and the experiment would end here.
 
@@ -88,7 +90,7 @@ The size-aware error $e_p$ is the norm of the prediction error over the norm of 
 
 ## Settings and reproducibility
 
-- **Script:** [`../01_residual_ceiling.py`](../01_residual_ceiling.py), protocol in its docstring, committed before the full run. Full report: [`r1_1_residual_ceiling.json`](r1_1_residual_ceiling.json).
+- **Script:** [`01_residual_ceiling.py`](../../01_residual_ceiling.py), protocol in its docstring, committed before the full run. Full report: [`round-00-residual-ceiling.json`](reports/round-00-residual-ceiling.json).
 - **Data:** the processed Norman cache shared with [ssl-lab](https://github.com/pleiadian53/ssl-lab), read-only; `de_genes.json` md5 `9844c2c25d2903872e1c0a92c722f105`, `splits.json` md5 `82f1f43952731c64551629701c5dc041`. Singles use their training cells, control uses all 11,726 control cells, and pairs use all their cells.
 - **Gene selection** reimplements ssl-lab's Wilcoxon criterion with its two guards (detected in at least 10% of the pair's cells, Benjamini–Hochberg adjusted $p < 0.05$) and reproduces its stored top-20 lists exactly on all 40 pairs checked.
 - **Run:** 50 random splits, seed 0; on a RunPod A40 pod, about 7 minutes. The report's `peak_rss_gb` reads 0.00 because the run predates a fix to how peak memory is reported on Linux; nothing else is affected.

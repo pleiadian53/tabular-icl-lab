@@ -1,4 +1,6 @@
-# R1.3: round 1, an in-context learner for the interaction residual
+# Round 1 — an in-context learner for the interaction residual
+
+*Part of [the results ledger](index.md), which holds the standing verdict, the scoreboard and the settings every round shares. This is route item R1.3. Previous: [round 0](round-00-residual-ceiling.md).*
 
 **Question.** Given how each of two genes changes expression when perturbed alone, can TabPFN-3.5, shown the 91 training combinations as examples and never tuned, predict how the two combine better than simply adding the two single effects? Adding them is the reference that every learned model in the sibling project ssl-lab has failed to beat on these data.
 
@@ -12,7 +14,7 @@ $$
 \varepsilon_g(AB) = \Delta_g(AB) - \Delta_g(A) - \Delta_g(B).
 $$
 
-The earlier step, [R1.1](r1-1-residual-ceiling.md), showed that this residual is mostly a reproducible effect rather than noise: in 18 of the 20 test pairs at least half of it reappears in an independent half of the cells. So there is something to learn. Each model below predicts $\hat\varepsilon_g$, and its prediction of the pair's effect is the additive prediction plus that.
+The earlier step, [round 0](round-00-residual-ceiling.md), showed that this residual is mostly a reproducible effect rather than noise: in 18 of the 20 test pairs at least half of it reappears in an independent half of the cells. So there is something to learn. Each model below predicts $\hat\varepsilon_g$, and its prediction of the pair's effect is the additive prediction plus that.
 
 **The score.** Each pair is scored on its 20 most strongly changed genes, the same genes ssl-lab scores, with the size-aware error
 
@@ -20,7 +22,7 @@ $$
 e_p = \frac{\lVert \hat\Delta(AB) - \Delta(AB) \rVert}{\lVert \Delta(AB) \rVert},
 $$
 
-the size of the prediction's error relative to the size of the pair's measured change, so $e_p = 0.25$ means the prediction is off by a quarter of the change. Additivity's $e_p$ is the residual's own relative size, 0.289 on average. R1.1 showed that even a perfect predictor would score about 0.08, because the pair's measured profile, the target every prediction is compared with, is itself an average over a limited number of cells.
+the size of the prediction's error relative to the size of the pair's measured change, so $e_p = 0.25$ means the prediction is off by a quarter of the change. Additivity's $e_p$ is the residual's own relative size, 0.289 on average. Round 0 showed that even a perfect predictor would score about 0.08, because the pair's measured profile, the target every prediction is compared with, is itself an average over a limited number of cells.
 
 ## The table the models see
 
@@ -83,15 +85,15 @@ Both were fixed in the protocol as secondary, with simultaneous intervals and no
 ## What the comparisons say
 
 - **The gain is not a correction of the singles' noise.** Shrinking each single effect by its own noise never helps: it is slightly worse than additivity on the test pairs (0.299 against 0.289) and on the training pairs. So the learners' gains do not come from discounting noisy single measurements.
-- **Nor is it a uniform shrink.** One global scale helps only a little (0.312 to 0.299 on the training pairs), as R1.1 predicted when it found that a global scale explains 8.5% of the residual. The learners gain several times more.
+- **Nor is it a uniform shrink.** One global scale helps only a little (0.312 to 0.299 on the training pairs), as round 0 predicted when it found that a global scale explains 8.5% of the residual. The learners gain several times more.
 - **TabPFN and the residual it predicts.** Its predicted residuals correlate about 0.6 with the measured ones within a pair, on every readout, so it is predicting the pattern of the interaction and not only its size. The clearest case is CEBPE+RUNX1T1, the pair additivity gets most wrong ($e_p$ 0.541). There the two singles together would push LST1 up by 1.90, but the pair raises it by only 1.15; VIM, GYPA and the haemoglobin gene HBZ show the same buffering. TabPFN brings the error to 0.222.
 - **TabPFN without tuning matches a tuned gradient-boosting model.** Boosting is slightly ahead on the test pairs and slightly behind on the other two readouts; only the 91-pair readout separates them, by 0.015 in TabPFN's favour. Ridge, even with pairwise products, gains little, which says the combination rule is not close to linear in these features.
-- **Shape barely moves; size does.** Every arm's $\Delta$-correlation stays between 0.95 and 0.98, as R1.1 anticipated (additivity already reaches 0.961). The differences are in $e_p$.
+- **Shape barely moves; size does.** Every arm's $\Delta$-correlation stays between 0.95 and 0.98, as round 0 anticipated (additivity already reaches 0.961). The differences are in $e_p$.
 - **Still far from the floor.** The best arm's $e_p$ on the test pairs, 0.246, is well above the noise floor of 0.079, so most of the learnable residual is still unexplained.
 
 ## Settings and reproducibility
 
-- **Script:** [`../02_round1_residual_learners.py`](../02_round1_residual_learners.py), with the protocol in its docstring, committed before the full run. Table: [`src/tabicllab/residual_table.py`](https://github.com/pleiadian53/tabular-icl-lab/blob/main/src/tabicllab/residual_table.py). Full report, with per-pair numbers for every arm and readout and the tuning grids' scores: [`r1_3_round1.json`](r1_3_round1.json).
+- **Script:** [`02_round1_residual_learners.py`](../../02_round1_residual_learners.py), with the protocol in its docstring, committed before the full run. Table: [`src/tabicllab/residual_table.py`](https://github.com/pleiadian53/tabular-icl-lab/blob/main/src/tabicllab/residual_table.py). Full report, with per-pair numbers for every arm and readout and the tuning grids' scores: [`round-01-tabpfn-residual.json`](reports/round-01-tabpfn-residual.json).
 - **Data:** the processed Norman (2019) cache shared with [ssl-lab](https://github.com/pleiadian53/ssl-lab), read-only; `de_genes.json` md5 `9844c2c25d2903872e1c0a92c722f105`, `splits.json` md5 `82f1f43952731c64551629701c5dc041`. 1,792 context rows from 91 training pairs; 400 test rows; 400 validation rows. Before scoring, the run checked that additivity's mean $e_p$ reproduces ssl-lab's published 0.289096 to $10^{-12}$.
 - **Models:** TabPFN 9.2.0 (upstream commit `3f2e9f9b`), checkpoint `tabpfn-v3.5-20260909`, `create_default_for_version` with its default number of estimators, seeds 0, 1 and 2, errors averaged over seeds per pair; averaging the three seeds' predictions first gives the same numbers to three decimals. Tuned choices on the full training set: ridge with pairwise products and penalty 316; LightGBM with 16 leaves, learning rate 0.1, 100 trees and at least 10 rows per leaf.
 - **Run:** a RunPod A40 pod; the whole round, including the cross-validated readout, took 67 seconds and peaked at 6 GB of memory.

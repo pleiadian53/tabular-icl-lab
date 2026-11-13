@@ -140,7 +140,8 @@ PRIMARY = [("tabpfn", "additive"), ("tabpfn", "scaled"), ("tabpfn", "shrunk"),
            ("tabpfn", "ridge"), ("tabpfn", "gbm")]
 SECONDARY = [("ridge", "additive"), ("gbm", "additive"), ("scaled", "additive"), ("shrunk", "additive")]
 MIN_PAIRS_FOR_VERDICT = 18
-R1_1_REPORT = ROOT / "examples" / "perturbation_response" / "results" / "r1_1_residual_ceiling.json"
+R1_1_REPORT = (ROOT / "examples" / "perturbation_response" / "docs" / "results" / "reports"
+               / "round-00-residual-ceiling.json")
 
 
 def default_jobs() -> int:

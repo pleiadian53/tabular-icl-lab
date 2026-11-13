@@ -38,3 +38,4 @@ The NGC image's CUDA build of torch must not be replaced by a PyPI build, so the
 |---|---|---|
 | `skypilot/r1_1.yaml` | R1.1, the residual ceiling (`examples/perturbation_response/01_residual_ceiling.py`) | no |
 | `skypilot/r1_3.yaml` | R1.3, round 1: TabPFN-3.5 against additivity, its no-interaction variants and tuned learners (`examples/perturbation_response/02_round1_residual_learners.py`) | yes |
+| `skypilot/r1_6.yaml` | R1.6, round 2: round 1's arms cross-validated over all 131 pairs (`examples/perturbation_response/03_round2_confirmation_cv.py`) | yes (weights already on the volume) |

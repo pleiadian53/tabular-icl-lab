@@ -28,6 +28,8 @@ dependencies:
   # Register once with: python -m ipykernel install --user --name tabicllab
   - ipykernel
   - nbclient
+  # Model-agnostic explanations (SHAP values) for the capability notebooks.
+  - shap
   - pip
   - pip:
       - -e ../TabPFN

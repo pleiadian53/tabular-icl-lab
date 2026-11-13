@@ -1,26 +1,26 @@
-"""Support module for the TabPFN first-predictions notebook, run on local TabPFN.
+"""Shared data, model setup and plots for the TabPFN capability notebooks.
 
-The notebook comes from Prior Labs' TabPFN course, where it imports a course-provided
-``helper`` module and talks to TabPFN through ``tabpfn_client``, the hosted API that
-needs a Prior Labs account. This lab uses TabPFN as a local library instead (decision
-D1), so this module rebuilds the same functions under the same names, with two
-differences worth knowing before reading the results.
+The notebooks in this folder measure what TabPFN does out of the box, before any method
+of this lab is added to it: how good its predictions are on small tables, how well its
+uncertainty is calibrated, and what its explanations say. Those measurements are the
+reference the lab's own methods have to beat. Everything runs on local TabPFN, used as a
+library, so every number is tied to a known checkpoint and no data leaves the machine.
 
-The model runs locally. ``init_tabpfn`` selects the weights: TabPFN-3.5, the lab's
-main model, when a license token is available (cached by the one-time acceptance
-described in the README, or ``TABPFN_TOKEN``), and otherwise TabPFN-2, whose weights
-download without an account. It also keeps TabPFN off Apple's MPS backend, so a laptop
-runs on the CPU while a pod with CUDA still uses its GPUs.
+The model. ``init_tabpfn`` selects the weights: TabPFN-3.5, the lab's main model, when a
+license token is available (cached by the one-time acceptance described in the README,
+or ``TABPFN_TOKEN``), and otherwise TabPFN-2, whose weights download without an account.
+It also keeps TabPFN off Apple's MPS backend, so a laptop runs on the CPU while a pod
+with CUDA still uses its GPUs.
 
-The data are rebuilt from public sources, so the numbers will not match the course's
-exactly. The heart-disease table is the UCI collection of four hospital studies (920
-patients); the housing table is the Ames dataset from OpenML (id 42165) with nine
-features chosen here; the electricity table is sixteen days of German day-ahead prices
+The data come from public sources. Two clinical tables: the UCI heart-disease collection
+of four hospital studies (920 patients, many measurements missing) and the complete
+Statlog heart table (270 patients). The Ames housing table from OpenML (id 42165), with
+nine features chosen here. Sixteen days of hourly German day-ahead electricity prices
 from SMARD with the day-ahead load and renewables forecasts published by the
 transmission operators, both served by the Energy-Charts API of Fraunhofer ISE.
 Downloads are cached in the shared data lake (``$SSLLAB_DATA_ROOT``, by default
-``~/work/data``), filed by domain like the lake's other datasets:
-``clinical/uci_heart_disease``, ``real_estate/ames_housing`` and
+``~/work/data``), filed by domain: ``clinical/uci_heart_disease``,
+``clinical/statlog_heart``, ``real_estate/ames_housing`` and
 ``energy/de_day_ahead_power``. Only the first run needs the network.
 """
 
@@ -40,10 +40,11 @@ from sklearn.model_selection import train_test_split
 SEED = 0
 DATA_ROOT = Path(os.environ.get("SSLLAB_DATA_ROOT", Path.home() / "work" / "data"))
 HEART_DIR = DATA_ROOT / "clinical" / "uci_heart_disease"
+STATLOG_DIR = DATA_ROOT / "clinical" / "statlog_heart"
 HOUSING_DIR = DATA_ROOT / "real_estate" / "ames_housing"
 ELECTRICITY_DIR = DATA_ROOT / "energy" / "de_day_ahead_power"
 
-# Set by configure_lesson. When FIGURE_DIR is a path, figures are written there
+# Set by configure_plots. When FIGURE_DIR is a path, figures are written there
 # instead of shown, which is how the notebook is checked headlessly.
 _PLOTS = True
 _FIGURE_DIR: Path | None = None
@@ -53,7 +54,7 @@ _figure_count = 0
 # --------------------------------------------------------------------------- setup
 
 
-def configure_lesson(plots: bool = True, figure_dir: str | Path | None = None) -> None:
+def configure_plots(plots: bool = True, figure_dir: str | Path | None = None) -> None:
     """Quiet the routine warnings and choose how figures are handled.
 
     With ``plots=False`` every plotting helper returns without drawing. With a
@@ -146,6 +147,57 @@ def load_heart_disease_full(train_size: int = 700, test_size: int = 220):
         data, y, train_size=train_size, test_size=test_size, stratify=y, random_state=SEED
     )
     return X_train, X_test, y_train, y_test
+
+
+# Statlog's OpenML column names, mapped to the names used for the UCI table above.
+_STATLOG_COLUMNS = {
+    "age": "age",
+    "sex": "sex",
+    "chest": "chest_pain_type",
+    "resting_blood_pressure": "resting_bp",
+    "serum_cholestoral": "cholesterol",
+    "fasting_blood_sugar": "fasting_blood_sugar",
+    "resting_electrocardiographic_results": "resting_ecg",
+    "maximum_heart_rate_achieved": "max_heart_rate",
+    "exercise_induced_angina": "exercise_angina",
+    "oldpeak": "st_depression",
+    "slope": "st_slope",
+    "number_of_major_vessels": "n_major_vessels",
+    "thal": "thalassemia",
+}
+# Measurements on a continuous scale; the rest are codes for categories, except the
+# vessel count (0 to 3), which is ordinal and treated as a number.
+CONTINUOUS = ["age", "resting_bp", "cholesterol", "max_heart_rate", "st_depression"]
+CATEGORICAL = ["sex", "chest_pain_type", "fasting_blood_sugar", "resting_ecg",
+               "exercise_angina", "st_slope", "thalassemia"]
+
+
+def load_statlog_heart(train_size: int = 200, test_size: int = 70):
+    """Statlog heart disease (OpenML 53): 270 patients, no missing values.
+
+    The same thirteen measurements as the UCI table, under the same names, from a single
+    study and complete, which makes it the cleaner table for explanations: an attribution
+    method never has to decide what a missing value contributed. The target is 1 when
+    heart disease is present (120 of 270). Stratified split with seed 0.
+    """
+    path = STATLOG_DIR / "heart_statlog_openml_53.csv"
+    if not path.exists():
+        from sklearn.datasets import fetch_openml
+
+        STATLOG_DIR.mkdir(parents=True, exist_ok=True)
+        fetch_openml(data_id=53, as_frame=True, parser="auto").frame.to_csv(path, index=False)
+    frame = pd.read_csv(path)
+    y = (frame.pop("class") == "present").astype(int).rename("heart_disease")
+    X = frame.rename(columns=_STATLOG_COLUMNS)[list(_STATLOG_COLUMNS.values())].astype(float)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, train_size=train_size, test_size=test_size, stratify=y, random_state=SEED
+    )
+    return X_train, X_test, y_train, y_test
+
+
+def categorical_indices(feature_names: list[str]) -> list[int]:
+    """Positions of the categorical codes, to pass to TabPFN as categorical features."""
+    return [i for i, name in enumerate(feature_names) if name in CATEGORICAL]
 
 
 _HOUSING_FEATURES = [
@@ -322,3 +374,84 @@ def plot_forecast_comparison(
     ax.set_title(title)
     ax.legend(loc="upper left", fontsize=8)
     _finish(fig)
+
+
+# ------------------------------------------------------------------ interpretation
+
+
+def make_shap_explainer(model, X_background: pd.DataFrame, n_background: int = 10, seed: int = SEED):
+    """A permutation SHAP explainer for the predicted probability of class 1.
+
+    SHAP needs a reference population to stand in for "feature unknown": a feature is
+    removed from a patient by replacing its value with values from these background
+    rows. ``n_background`` rows are sampled from ``X_background`` with ``seed``. The
+    model must have been fitted on a plain array with the same column order.
+    """
+    import shap
+
+    background = X_background.sample(n_background, random_state=seed).to_numpy(dtype=float)
+
+    def risk(X):
+        return model.predict_proba(np.asarray(X, dtype=float))[:, 1]
+
+    return shap.PermutationExplainer(risk, background, feature_names=list(X_background.columns), seed=seed)
+
+
+def top_continuous_features(shap_values, feature_names: list[str], continuous: list[str], k: int = 4) -> list[str]:
+    """The ``k`` continuous features with the largest mean absolute SHAP value."""
+    importance = np.abs(shap_values.values).mean(axis=0)
+    ranked = [feature_names[i] for i in np.argsort(importance)[::-1]]
+    return [name for name in ranked if name in continuous][:k]
+
+
+def plot_patient_waterfall(shap_values, index: int, title: str, max_display: int = 10) -> None:
+    """One patient's attributions, from the background average to their predicted risk."""
+    if not _PLOTS:
+        return
+    import shap
+
+    shap.plots.waterfall(shap_values[index], max_display=max_display, show=False)
+    fig = plt.gcf()
+    fig.suptitle(title)
+    _finish(fig)
+
+
+def plot_beeswarm(shap_values, max_display: int = 13) -> None:
+    """Every explained patient's attribution for every feature, features ranked by impact."""
+    if not _PLOTS:
+        return
+    import shap
+
+    shap.plots.beeswarm(shap_values, max_display=max_display, show=False)
+    _finish(plt.gcf())
+
+
+def partial_dependence(model, X: np.ndarray, column: int, grid_points: int = 20):
+    """Average predicted risk as one column sweeps its range, all other values kept.
+
+    The grid is the column's 5th to 95th percentiles in ``grid_points`` steps (duplicates
+    removed). All grid copies of ``X`` go to the model in one call.
+    """
+    grid = np.unique(np.quantile(X[:, column], np.linspace(0.05, 0.95, grid_points)))
+    stacked = np.repeat(X[None, :, :], len(grid), axis=0)
+    stacked[:, :, column] = grid[:, None]
+    risk = model.predict_proba(stacked.reshape(-1, X.shape[1]))[:, 1]
+    return grid, risk.reshape(len(grid), len(X)).mean(axis=1)
+
+
+def plot_partial_dependence(model, X: np.ndarray, features: list[str], feature_names: list[str]):
+    """Partial dependence of predicted risk on each feature, on one shared risk axis.
+
+    Returns ``{feature: (grid, mean risk)}`` so the curves can be inspected as numbers.
+    """
+    curves = {f: partial_dependence(model, X, feature_names.index(f)) for f in features}
+    if _PLOTS:
+        fig, axes = plt.subplots(1, len(features), figsize=(3.2 * len(features), 3.2), sharey=True)
+        for ax, (name, (grid, risk)) in zip(np.atleast_1d(axes), curves.items()):
+            ax.plot(grid, risk, lw=2)
+            column = X[:, feature_names.index(name)]
+            ax.plot(column, np.full_like(column, ax.get_ylim()[0]), "|", color="gray", alpha=0.4)
+            ax.set_xlabel(name)
+        np.atleast_1d(axes)[0].set_ylabel("mean predicted risk")
+        _finish(fig)
+    return curves

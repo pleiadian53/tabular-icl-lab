@@ -36,6 +36,7 @@ This lab builds on TabPFN as a library and does not fork it. TabPFN's code is re
 |---|---|
 | `src/tabicllab/` | the lab's code: adapters, feature builders, evaluation |
 | `examples/` | one folder per application, each with its own README and results |
+| `notebooks/` | capability characterizations: what a model does out of the box, measured against references, before the lab adds to it |
 | `docs/` | tutorials and write-ups |
 | `tests/` | unit tests |
 

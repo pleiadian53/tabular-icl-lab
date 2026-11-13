@@ -22,8 +22,19 @@ sky down ticl-r1 -y                                                            #
 
 ## Experiments that need TabPFN
 
-TabPFN-3.5's weights are gated: the pod needs `TABPFN_TOKEN` in its environment (pass it with `--env TABPFN_TOKEN`, which forwards the local value), and the task's setup installs `tabpfn`.
+TabPFN-3.5's weights are downloaded from Hugging Face after a license check against the user's Prior Labs account, which needs `TABPFN_TOKEN`. The pod downloads them once into `/runpod-volume/tabular-icl-lab/models/tabpfn/` (the wrapper sets `TABPFN_MODEL_CACHE_DIR` there), and later runs read them from the volume without a token. Pass the token as a SkyPilot secret, which SkyPilot redacts from its logs and YAML output, never as a plain `--env`:
+
+```bash
+TABPFN_TOKEN="$(cat ~/.cache/tabpfn/auth_token)" \
+  sky launch -c ticl-r1 ops/skypilot/r1_3.yaml --secret TABPFN_TOKEN \
+  --idle-minutes-to-autostop 30 --down -y --detach-run     # first run: downloads the weights
+sky launch -c ticl-r1 ops/skypilot/r1_3.yaml --secret TABPFN_TOKEN="" \
+  --idle-minutes-to-autostop 30 --down -y --detach-run     # later runs: weights already on the volume
+```
+
+The NGC image's CUDA build of torch must not be replaced by a PyPI build, so the task installs `tabpfn` without dependencies, pinned to the upstream commit the lab develops against, and adds its other dependencies explicitly.
 
 | Task | Experiment | Needs TabPFN |
 |---|---|---|
 | `skypilot/r1_1.yaml` | R1.1, the residual ceiling (`examples/perturbation_response/01_residual_ceiling.py`) | no |
+| `skypilot/r1_3.yaml` | R1.3, round 1: TabPFN-3.5 against additivity, its no-interaction variants and tuned learners (`examples/perturbation_response/02_round1_residual_learners.py`) | yes |

@@ -1,0 +1,46 @@
+# R1.3, round 1 (TabPFN-3.5 against additivity, its no-interaction variants and tuned
+# learners), on a RunPod pod via SkyPilot.
+#
+# TabPFN runs on the GPU; the ridge and LightGBM grids run on the pod's CPUs. SkyPilot
+# tries the accelerators in order and falls back when one is not available. The pod
+# mounts the shared RunPod network volume, reads the Norman cache read-only from
+# ssl-lab's staged copy there, and writes outputs and the TabPFN weights to this lab's
+# own namespace, /runpod-volume/tabular-icl-lab/.
+#
+# The NGC image ships a CUDA build of torch that pip must not replace, so TabPFN is
+# installed without dependencies, pinned to the upstream commit the lab develops
+# against, and its other dependencies are added explicitly.
+#
+# Launch from the repo root (see ops/README.md). TABPFN_TOKEN is needed only the first
+# time, to download the weights; pass it as a secret so SkyPilot redacts it:
+#   TABPFN_TOKEN="$(cat ~/.cache/tabpfn/auth_token)" \
+#     sky launch -c ticl-r1 ops/skypilot/r1_3.yaml --secret TABPFN_TOKEN \
+#     --idle-minutes-to-autostop 30 --down -y
+# Once the weights are on the volume, pass it empty instead: --secret TABPFN_TOKEN=""
+# (the null below makes SkyPilot refuse to launch until a value, even empty, is given).
+name: ticl-r1-3
+workdir: .
+resources:
+  cloud: runpod
+  image_id: docker:nvcr.io/nvidia/pytorch:25.02-py3
+  ordered:
+    - accelerators: A40:1
+    - accelerators: RTXA6000:1
+    - accelerators: L40S:1
+    - accelerators: L40:1
+    - accelerators: RTXA5000:1
+    - accelerators: A100-80GB:1
+volumes:
+  /runpod-volume: AI lab extension
+secrets:
+  TABPFN_TOKEN: null
+setup: |
+  unset PIP_CONSTRAINT 2>/dev/null || true
+  export PIP_CACHE_DIR=/runpod-volume/tabular-icl-lab/pip-cache
+  mkdir -p "$PIP_CACHE_DIR" /runpod-volume/tabular-icl-lab/output
+  pip install --no-deps "tabpfn @ git+https://github.com/PriorLabs/TabPFN@3f2e9f9bcb20984354727a8c0075f64bc0744ea3"
+  pip install safetensors einops "huggingface-hub>=0.23" "pydantic>=2.8" "pydantic-settings>=2.10.1" \
+    joblib tqdm filelock "lightgbm>=4.4" "skrub>=0.7,<0.11" scikit-learn scipy pandas typing_extensions
+  pip install --no-deps .
+run: |
+  bash examples/perturbation_response/run_r1_3_pod.sh

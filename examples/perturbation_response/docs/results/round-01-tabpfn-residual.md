@@ -1,6 +1,6 @@
 # Round 1 — an in-context learner for the interaction residual
 
-*Part of [the results ledger](index.md), which holds the standing verdict, the scoreboard and the settings every round shares. This is route item R1.3. Previous: [round 0](round-00-residual-ceiling.md).*
+*Part of [the results ledger](index.md), which holds the standing verdict, the scoreboard and the settings every round shares. This is route item R1.3. Previous: [round 0](round-00-residual-ceiling.md) · Next: [round 2](round-02-confirmation-cv.md).*
 
 **Question.** Given how each of two genes changes expression when perturbed alone, can TabPFN-3.5, shown the 91 training combinations as examples and never tuned, predict how the two combine better than simply adding the two single effects? Adding them is the reference that every learned model in the sibling project ssl-lab has failed to beat on these data.
 

@@ -1,0 +1,7075 @@
+{
+ "protocol": "R1.3 round 1; see the docstring of 02_round1_residual_learners.py",
+ "settings": {
+  "top_k": 20,
+  "features": [
+   "delta_big",
+   "delta_small",
+   "se_big",
+   "se_small",
+   "control_mean",
+   "control_sd",
+   "is_target"
+  ],
+  "seeds": [
+   0,
+   1,
+   2
+  ],
+  "folds": 5,
+  "n_boot": 10000,
+  "device": "cuda",
+  "smoke": false,
+  "tabpfn_checkpoint": "tabpfn-v3.5-20260909",
+  "tabpfn_settings": "create_default_for_version(V3_5), n_estimators 'auto' (the version default)",
+  "ridge_grid_size": 38,
+  "gbm_grid_size": 72,
+  "versions": {
+   "numpy": "1.26.4",
+   "sklearn": "1.5.2",
+   "lightgbm": "4.7.0",
+   "tabpfn": "9.2.0",
+   "torch": "2.7.0a0+ecf3bae40a.nv25.02"
+  }
+ },
+ "data": {
+  "de_genes_md5": "9844c2c25d2903872e1c0a92c722f105",
+  "splits_md5": "82f1f43952731c64551629701c5dc041",
+  "context_pairs": 91,
+  "context_rows": 1792
+ },
+ "fitted": {
+  "beta": 0.9066963061329779,
+  "ridge": {
+   "best": {
+    "degree": 2,
+    "alpha": 316.2277660168379
+   },
+   "best_cv_mean_ep": 0.2865180845163463,
+   "grid_cv_mean_ep": [
+    [
+     {
+      "degree": 1,
+      "alpha": 0.001
+     },
+     0.2957835190939903
+    ],
+    [
+     {
+      "degree": 1,
+      "alpha": 0.0031622776601683794
+     },
+     0.2957834764272163
+    ],
+    [
+     {
+      "degree": 1,
+      "alpha": 0.01
+     },
+     0.29578334150688573
+    ],
+    [
+     {
+      "degree": 1,
+      "alpha": 0.03162277660168379
+     },
+     0.29578291488989095
+    ],
+    [
+     {
+      "degree": 1,
+      "alpha": 0.09999999999999999
+     },
+     0.29578156619392193
+    ],
+    [
+     {
+      "degree": 1,
+      "alpha": 0.31622776601683794
+     },
+     0.29577730509373873
+    ],
+    [
+     {
+      "degree": 1,
+      "alpha": 1.0
+     },
+     0.29576386871787463
+    ],
+    [
+     {
+      "degree": 1,
+      "alpha": 3.162277660168379
+     },
+     0.2957217599868386
+    ],
+    [
+     {
+      "degree": 1,
+      "alpha": 10.0
+     },
+     0.2955923092119865
+    ],
+    [
+     {
+      "degree": 1,
+      "alpha": 31.622776601683796
+     },
+     0.29521716329214903
+    ],
+    [
+     {
+      "degree": 1,
+      "alpha": 100.0
+     },
+     0.29430276923570164
+    ],
+    [
+     {
+      "degree": 1,
+      "alpha": 316.2277660168379
+     },
+     0.29295322603267904
+    ],
+    [
+     {
+      "degree": 1,
+      "alpha": 1000.0
+     },
+     0.29342251956744975
+    ],
+    [
+     {
+      "degree": 1,
+      "alpha": 3162.277660168379
+     },
+     0.29864937803114483
+    ],
+    [
+     {
+      "degree": 1,
+      "alpha": 10000.0
+     },
+     0.3053461575421688
+    ],
+    [
+     {
+      "degree": 1,
+      "alpha": 31622.776601683796
+     },
+     0.3092847601810914
+    ],
+    [
+     {
+      "degree": 1,
+      "alpha": 100000.0
+     },
+     0.3108587097465281
+    ],
+    [
+     {
+      "degree": 1,
+      "alpha": 316227.7660168379
+     },
+     0.3113975293872507
+    ],
+    [
+     {
+      "degree": 1,
+      "alpha": 1000000.0
+     },
+     0.31157235316333565
+    ],
+    [
+     {
+      "degree": 2,
+      "alpha": 0.001
+     },
+     0.29821056662838147
+    ],
+    [
+     {
+      "degree": 2,
+      "alpha": 0.0031622776601683794
+     },
+     0.29820502281624045
+    ],
+    [
+     {
+      "degree": 2,
+      "alpha": 0.01
+     },
+     0.29818754393261504
+    ],
+    [
+     {
+      "degree": 2,
+      "alpha": 0.03162277660168379
+     },
+     0.298132787598206
+    ],
+    [
+     {
+      "degree": 2,
+      "alpha": 0.09999999999999999
+     },
+     0.29796464253505484
+    ],
+    [
+     {
+      "degree": 2,
+      "alpha": 0.31622776601683794
+     },
+     0.2974784793281018
+    ],
+    [
+     {
+      "degree": 2,
+      "alpha": 1.0
+     },
+     0.2962875623644252
+    ],
+    [
+     {
+      "degree": 2,
+      "alpha": 3.162277660168379
+     },
+     0.2942600388394706
+    ],
+    [
+     {
+      "degree": 2,
+      "alpha": 10.0
+     },
+     0.29212496300834595
+    ],
+    [
+     {
+      "degree": 2,
+      "alpha": 31.622776601683796
+     },
+     0.29006534489832225
+    ],
+    [
+     {
+      "degree": 2,
+      "alpha": 100.0
+     },
+     0.2878440425888751
+    ],
+    [
+     {
+      "degree": 2,
+      "alpha": 316.2277660168379
+     },
+     0.2865180845163463
+    ],
+    [
+     {
+      "degree": 2,
+      "alpha": 1000.0
+     },
+     0.2874219650490887
+    ],
+    [
+     {
+      "degree": 2,
+      "alpha": 3162.277660168379
+     },
+     0.2913997677227985
+    ],
+    [
+     {
+      "degree": 2,
+      "alpha": 10000.0
+     },
+     0.29858894124199353
+    ],
+    [
+     {
+      "degree": 2,
+      "alpha": 31622.776601683796
+     },
+     0.3055434721977081
+    ],
+    [
+     {
+      "degree": 2,
+      "alpha": 100000.0
+     },
+     0.3093797125296863
+    ],
+    [
+     {
+      "degree": 2,
+      "alpha": 316227.7660168379
+     },
+     0.3108922833906554
+    ],
+    [
+     {
+      "degree": 2,
+      "alpha": 1000000.0
+     },
+     0.3114085060978493
+    ]
+   ]
+  },
+  "gbm": {
+   "best": {
+    "num_leaves": 16,
+    "learning_rate": 0.1,
+    "n_estimators": 100,
+    "min_child_samples": 10
+   },
+   "best_cv_mean_ep": 0.24922904343272964,
+   "grid_cv_mean_ep": [
+    [
+     {
+      "num_leaves": 4,
+      "learning_rate": 0.01,
+      "n_estimators": 30,
+      "min_child_samples": 10
+     },
+     0.30085994759648993
+    ],
+    [
+     {
+      "num_leaves": 4,
+      "learning_rate": 0.01,
+      "n_estimators": 30,
+      "min_child_samples": 30
+     },
+     0.3006023205881501
+    ],
+    [
+     {
+      "num_leaves": 4,
+      "learning_rate": 0.01,
+      "n_estimators": 100,
+      "min_child_samples": 10
+     },
+     0.28356012040834144
+    ],
+    [
+     {
+      "num_leaves": 4,
+      "learning_rate": 0.01,
+      "n_estimators": 100,
+      "min_child_samples": 30
+     },
+     0.28404463767465127
+    ],
+    [
+     {
+      "num_leaves": 4,
+      "learning_rate": 0.01,
+      "n_estimators": 300,
+      "min_child_samples": 10
+     },
+     0.26507518629381993
+    ],
+    [
+     {
+      "num_leaves": 4,
+      "learning_rate": 0.01,
+      "n_estimators": 300,
+      "min_child_samples": 30
+     },
+     0.2664891853301551
+    ],
+    [
+     {
+      "num_leaves": 4,
+      "learning_rate": 0.01,
+      "n_estimators": 1000,
+      "min_child_samples": 10
+     },
+     0.2553936110158366
+    ],
+    [
+     {
+      "num_leaves": 4,
+      "learning_rate": 0.01,
+      "n_estimators": 1000,
+      "min_child_samples": 30
+     },
+     0.2568599367098241
+    ],
+    [
+     {
+      "num_leaves": 4,
+      "learning_rate": 0.03,
+      "n_estimators": 30,
+      "min_child_samples": 10
+     },
+     0.28529423292897527
+    ],
+    [
+     {
+      "num_leaves": 4,
+      "learning_rate": 0.03,
+      "n_estimators": 30,
+      "min_child_samples": 30
+     },
+     0.28593205549097656
+    ],
+    [
+     {
+      "num_leaves": 4,
+      "learning_rate": 0.03,
+      "n_estimators": 100,
+      "min_child_samples": 10
+     },
+     0.2644018674309019
+    ],
+    [
+     {
+      "num_leaves": 4,
+      "learning_rate": 0.03,
+      "n_estimators": 100,
+      "min_child_samples": 30
+     },
+     0.26640986180598025
+    ],
+    [
+     {
+      "num_leaves": 4,
+      "learning_rate": 0.03,
+      "n_estimators": 300,
+      "min_child_samples": 10
+     },
+     0.2548766398848641
+    ],
+    [
+     {
+      "num_leaves": 4,
+      "learning_rate": 0.03,
+      "n_estimators": 300,
+      "min_child_samples": 30
+     },
+     0.25706421322057427
+    ],
+    [
+     {
+      "num_leaves": 4,
+      "learning_rate": 0.03,
+      "n_estimators": 1000,
+      "min_child_samples": 10
+     },
+     0.250572190165042
+    ],
+    [
+     {
+      "num_leaves": 4,
+      "learning_rate": 0.03,
+      "n_estimators": 1000,
+      "min_child_samples": 30
+     },
+     0.25174959916992556
+    ],
+    [
+     {
+      "num_leaves": 4,
+      "learning_rate": 0.1,
+      "n_estimators": 30,
+      "min_child_samples": 10
+     },
+     0.2642591472257903
+    ],
+    [
+     {
+      "num_leaves": 4,
+      "learning_rate": 0.1,
+      "n_estimators": 30,
+      "min_child_samples": 30
+     },
+     0.2653067478859793
+    ],
+    [
+     {
+      "num_leaves": 4,
+      "learning_rate": 0.1,
+      "n_estimators": 100,
+      "min_child_samples": 10
+     },
+     0.25377717547322703
+    ],
+    [
+     {
+      "num_leaves": 4,
+      "learning_rate": 0.1,
+      "n_estimators": 100,
+      "min_child_samples": 30
+     },
+     0.2553710793804449
+    ],
+    [
+     {
+      "num_leaves": 4,
+      "learning_rate": 0.1,
+      "n_estimators": 300,
+      "min_child_samples": 10
+     },
+     0.24984802022323246
+    ],
+    [
+     {
+      "num_leaves": 4,
+      "learning_rate": 0.1,
+      "n_estimators": 300,
+      "min_child_samples": 30
+     },
+     0.2521391359831347
+    ],
+    [
+     {
+      "num_leaves": 4,
+      "learning_rate": 0.1,
+      "n_estimators": 1000,
+      "min_child_samples": 10
+     },
+     0.2547106305791346
+    ],
+    [
+     {
+      "num_leaves": 4,
+      "learning_rate": 0.1,
+      "n_estimators": 1000,
+      "min_child_samples": 30
+     },
+     0.25442458117134253
+    ],
+    [
+     {
+      "num_leaves": 8,
+      "learning_rate": 0.01,
+      "n_estimators": 30,
+      "min_child_samples": 10
+     },
+     0.29400471302736514
+    ],
+    [
+     {
+      "num_leaves": 8,
+      "learning_rate": 0.01,
+      "n_estimators": 30,
+      "min_child_samples": 30
+     },
+     0.2941110137218015
+    ],
+    [
+     {
+      "num_leaves": 8,
+      "learning_rate": 0.01,
+      "n_estimators": 100,
+      "min_child_samples": 10
+     },
+     0.27249271205795517
+    ],
+    [
+     {
+      "num_leaves": 8,
+      "learning_rate": 0.01,
+      "n_estimators": 100,
+      "min_child_samples": 30
+     },
+     0.27350385189798493
+    ],
+    [
+     {
+      "num_leaves": 8,
+      "learning_rate": 0.01,
+      "n_estimators": 300,
+      "min_child_samples": 10
+     },
+     0.2574784876319728
+    ],
+    [
+     {
+      "num_leaves": 8,
+      "learning_rate": 0.01,
+      "n_estimators": 300,
+      "min_child_samples": 30
+     },
+     0.2584300545370406
+    ],
+    [
+     {
+      "num_leaves": 8,
+      "learning_rate": 0.01,
+      "n_estimators": 1000,
+      "min_child_samples": 10
+     },
+     0.2518429428609616
+    ],
+    [
+     {
+      "num_leaves": 8,
+      "learning_rate": 0.01,
+      "n_estimators": 1000,
+      "min_child_samples": 30
+     },
+     0.2526406000465645
+    ],
+    [
+     {
+      "num_leaves": 8,
+      "learning_rate": 0.03,
+      "n_estimators": 30,
+      "min_child_samples": 10
+     },
+     0.2744961396535186
+    ],
+    [
+     {
+      "num_leaves": 8,
+      "learning_rate": 0.03,
+      "n_estimators": 30,
+      "min_child_samples": 30
+     },
+     0.27553928084362067
+    ],
+    [
+     {
+      "num_leaves": 8,
+      "learning_rate": 0.03,
+      "n_estimators": 100,
+      "min_child_samples": 10
+     },
+     0.25730898848396194
+    ],
+    [
+     {
+      "num_leaves": 8,
+      "learning_rate": 0.03,
+      "n_estimators": 100,
+      "min_child_samples": 30
+     },
+     0.2586557972203861
+    ],
+    [
+     {
+      "num_leaves": 8,
+      "learning_rate": 0.03,
+      "n_estimators": 300,
+      "min_child_samples": 10
+     },
+     0.25181371199219876
+    ],
+    [
+     {
+      "num_leaves": 8,
+      "learning_rate": 0.03,
+      "n_estimators": 300,
+      "min_child_samples": 30
+     },
+     0.25393206048030875
+    ],
+    [
+     {
+      "num_leaves": 8,
+      "learning_rate": 0.03,
+      "n_estimators": 1000,
+      "min_child_samples": 10
+     },
+     0.2535528532170242
+    ],
+    [
+     {
+      "num_leaves": 8,
+      "learning_rate": 0.03,
+      "n_estimators": 1000,
+      "min_child_samples": 30
+     },
+     0.25197008119214886
+    ],
+    [
+     {
+      "num_leaves": 8,
+      "learning_rate": 0.1,
+      "n_estimators": 30,
+      "min_child_samples": 10
+     },
+     0.25679944652336933
+    ],
+    [
+     {
+      "num_leaves": 8,
+      "learning_rate": 0.1,
+      "n_estimators": 30,
+      "min_child_samples": 30
+     },
+     0.2591913869112929
+    ],
+    [
+     {
+      "num_leaves": 8,
+      "learning_rate": 0.1,
+      "n_estimators": 100,
+      "min_child_samples": 10
+     },
+     0.2524242319869195
+    ],
+    [
+     {
+      "num_leaves": 8,
+      "learning_rate": 0.1,
+      "n_estimators": 100,
+      "min_child_samples": 30
+     },
+     0.2532241420858155
+    ],
+    [
+     {
+      "num_leaves": 8,
+      "learning_rate": 0.1,
+      "n_estimators": 300,
+      "min_child_samples": 10
+     },
+     0.25261492335878294
+    ],
+    [
+     {
+      "num_leaves": 8,
+      "learning_rate": 0.1,
+      "n_estimators": 300,
+      "min_child_samples": 30
+     },
+     0.25224068657296794
+    ],
+    [
+     {
+      "num_leaves": 8,
+      "learning_rate": 0.1,
+      "n_estimators": 1000,
+      "min_child_samples": 10
+     },
+     0.2605010236268275
+    ],
+    [
+     {
+      "num_leaves": 8,
+      "learning_rate": 0.1,
+      "n_estimators": 1000,
+      "min_child_samples": 30
+     },
+     0.2580223431906921
+    ],
+    [
+     {
+      "num_leaves": 16,
+      "learning_rate": 0.01,
+      "n_estimators": 30,
+      "min_child_samples": 10
+     },
+     0.28985459722385476
+    ],
+    [
+     {
+      "num_leaves": 16,
+      "learning_rate": 0.01,
+      "n_estimators": 30,
+      "min_child_samples": 30
+     },
+     0.2892251987841355
+    ],
+    [
+     {
+      "num_leaves": 16,
+      "learning_rate": 0.01,
+      "n_estimators": 100,
+      "min_child_samples": 10
+     },
+     0.26583813421027724
+    ],
+    [
+     {
+      "num_leaves": 16,
+      "learning_rate": 0.01,
+      "n_estimators": 100,
+      "min_child_samples": 30
+     },
+     0.2669259027469065
+    ],
+    [
+     {
+      "num_leaves": 16,
+      "learning_rate": 0.01,
+      "n_estimators": 300,
+      "min_child_samples": 10
+     },
+     0.25239019490688974
+    ],
+    [
+     {
+      "num_leaves": 16,
+      "learning_rate": 0.01,
+      "n_estimators": 300,
+      "min_child_samples": 30
+     },
+     0.2548263230166799
+    ],
+    [
+     {
+      "num_leaves": 16,
+      "learning_rate": 0.01,
+      "n_estimators": 1000,
+      "min_child_samples": 10
+     },
+     0.2498446514232043
+    ],
+    [
+     {
+      "num_leaves": 16,
+      "learning_rate": 0.01,
+      "n_estimators": 1000,
+      "min_child_samples": 30
+     },
+     0.25265925344098356
+    ],
+    [
+     {
+      "num_leaves": 16,
+      "learning_rate": 0.03,
+      "n_estimators": 30,
+      "min_child_samples": 10
+     },
+     0.26754193491982675
+    ],
+    [
+     {
+      "num_leaves": 16,
+      "learning_rate": 0.03,
+      "n_estimators": 30,
+      "min_child_samples": 30
+     },
+     0.26927204244476394
+    ],
+    [
+     {
+      "num_leaves": 16,
+      "learning_rate": 0.03,
+      "n_estimators": 100,
+      "min_child_samples": 10
+     },
+     0.2525051297209069
+    ],
+    [
+     {
+      "num_leaves": 16,
+      "learning_rate": 0.03,
+      "n_estimators": 100,
+      "min_child_samples": 30
+     },
+     0.25477346938021067
+    ],
+    [
+     {
+      "num_leaves": 16,
+      "learning_rate": 0.03,
+      "n_estimators": 300,
+      "min_child_samples": 10
+     },
+     0.2500471219734972
+    ],
+    [
+     {
+      "num_leaves": 16,
+      "learning_rate": 0.03,
+      "n_estimators": 300,
+      "min_child_samples": 30
+     },
+     0.2523056470047765
+    ],
+    [
+     {
+      "num_leaves": 16,
+      "learning_rate": 0.03,
+      "n_estimators": 1000,
+      "min_child_samples": 10
+     },
+     0.25251456369638475
+    ],
+    [
+     {
+      "num_leaves": 16,
+      "learning_rate": 0.03,
+      "n_estimators": 1000,
+      "min_child_samples": 30
+     },
+     0.2532510757139097
+    ],
+    [
+     {
+      "num_leaves": 16,
+      "learning_rate": 0.1,
+      "n_estimators": 30,
+      "min_child_samples": 10
+     },
+     0.2513786414194159
+    ],
+    [
+     {
+      "num_leaves": 16,
+      "learning_rate": 0.1,
+      "n_estimators": 30,
+      "min_child_samples": 30
+     },
+     0.2551274008007812
+    ],
+    [
+     {
+      "num_leaves": 16,
+      "learning_rate": 0.1,
+      "n_estimators": 100,
+      "min_child_samples": 10
+     },
+     0.24922904343272964
+    ],
+    [
+     {
+      "num_leaves": 16,
+      "learning_rate": 0.1,
+      "n_estimators": 100,
+      "min_child_samples": 30
+     },
+     0.25393100113400696
+    ],
+    [
+     {
+      "num_leaves": 16,
+      "learning_rate": 0.1,
+      "n_estimators": 300,
+      "min_child_samples": 10
+     },
+     0.25343961062194437
+    ],
+    [
+     {
+      "num_leaves": 16,
+      "learning_rate": 0.1,
+      "n_estimators": 300,
+      "min_child_samples": 30
+     },
+     0.25502724198733745
+    ],
+    [
+     {
+      "num_leaves": 16,
+      "learning_rate": 0.1,
+      "n_estimators": 1000,
+      "min_child_samples": 10
+     },
+     0.25988135103696663
+    ],
+    [
+     {
+      "num_leaves": 16,
+      "learning_rate": 0.1,
+      "n_estimators": 1000,
+      "min_child_samples": 30
+     },
+     0.25941858826991815
+    ]
+   ]
+  }
+ },
+ "test": {
+  "n_pairs": 20,
+  "n_scored": 20,
+  "excluded": [],
+  "mean_ep_floor": 0.07911134088510682,
+  "arms": {
+   "additive": {
+    "mean_ep": {
+     "mean": 0.2890959583925055,
+     "ci": [
+      0.254224012342834,
+      0.3279629401840338
+     ]
+    },
+    "mean_delta_r": 0.9606328296541156,
+    "geo_mean_ratio_to_additive": 1.0,
+    "pairs_below_additive": 0,
+    "mean_interaction_recovery": null
+   },
+   "scaled": {
+    "mean_ep": {
+     "mean": 0.2875507853453505,
+     "ci": [
+      0.247784931025222,
+      0.3272131075981519
+     ]
+    },
+    "mean_delta_r": 0.9606328296541156,
+    "geo_mean_ratio_to_additive": 0.980405870209871,
+    "pairs_below_additive": 9,
+    "mean_interaction_recovery": 0.033626000137180354
+   },
+   "shrunk": {
+    "mean_ep": {
+     "mean": 0.29943747520892744,
+     "ci": [
+      0.26054404561390465,
+      0.3413232890913407
+     ]
+    },
+    "mean_delta_r": 0.9527307443690034,
+    "geo_mean_ratio_to_additive": 1.0295757461043227,
+    "pairs_below_additive": 7,
+    "mean_interaction_recovery": -0.2611813229619706
+   },
+   "ridge": {
+    "mean_ep": {
+     "mean": 0.29326855737929813,
+     "ci": [
+      0.24166069542639151,
+      0.3512038220050029
+     ]
+    },
+    "mean_delta_r": 0.9547141304000956,
+    "geo_mean_ratio_to_additive": 0.9683984318910577,
+    "pairs_below_additive": 10,
+    "mean_interaction_recovery": 0.3114044457098301
+   },
+   "gbm": {
+    "mean_ep": {
+     "mean": 0.24563468218198006,
+     "ci": [
+      0.2073752875248978,
+      0.29094770401043096
+     ]
+    },
+    "mean_delta_r": 0.9690383565173721,
+    "geo_mean_ratio_to_additive": 0.8256423697490921,
+    "pairs_below_additive": 16,
+    "mean_interaction_recovery": 0.5727875510532894
+   },
+   "tabpfn": {
+    "mean_ep": {
+     "mean": 0.25968801244340756,
+     "ci": [
+      0.2056199424671532,
+      0.32867214925348026
+     ]
+    },
+    "mean_delta_r": 0.9712005243834939,
+    "geo_mean_ratio_to_additive": 0.8356415076083822,
+    "pairs_below_additive": 13,
+    "mean_interaction_recovery": 0.5949216122118566
+   },
+   "tabpfn_ensemble": {
+    "mean_ep": {
+     "mean": 0.2594628700243006,
+     "ci": [
+      0.20538293345984565,
+      0.3283736476259322
+     ]
+    },
+    "mean_delta_r": 0.9713006816201128,
+    "geo_mean_ratio_to_additive": 0.8350329480233815,
+    "pairs_below_additive": 13,
+    "mean_interaction_recovery": 0.5953247831722526
+   }
+  },
+  "primary_family": {
+   "critical_value": 3.0310858118515607,
+   "contrasts": {
+    "tabpfn-additive": {
+     "diff": -0.029407945949098013,
+     "se": 0.029271130638057006,
+     "ci_unadjusted": [
+      -0.0825230142606284,
+      0.030323933300256088
+     ],
+     "ci_simultaneous": [
+      -0.11813125472296612,
+      0.059315362824770096
+     ]
+    },
+    "tabpfn-scaled": {
+     "diff": -0.027862772901943045,
+     "se": 0.02710700334205179,
+     "ci_unadjusted": [
+      -0.07700208197427666,
+      0.026606052045105848
+     ],
+     "ci_simultaneous": [
+      -0.11002642613384907,
+      0.05430088032996298
+     ]
+    },
+    "tabpfn-shrunk": {
+     "diff": -0.03974946276551998,
+     "se": 0.027713849844317167,
+     "ci_unadjusted": [
+      -0.09086049320317699,
+      0.01564846534362668
+     ],
+     "ci_simultaneous": [
+      -0.12375251982041433,
+      0.044253594289374365
+     ]
+    },
+    "tabpfn-ridge": {
+     "diff": -0.033580544935890654,
+     "se": 0.02798860068605153,
+     "ci_unadjusted": [
+      -0.08641327227728908,
+      0.02027620551396428
+     ],
+     "ci_simultaneous": [
+      -0.11841639536896031,
+      0.051255305497179
+     ]
+    },
+    "tabpfn-gbm": {
+     "diff": 0.014053330261427374,
+     "se": 0.015491148612646654,
+     "ci_unadjusted": [
+      -0.01162342259690647,
+      0.04659048788262132
+     ],
+     "ci_simultaneous": [
+      -0.03290167050764988,
+      0.06100833103050463
+     ]
+    }
+   }
+  },
+  "secondary_family": {
+   "critical_value": 6.075406975052875,
+   "contrasts": {
+    "ridge-additive": {
+     "diff": 0.004172598986792649,
+     "se": 0.01961566114340995,
+     "ci_unadjusted": [
+      -0.029518536225639,
+      0.04457515074411841
+     ],
+     "ci_simultaneous": [
+      -0.11500052554415381,
+      0.1233457235177391
+     ]
+    },
+    "gbm-additive": {
+     "diff": -0.04346127621052538,
+     "se": 0.01815718681130974,
+     "ci_unadjusted": [
+      -0.08023417082930091,
+      -0.010292279786698852
+     ],
+     "ci_simultaneous": [
+      -0.15377357561129465,
+      0.06685102319024389
+     ]
+    },
+    "scaled-additive": {
+     "diff": -0.0015451730471549546,
+     "se": 0.012406486328815398,
+     "ci_unadjusted": [
+      -0.025978414706773704,
+      0.02088453403952285
+     ],
+     "ci_simultaneous": [
+      -0.07691962662513817,
+      0.07382928053082825
+     ]
+    },
+    "shrunk-additive": {
+     "diff": 0.010341516816421977,
+     "se": 0.005328848346383919,
+     "ci_unadjusted": [
+      0.001966955132970142,
+      0.021967090701454618
+     ],
+     "ci_simultaneous": [
+      -0.022033405596197864,
+      0.04271643922904182
+     ]
+    }
+   }
+  },
+  "per_pair": {
+   "AHR+KLF1": {
+    "n_cells": 476,
+    "n_genes": 20,
+    "ep_floor": 0.043979847145239545,
+    "additive": {
+     "rel_err": 0.21581921445008076,
+     "delta_r": 0.9756681284912165,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.14324392442637687,
+     "delta_r": 0.9756681284912168,
+     "recovery": 0.6397577742487711
+    },
+    "shrunk": {
+     "rel_err": 0.2122560644696348,
+     "delta_r": 0.9753591410033854,
+     "recovery": 0.14083192334733946
+    },
+    "ridge": {
+     "rel_err": 0.16695603897873193,
+     "delta_r": 0.9727430554187335,
+     "recovery": 0.5176656572406015
+    },
+    "gbm": {
+     "rel_err": 0.17655766716150034,
+     "delta_r": 0.9623289854682169,
+     "recovery": 0.5123564019366701
+    },
+    "tabpfn": {
+     "rel_err": 0.18163279393319595,
+     "delta_r": 0.9563802221658776,
+     "recovery": 0.5853337659097363
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.1814512139546739,
+     "delta_r": 0.9564723427084164,
+     "recovery": 0.5857840930245358
+    }
+   },
+   "BCL2L11+TGFBR2": {
+    "n_cells": 459,
+    "n_genes": 20,
+    "ep_floor": 0.10159835648177146,
+    "additive": {
+     "rel_err": 0.3831848682107899,
+     "delta_r": 0.942228939944424,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.42157879183257013,
+     "delta_r": 0.9422289399444238,
+     "recovery": -0.5644737206481291
+    },
+    "shrunk": {
+     "rel_err": 0.44102609132265147,
+     "delta_r": 0.9241171690607465,
+     "recovery": -0.7284388145432578
+    },
+    "ridge": {
+     "rel_err": 0.4664488143901087,
+     "delta_r": 0.9157661732234126,
+     "recovery": 0.0809387815990116
+    },
+    "gbm": {
+     "rel_err": 0.4996710826320525,
+     "delta_r": 0.9525404037061495,
+     "recovery": 0.8006185623921681
+    },
+    "tabpfn": {
+     "rel_err": 0.7493133818856433,
+     "delta_r": 0.9332765053342648,
+     "recovery": 0.7692463985112509
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.7486083400024148,
+     "delta_r": 0.9334734978045992,
+     "recovery": 0.7696685784386172
+    }
+   },
+   "CBFA2T3+POU3F2": {
+    "n_cells": 214,
+    "n_genes": 20,
+    "ep_floor": 0.08816405901071865,
+    "additive": {
+     "rel_err": 0.3215930915691871,
+     "delta_r": 0.9648719311303952,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.3583120843843384,
+     "delta_r": 0.964871931130395,
+     "recovery": -0.3704827946456198
+    },
+    "shrunk": {
+     "rel_err": 0.3279792752924643,
+     "delta_r": 0.9646782308440525,
+     "recovery": -0.3264541509252702
+    },
+    "ridge": {
+     "rel_err": 0.40834188717984865,
+     "delta_r": 0.9398144055236828,
+     "recovery": -0.35549779903892287
+    },
+    "gbm": {
+     "rel_err": 0.35832781715212075,
+     "delta_r": 0.9324651614781727,
+     "recovery": -0.06964225695405042
+    },
+    "tabpfn": {
+     "rel_err": 0.3814656335390856,
+     "delta_r": 0.9245669292505238,
+     "recovery": -0.0421530095828735
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.3814254820234478,
+     "delta_r": 0.9245810395456872,
+     "recovery": -0.042164632464138714
+    }
+   },
+   "CBL+CNN1": {
+    "n_cells": 345,
+    "n_genes": 20,
+    "ep_floor": 0.03963210973483577,
+    "additive": {
+     "rel_err": 0.2727535827272518,
+     "delta_r": 0.9546380094218877,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.3173697993320592,
+     "delta_r": 0.9546380094218877,
+     "recovery": -0.199005808550982
+    },
+    "shrunk": {
+     "rel_err": 0.2757119483069246,
+     "delta_r": 0.9538579908684014,
+     "recovery": -0.6270215834654809
+    },
+    "ridge": {
+     "rel_err": 0.29697175622893374,
+     "delta_r": 0.9729058227259213,
+     "recovery": 0.34175302974842386
+    },
+    "gbm": {
+     "rel_err": 0.23372676555789154,
+     "delta_r": 0.9902083979106746,
+     "recovery": 0.6511847433511082
+    },
+    "tabpfn": {
+     "rel_err": 0.17174087389504042,
+     "delta_r": 0.9949576251202353,
+     "recovery": 0.8358653757689121
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.17165421051028143,
+     "delta_r": 0.995002432377703,
+     "recovery": 0.8367117414314709
+    }
+   },
+   "CBL+TGFBR2": {
+    "n_cells": 186,
+    "n_genes": 20,
+    "ep_floor": 0.08108518067163031,
+    "additive": {
+     "rel_err": 0.2991215413565789,
+     "delta_r": 0.9702770601414248,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.35138662089188794,
+     "delta_r": 0.9702770601414248,
+     "recovery": -0.6304462332657399
+    },
+    "shrunk": {
+     "rel_err": 0.31381726745123134,
+     "delta_r": 0.9659653847174065,
+     "recovery": -0.7982985880905408
+    },
+    "ridge": {
+     "rel_err": 0.2875930616302345,
+     "delta_r": 0.9751067474405654,
+     "recovery": 0.2406889002657052
+    },
+    "gbm": {
+     "rel_err": 0.14771549724801467,
+     "delta_r": 0.9889615169519372,
+     "recovery": 0.8652935145729872
+    },
+    "tabpfn": {
+     "rel_err": 0.1288790863555016,
+     "delta_r": 0.9911090208731879,
+     "recovery": 0.9170515993354899
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.1285955629871607,
+     "delta_r": 0.9911350543900901,
+     "recovery": 0.9173723689587036
+    }
+   },
+   "CEBPE+FOSB": {
+    "n_cells": 150,
+    "n_genes": 20,
+    "ep_floor": 0.06999860873535121,
+    "additive": {
+     "rel_err": 0.26216641313674066,
+     "delta_r": 0.9775583453461729,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.1963554788513544,
+     "delta_r": 0.9775583453461731,
+     "recovery": 0.6757963010822036
+    },
+    "shrunk": {
+     "rel_err": 0.2609553589752658,
+     "delta_r": 0.9773296235087119,
+     "recovery": 0.270623538344689
+    },
+    "ridge": {
+     "rel_err": 0.16944906916175415,
+     "delta_r": 0.9829133787167711,
+     "recovery": 0.7977284492518393
+    },
+    "gbm": {
+     "rel_err": 0.18758735823198017,
+     "delta_r": 0.9850703896678895,
+     "recovery": 0.7889035554735395
+    },
+    "tabpfn": {
+     "rel_err": 0.2001723738038196,
+     "delta_r": 0.9830035489886507,
+     "recovery": 0.7504064530556716
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.19995624290769123,
+     "delta_r": 0.9830536371800691,
+     "recovery": 0.7507380032263593
+    }
+   },
+   "CEBPE+RUNX1T1": {
+    "n_cells": 1198,
+    "n_genes": 20,
+    "ep_floor": 0.03445384192016342,
+    "additive": {
+     "rel_err": 0.5411987833495564,
+     "delta_r": 0.988427867678667,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.40730062950561713,
+     "delta_r": 0.9884278676786671,
+     "recovery": 0.9599635150890395
+    },
+    "shrunk": {
+     "rel_err": 0.5340903947526825,
+     "delta_r": 0.9884317017714311,
+     "recovery": 0.5856827979445601
+    },
+    "ridge": {
+     "rel_err": 0.41518698154773104,
+     "delta_r": 0.9852455317622986,
+     "recovery": 0.8185503292089016
+    },
+    "gbm": {
+     "rel_err": 0.2551277367489237,
+     "delta_r": 0.9883333331202532,
+     "recovery": 0.9345122884743094
+    },
+    "tabpfn": {
+     "rel_err": 0.22164107578790496,
+     "delta_r": 0.9884990929585289,
+     "recovery": 0.9445295912196258
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.22154982560944897,
+     "delta_r": 0.9885119915989535,
+     "recovery": 0.9446119945162288
+    }
+   },
+   "DLX2+ZBTB10": {
+    "n_cells": 87,
+    "n_genes": 20,
+    "ep_floor": 0.10043301443392373,
+    "additive": {
+     "rel_err": 0.37706648551595945,
+     "delta_r": 0.9503115091574117,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.4181376612030366,
+     "delta_r": 0.9503115091574114,
+     "recovery": -0.5423629382176621
+    },
+    "shrunk": {
+     "rel_err": 0.38164493473418576,
+     "delta_r": 0.9494104519746074,
+     "recovery": -0.4544207153503009
+    },
+    "ridge": {
+     "rel_err": 0.3893472311621009,
+     "delta_r": 0.9616355275411042,
+     "recovery": -0.07342869066373005
+    },
+    "gbm": {
+     "rel_err": 0.3435520211292607,
+     "delta_r": 0.968637305402706,
+     "recovery": 0.4414950721150601
+    },
+    "tabpfn": {
+     "rel_err": 0.3466684339448734,
+     "delta_r": 0.9686291989529282,
+     "recovery": 0.37695192000762273
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.3466313069147809,
+     "delta_r": 0.968644515086044,
+     "recovery": 0.37731237699334835
+    }
+   },
+   "FOSB+UBASH3B": {
+    "n_cells": 422,
+    "n_genes": 20,
+    "ep_floor": 0.08583971313946819,
+    "additive": {
+     "rel_err": 0.3729499296376859,
+     "delta_r": 0.9425708641225535,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.3309474713385445,
+     "delta_r": 0.9425708641225533,
+     "recovery": 0.5093642264864651
+    },
+    "shrunk": {
+     "rel_err": 0.3724024468749233,
+     "delta_r": 0.941674420385099,
+     "recovery": 0.054950755222941405
+    },
+    "ridge": {
+     "rel_err": 0.40145328596121566,
+     "delta_r": 0.9340639799679835,
+     "recovery": 0.01105086722474083
+    },
+    "gbm": {
+     "rel_err": 0.4104941217811228,
+     "delta_r": 0.9571624783375396,
+     "recovery": 0.2341977415713946
+    },
+    "tabpfn": {
+     "rel_err": 0.38101952204227807,
+     "delta_r": 0.9631217357889362,
+     "recovery": 0.3371356950684285
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.3808963943548391,
+     "delta_r": 0.9631513870388255,
+     "recovery": 0.33735516575315416
+    }
+   },
+   "FOXA1+FOXF1": {
+    "n_cells": 267,
+    "n_genes": 20,
+    "ep_floor": 0.08869584774978215,
+    "additive": {
+     "rel_err": 0.26921749512754556,
+     "delta_r": 0.971153677378458,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.31560188259220917,
+     "delta_r": 0.9711536773784583,
+     "recovery": -0.5264757972155458
+    },
+    "shrunk": {
+     "rel_err": 0.279348209206989,
+     "delta_r": 0.9694456935963145,
+     "recovery": -0.8351616301769023
+    },
+    "ridge": {
+     "rel_err": 0.25762530362415165,
+     "delta_r": 0.9767666204749813,
+     "recovery": 0.29606516852108916
+    },
+    "gbm": {
+     "rel_err": 0.1953860140361078,
+     "delta_r": 0.979600343841691,
+     "recovery": 0.7308040994973206
+    },
+    "tabpfn": {
+     "rel_err": 0.17847022618548744,
+     "delta_r": 0.9855027949535319,
+     "recovery": 0.8355539142926713
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.1783403665299066,
+     "delta_r": 0.9855216917695239,
+     "recovery": 0.8357160399191264
+    }
+   },
+   "FOXL2+HOXB9": {
+    "n_cells": 92,
+    "n_genes": 20,
+    "ep_floor": 0.11950321487039393,
+    "additive": {
+     "rel_err": 0.27199456338989814,
+     "delta_r": 0.9692951857087589,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.3148700959861075,
+     "delta_r": 0.9692951857087595,
+     "recovery": -0.43417518193479476
+    },
+    "shrunk": {
+     "rel_err": 0.27686115255895577,
+     "delta_r": 0.9683832651981128,
+     "recovery": -0.6289063971632872
+    },
+    "ridge": {
+     "rel_err": 0.24002265799755038,
+     "delta_r": 0.9832620488465752,
+     "recovery": 0.5102297636253307
+    },
+    "gbm": {
+     "rel_err": 0.2154912966972644,
+     "delta_r": 0.9881621294619957,
+     "recovery": 0.6093973300564345
+    },
+    "tabpfn": {
+     "rel_err": 0.15407804311417037,
+     "delta_r": 0.9955734065676057,
+     "recovery": 0.8267551694837952
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.15396250913873702,
+     "delta_r": 0.9955933305788376,
+     "recovery": 0.8270415900919343
+    }
+   },
+   "IGDCC3+ZBTB25": {
+    "n_cells": 141,
+    "n_genes": 20,
+    "ep_floor": 0.07234953520262734,
+    "additive": {
+     "rel_err": 0.17182966541781947,
+     "delta_r": 0.9840972939231786,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.21123788682374242,
+     "delta_r": 0.9840972939231786,
+     "recovery": -0.261134860658225
+    },
+    "shrunk": {
+     "rel_err": 0.17501027426068527,
+     "delta_r": 0.9836839181965975,
+     "recovery": -0.5337064521355377
+    },
+    "ridge": {
+     "rel_err": 0.17416866626672994,
+     "delta_r": 0.9920454205381231,
+     "recovery": 0.3244469973726205
+    },
+    "gbm": {
+     "rel_err": 0.12247561823660816,
+     "delta_r": 0.9919286204814611,
+     "recovery": 0.7067278168557138
+    },
+    "tabpfn": {
+     "rel_err": 0.12051552049050161,
+     "delta_r": 0.9933152046545328,
+     "recovery": 0.724465451111081
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.12040194504127823,
+     "delta_r": 0.9933311034850318,
+     "recovery": 0.7253112417886387
+    }
+   },
+   "KLF1+MAP2K6": {
+    "n_cells": 260,
+    "n_genes": 20,
+    "ep_floor": 0.06359166150177603,
+    "additive": {
+     "rel_err": 0.19257770704962157,
+     "delta_r": 0.9734897398818376,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.18552699465650807,
+     "delta_r": 0.9734897398818374,
+     "recovery": 0.17432728235082226
+    },
+    "shrunk": {
+     "rel_err": 0.19231649683320998,
+     "delta_r": 0.9737597590558096,
+     "recovery": 0.12371205996043824
+    },
+    "ridge": {
+     "rel_err": 0.15972411922477597,
+     "delta_r": 0.9799610080394403,
+     "recovery": 0.5109963984916509
+    },
+    "gbm": {
+     "rel_err": 0.25414408127567445,
+     "delta_r": 0.9488284566558027,
+     "recovery": -0.21572778835116996
+    },
+    "tabpfn": {
+     "rel_err": 0.27130826287325627,
+     "delta_r": 0.9411447785578383,
+     "recovery": -0.32415976015545084
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.2712548376488464,
+     "delta_r": 0.9411702767713508,
+     "recovery": -0.3243016033639678
+    }
+   },
+   "OSR2+UBASH3B": {
+    "n_cells": 775,
+    "n_genes": 20,
+    "ep_floor": 0.048308932447321346,
+    "additive": {
+     "rel_err": 0.28536618816065423,
+     "delta_r": 0.9548103482388351,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.254608788490276,
+     "delta_r": 0.9548103482388357,
+     "recovery": 0.296268250798892
+    },
+    "shrunk": {
+     "rel_err": 0.2856039268911254,
+     "delta_r": 0.9549640760306921,
+     "recovery": 0.007847334156803599
+    },
+    "ridge": {
+     "rel_err": 0.30189994115891045,
+     "delta_r": 0.9410286031652121,
+     "recovery": -0.022994663374391103
+    },
+    "gbm": {
+     "rel_err": 0.2505304484145697,
+     "delta_r": 0.9630965554997255,
+     "recovery": 0.5453222036457291
+    },
+    "tabpfn": {
+     "rel_err": 0.2592730194301577,
+     "delta_r": 0.9629314470180007,
+     "recovery": 0.4569339682189791
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.25920460208011825,
+     "delta_r": 0.9629523181354367,
+     "recovery": 0.45714314466224637
+    }
+   },
+   "PLK4+STIL": {
+    "n_cells": 81,
+    "n_genes": 20,
+    "ep_floor": 0.20177065602230326,
+    "additive": {
+     "rel_err": 0.3407625610542988,
+     "delta_r": 0.8060352192382109,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.3818945207519372,
+     "delta_r": 0.8060352192382108,
+     "recovery": -0.18463152836562535
+    },
+    "shrunk": {
+     "rel_err": 0.43453137342655435,
+     "delta_r": 0.6823815186454903,
+     "recovery": -0.8373646196481228
+    },
+    "ridge": {
+     "rel_err": 0.6334022531946844,
+     "delta_r": 0.6987170633752111,
+     "recovery": 0.019730218679654903
+    },
+    "gbm": {
+     "rel_err": 0.295682839848638,
+     "delta_r": 0.8533257924149472,
+     "recovery": 0.44810197324058587
+    },
+    "tabpfn": {
+     "rel_err": 0.288933243303853,
+     "delta_r": 0.9240574746521585,
+     "recovery": 0.6364609854288136
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.2872091349691155,
+     "delta_r": 0.9253659839924896,
+     "recovery": 0.6385790570195957
+    }
+   },
+   "PTPN12+ZBTB10": {
+    "n_cells": 259,
+    "n_genes": 20,
+    "ep_floor": 0.07173210990132946,
+    "additive": {
+     "rel_err": 0.20217209801847397,
+     "delta_r": 0.9807753116123261,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.2001634132745649,
+     "delta_r": 0.9807753116123261,
+     "recovery": 0.16135117831771617
+    },
+    "shrunk": {
+     "rel_err": 0.20438186183040033,
+     "delta_r": 0.9790743448925255,
+     "recovery": -0.12059061442082496
+    },
+    "ridge": {
+     "rel_err": 0.21189192327792578,
+     "delta_r": 0.9763603356178667,
+     "recovery": 0.21765630333190633
+    },
+    "gbm": {
+     "rel_err": 0.14660351776799396,
+     "delta_r": 0.991686162701371,
+     "recovery": 0.7529586347481413
+    },
+    "tabpfn": {
+     "rel_err": 0.2038412506045437,
+     "delta_r": 0.9898685963572801,
+     "recovery": 0.6664570786787004
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.2036817666618365,
+     "delta_r": 0.98989788335557,
+     "recovery": 0.667243975544831
+    }
+   },
+   "SAMD1+ZBTB1": {
+    "n_cells": 181,
+    "n_genes": 20,
+    "ep_floor": 0.07478024225346,
+    "additive": {
+     "rel_err": 0.20343935952281506,
+     "delta_r": 0.980278499258302,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.16419349774246939,
+     "delta_r": 0.980278499258302,
+     "recovery": 0.625890924822137
+    },
+    "shrunk": {
+     "rel_err": 0.20201309934965223,
+     "delta_r": 0.979794204593289,
+     "recovery": 0.11552409474892741
+    },
+    "ridge": {
+     "rel_err": 0.11832174713475163,
+     "delta_r": 0.9912540725943407,
+     "recovery": 0.8518838464466886
+    },
+    "gbm": {
+     "rel_err": 0.1345517616322884,
+     "delta_r": 0.9876816079424269,
+     "recovery": 0.7719451512750761
+    },
+    "tabpfn": {
+     "rel_err": 0.12509471251260204,
+     "delta_r": 0.9899844891357512,
+     "recovery": 0.8270910981463157
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.12503673911593477,
+     "delta_r": 0.9900006944469525,
+     "recovery": 0.8273297176235876
+    }
+   },
+   "SNAI1+ZBTB10": {
+    "n_cells": 97,
+    "n_genes": 20,
+    "ep_floor": 0.10825252776126118,
+    "additive": {
+     "rel_err": 0.20183273949860014,
+     "delta_r": 0.980153033087556,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.22586786515593188,
+     "delta_r": 0.9801530330875557,
+     "recovery": -0.06193850865352411
+    },
+    "shrunk": {
+     "rel_err": 0.207050030694107,
+     "delta_r": 0.9792468988300268,
+     "recovery": -0.35839040274220085
+    },
+    "ridge": {
+     "rel_err": 0.25788411390798804,
+     "delta_r": 0.9820480785323843,
+     "recovery": 0.1590643797769923
+    },
+    "gbm": {
+     "rel_err": 0.1991167134246158,
+     "delta_r": 0.9874852138132577,
+     "recovery": 0.4450197483979978
+    },
+    "tabpfn": {
+     "rel_err": 0.26557434883296566,
+     "delta_r": 0.9797397096767385,
+     "recovery": 0.1699740362997081
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.26549390823527863,
+     "delta_r": 0.9797579495173626,
+     "recovery": 0.17007381536267305
+    }
+   },
+   "TBX2+TBX3": {
+    "n_cells": 1145,
+    "n_genes": 20,
+    "ep_floor": 0.02346054746453837,
+    "additive": {
+     "rel_err": 0.26738313932921626,
+     "delta_r": 0.9903695319422594,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.1792976970412153,
+     "delta_r": 0.9903695319422593,
+     "recovery": 0.8686810570193717
+    },
+    "shrunk": {
+     "rel_err": 0.26591464464201986,
+     "delta_r": 0.9905589543166576,
+     "recovery": 0.2981359656159037
+    },
+    "ridge": {
+     "rel_err": 0.20053277250290255,
+     "delta_r": 0.9816046016823127,
+     "recovery": 0.6580020760001682
+    },
+    "gbm": {
+     "rel_err": 0.20447728073823282,
+     "delta_r": 0.9909215451546611,
+     "recovery": 0.7001868100502975
+    },
+    "tabpfn": {
+     "rel_err": 0.1708177675931252,
+     "delta_r": 0.9927030065083841,
+     "recovery": 0.8153549946301628
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.1707324087243841,
+     "delta_r": 0.9927136791771225,
+     "recovery": 0.8156533899133673
+    }
+   },
+   "UBASH3A+UBASH3B": {
+    "n_cells": 540,
+    "n_genes": 20,
+    "ep_floor": 0.06459681125424109,
+    "additive": {
+     "rel_err": 0.32948974132733583,
+     "delta_r": 0.9556460973784329,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.3731206026262638,
+     "delta_r": 0.9556460973784334,
+     "recovery": -0.46375313531596335
+    },
+    "shrunk": {
+     "rel_err": 0.34583465230488647,
+     "delta_r": 0.9524981398907114,
+     "recovery": -0.5721809599192894
+    },
+    "ridge": {
+     "rel_err": 0.3081495230549329,
+     "delta_r": 0.951040132814991,
+     "recovery": 0.3235589004883209
+    },
+    "gbm": {
+     "rel_err": 0.28147400392474164,
+     "delta_r": 0.9723427303365638,
+     "recovery": 0.8020954187164732
+    },
+    "tabpfn": {
+     "rel_err": 0.3933206787401439,
+     "delta_r": 0.9656457001549219,
+     "recovery": 0.7891775188084912
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.3931706030758371,
+     "delta_r": 0.9656828234421887,
+     "recovery": 0.7893156050047382
+    }
+   }
+  },
+  "verdict": {
+   "evaluable": true,
+   "tabpfn": "inconclusive: a tie with additivity",
+   "interval_sides": {
+    "additive": "contains 0",
+    "scaled": "contains 0",
+    "shrunk": "contains 0"
+   },
+   "vs_tuned_learners": {
+    "ridge": "tie",
+    "gbm": "tie"
+   },
+   "route_1": "review Route 1; TabPFN reported as a tuning-free reference"
+  },
+  "strata": {
+   "r1_1_reliable_phi_ge_0.5": {
+    "n_pairs": 18,
+    "pairs": [
+     "AHR+KLF1",
+     "BCL2L11+TGFBR2",
+     "CBFA2T3+POU3F2",
+     "CBL+CNN1",
+     "CBL+TGFBR2",
+     "CEBPE+FOSB",
+     "CEBPE+RUNX1T1",
+     "DLX2+ZBTB10",
+     "FOSB+UBASH3B",
+     "FOXA1+FOXF1",
+     "FOXL2+HOXB9",
+     "IGDCC3+ZBTB25",
+     "KLF1+MAP2K6",
+     "OSR2+UBASH3B",
+     "PTPN12+ZBTB10",
+     "SAMD1+ZBTB1",
+     "TBX2+TBX3",
+     "UBASH3A+UBASH3B"
+    ],
+    "tabpfn-additive": {
+     "mean": -0.033337289475882215,
+     "ci": [
+      -0.09058045620276219,
+      0.03172983543935023
+     ]
+    },
+    "tabpfn-scaled": {
+     "mean": -0.02800003690376725,
+     "ci": [
+      -0.08101509868160352,
+      0.03182023745267886
+     ]
+    },
+    "tabpfn-shrunk": {
+     "mean": -0.03932863574036428,
+     "ci": [
+      -0.09346012240414141,
+      0.01994289915856352
+     ]
+    },
+    "tabpfn-ridge": {
+     "mean": -0.01860178465288663,
+     "ci": [
+      -0.06291593486410632,
+      0.033329546401085465
+     ]
+    },
+    "tabpfn-gbm": {
+     "mean": 0.012297698131387924,
+     "ci": [
+      -0.015452518274179799,
+      0.0490991904438825
+     ]
+    }
+   },
+   "at_least_100_cells": {
+    "n_pairs": 16,
+    "pairs": [
+     "AHR+KLF1",
+     "BCL2L11+TGFBR2",
+     "CBFA2T3+POU3F2",
+     "CBL+CNN1",
+     "CBL+TGFBR2",
+     "CEBPE+FOSB",
+     "CEBPE+RUNX1T1",
+     "FOSB+UBASH3B",
+     "FOXA1+FOXF1",
+     "IGDCC3+ZBTB25",
+     "KLF1+MAP2K6",
+     "OSR2+UBASH3B",
+     "PTPN12+ZBTB10",
+     "SAMD1+ZBTB1",
+     "TBX2+TBX3",
+     "UBASH3A+UBASH3B"
+    ],
+    "tabpfn-additive": {
+     "mean": -0.028234789919941623,
+     "ci": [
+      -0.09268692097067004,
+      0.044015379411527895
+     ]
+    },
+    "tabpfn-scaled": {
+     "mean": -0.016983711508606895,
+     "ci": [
+      -0.07409517306138512,
+      0.04661839307740638
+     ]
+    },
+    "tabpfn-shrunk": {
+     "mean": -0.0343847395682787,
+     "ci": [
+      -0.09524056133815274,
+      0.030789601010055536
+     ]
+    },
+    "tabpfn-ridge": {
+     "mean": -0.012888044478209487,
+     "ci": [
+      -0.06350312854824561,
+      0.042823768418633286
+     ]
+    },
+    "tabpfn-gbm": {
+     "mean": 0.017478462945778997,
+     "ci": [
+      -0.01215126614683228,
+      0.05657876986037064
+     ]
+    }
+   }
+  }
+ },
+ "val": {
+  "n_pairs": 20,
+  "n_scored": 20,
+  "excluded": [],
+  "mean_ep_floor": 0.06260525601606558,
+  "arms": {
+   "additive": {
+    "mean_ep": {
+     "mean": 0.31844862338942964,
+     "ci": [
+      0.2542843940142699,
+      0.3909994454515612
+     ]
+    },
+    "mean_delta_r": 0.9695163138423112,
+    "geo_mean_ratio_to_additive": 1.0,
+    "pairs_below_additive": 0,
+    "mean_interaction_recovery": null
+   },
+   "scaled": {
+    "mean_ep": {
+     "mean": 0.2876392294704494,
+     "ci": [
+      0.2352367024116356,
+      0.3433505190572798
+     ]
+    },
+    "mean_delta_r": 0.9695163138423114,
+    "geo_mean_ratio_to_additive": 0.9190478474832191,
+    "pairs_below_additive": 12,
+    "mean_interaction_recovery": 0.352524960273471
+   },
+   "shrunk": {
+    "mean_ep": {
+     "mean": 0.31801431133670016,
+     "ci": [
+      0.25402466367827287,
+      0.38946602610460707
+     ]
+    },
+    "mean_delta_r": 0.9692309328894231,
+    "geo_mean_ratio_to_additive": 1.0003451853646308,
+    "pairs_below_additive": 11,
+    "mean_interaction_recovery": 0.093626944769475
+   },
+   "ridge": {
+    "mean_ep": {
+     "mean": 0.26730823214791843,
+     "ci": [
+      0.21988661677947957,
+      0.31554739927427644
+     ]
+    },
+    "mean_delta_r": 0.9706313299728624,
+    "geo_mean_ratio_to_additive": 0.8578446589141536,
+    "pairs_below_additive": 15,
+    "mean_interaction_recovery": 0.5045461180607179
+   },
+   "gbm": {
+    "mean_ep": {
+     "mean": 0.23492290514403136,
+     "ci": [
+      0.19250305243657487,
+      0.28055293968833067
+     ]
+    },
+    "mean_delta_r": 0.972356397324638,
+    "geo_mean_ratio_to_additive": 0.7546755212596569,
+    "pairs_below_additive": 15,
+    "mean_interaction_recovery": 0.657336885987259
+   },
+   "tabpfn": {
+    "mean_ep": {
+     "mean": 0.2207191504098167,
+     "ci": [
+      0.1771941764149519,
+      0.2679205828138854
+     ]
+    },
+    "mean_delta_r": 0.9746884999404273,
+    "geo_mean_ratio_to_additive": 0.6957054222957806,
+    "pairs_below_additive": 15,
+    "mean_interaction_recovery": 0.6887052853832498
+   },
+   "tabpfn_ensemble": {
+    "mean_ep": {
+     "mean": 0.22058388295900228,
+     "ci": [
+      0.17708128631092837,
+      0.2677883732512985
+     ]
+    },
+    "mean_delta_r": 0.9747215111559759,
+    "geo_mean_ratio_to_additive": 0.6952414184171604,
+    "pairs_below_additive": 15,
+    "mean_interaction_recovery": 0.6890279596865214
+   }
+  },
+  "primary_family": {
+   "critical_value": 2.7308450783250526,
+   "contrasts": {
+    "tabpfn-additive": {
+     "diff": -0.0977294729796129,
+     "se": 0.03487609452387626,
+     "ci_unadjusted": [
+      -0.16575021927586542,
+      -0.03294522037987314
+     ],
+     "ci_simultaneous": [
+      -0.19297068406133971,
+      -0.0024882618978861043
+     ]
+    },
+    "tabpfn-scaled": {
+     "diff": -0.06692007906063269,
+     "se": 0.02817731472934587,
+     "ci_unadjusted": [
+      -0.11932187737688628,
+      -0.012363365947147943
+     ],
+     "ci_simultaneous": [
+      -0.14386796030968285,
+      0.010027802188417492
+     ]
+    },
+    "tabpfn-shrunk": {
+     "diff": -0.0972951609268835,
+     "se": 0.03482081706439348,
+     "ci_unadjusted": [
+      -0.16498703286817804,
+      -0.032308558071777696
+     ],
+     "ci_simultaneous": [
+      -0.19238541783043944,
+      -0.0022049040233275558
+     ]
+    },
+    "tabpfn-ridge": {
+     "diff": -0.04658908173810172,
+     "se": 0.01797358115680884,
+     "ci_unadjusted": [
+      -0.0801239142309574,
+      -0.012966609277584822
+     ],
+     "ci_simultaneous": [
+      -0.09567214738004905,
+      0.0024939839038456008
+     ]
+    },
+    "tabpfn-gbm": {
+     "diff": -0.014203754734214657,
+     "se": 0.008622135534193812,
+     "ci_unadjusted": [
+      -0.031552656646577436,
+      0.001429664966176333
+     ],
+     "ci_simultaneous": [
+      -0.03774947112241937,
+      0.009341961653990063
+     ]
+    }
+   }
+  },
+  "secondary_family": {
+   "critical_value": 2.7673865189802096,
+   "contrasts": {
+    "ridge-additive": {
+     "diff": -0.051140391241511166,
+     "se": 0.02578307455763666,
+     "ci_unadjusted": [
+      -0.10312724757224073,
+      -0.004469510141648667
+     ],
+     "ci_simultaneous": [
+      -0.12249212419017648,
+      0.02021134170715415
+     ]
+    },
+    "gbm-additive": {
+     "diff": -0.08352571824539823,
+     "se": 0.03121279835485628,
+     "ci_unadjusted": [
+      -0.14524503178190468,
+      -0.0264099325293032
+     ],
+     "ci_simultaneous": [
+      -0.16990359563227517,
+      0.0028521591414787106
+     ]
+    },
+    "scaled-additive": {
+     "diff": -0.0308093939189802,
+     "se": 0.014638502158770376,
+     "ci_unadjusted": [
+      -0.05970602138156448,
+      -0.003806188308557589
+     ],
+     "ci_simultaneous": [
+      -0.07131978745122404,
+      0.00970099961326364
+     ]
+    },
+    "shrunk-additive": {
+     "diff": -0.0004343120527293853,
+     "se": 0.0012801988910864245,
+     "ci_unadjusted": [
+      -0.002960788972611607,
+      0.0018939524961658477
+     ],
+     "ci_simultaneous": [
+      -0.00397711720553537,
+      0.0031084931000765993
+     ]
+    }
+   }
+  },
+  "per_pair": {
+   "CBFA2T3+FEV": {
+    "n_cells": 159,
+    "n_genes": 20,
+    "ep_floor": 0.05660172246335178,
+    "additive": {
+     "rel_err": 0.4767121165525409,
+     "delta_r": 0.9285820238648232,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.5097094640953328,
+     "delta_r": 0.9285820238648236,
+     "recovery": -0.5588342218097336
+    },
+    "shrunk": {
+     "rel_err": 0.47682221328556407,
+     "delta_r": 0.9282812821354913,
+     "recovery": -0.18722798150820455
+    },
+    "ridge": {
+     "rel_err": 0.4558817110078791,
+     "delta_r": 0.9550646149805836,
+     "recovery": 0.1969970654641525
+    },
+    "gbm": {
+     "rel_err": 0.4166431894655647,
+     "delta_r": 0.9664084010384141,
+     "recovery": 0.5269187891621222
+    },
+    "tabpfn": {
+     "rel_err": 0.4019919105024858,
+     "delta_r": 0.9693134754288512,
+     "recovery": 0.5826466134392313
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.40195518694841936,
+     "delta_r": 0.9693399676904337,
+     "recovery": 0.5831890565668787
+    }
+   },
+   "CDKN1A+CDKN1C": {
+    "n_cells": 117,
+    "n_genes": 20,
+    "ep_floor": 0.11802170247057497,
+    "additive": {
+     "rel_err": 0.494411669372214,
+     "delta_r": 0.9927146459501208,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.363019998652324,
+     "delta_r": 0.9927146459501213,
+     "recovery": 0.9696996377892402
+    },
+    "shrunk": {
+     "rel_err": 0.4807394927292633,
+     "delta_r": 0.9925649914451881,
+     "recovery": 0.9022035296345733
+    },
+    "ridge": {
+     "rel_err": 0.20461214768533503,
+     "delta_r": 0.9923417682318172,
+     "recovery": 0.933963269553002
+    },
+    "gbm": {
+     "rel_err": 0.2950418449018149,
+     "delta_r": 0.9960819327605623,
+     "recovery": 0.8969845004578991
+    },
+    "tabpfn": {
+     "rel_err": 0.19264806099150908,
+     "delta_r": 0.994169054810686,
+     "recovery": 0.9429226038586541
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.192487573982883,
+     "delta_r": 0.9941896586049556,
+     "recovery": 0.9431571462907538
+    }
+   },
+   "CEBPA+CEBPE": {
+    "n_cells": 176,
+    "n_genes": 20,
+    "ep_floor": 0.06825939284459596,
+    "additive": {
+     "rel_err": 0.7327332143845334,
+     "delta_r": 0.9941115742228849,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.5744097867150492,
+     "delta_r": 0.9941115742228851,
+     "recovery": 0.9888884333167665
+    },
+    "shrunk": {
+     "rel_err": 0.7301952969999477,
+     "delta_r": 0.994082906702282,
+     "recovery": 0.9173480514282668
+    },
+    "ridge": {
+     "rel_err": 0.4233151883143949,
+     "delta_r": 0.9933331918831123,
+     "recovery": 0.930307599110342
+    },
+    "gbm": {
+     "rel_err": 0.2497421316661984,
+     "delta_r": 0.9941381670512923,
+     "recovery": 0.9827306959515566
+    },
+    "tabpfn": {
+     "rel_err": 0.25030010901055294,
+     "delta_r": 0.9952387892459106,
+     "recovery": 0.9897264620945082
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.25020728956293586,
+     "delta_r": 0.9952531754914413,
+     "recovery": 0.989822492795467
+    }
+   },
+   "CEBPB+CEBPE": {
+    "n_cells": 110,
+    "n_genes": 20,
+    "ep_floor": 0.0963968035068796,
+    "additive": {
+     "rel_err": 0.5455587654783883,
+     "delta_r": 0.9836006139021316,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.4113300477212917,
+     "delta_r": 0.9836006139021322,
+     "recovery": 0.9441185266835956
+    },
+    "shrunk": {
+     "rel_err": 0.542763869748856,
+     "delta_r": 0.9834798791046312,
+     "recovery": 0.7764621607015356
+    },
+    "ridge": {
+     "rel_err": 0.31875257093684883,
+     "delta_r": 0.9878404839891237,
+     "recovery": 0.9126594096176507
+    },
+    "gbm": {
+     "rel_err": 0.2546329612808873,
+     "delta_r": 0.9898459345210157,
+     "recovery": 0.9366362150839457
+    },
+    "tabpfn": {
+     "rel_err": 0.22996935010778297,
+     "delta_r": 0.9959660551478695,
+     "recovery": 0.9751070563809755
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.22985779087161756,
+     "delta_r": 0.9959926747118498,
+     "recovery": 0.9753864964176339
+    }
+   },
+   "CEBPE+CNN1": {
+    "n_cells": 232,
+    "n_genes": 20,
+    "ep_floor": 0.0743346172014558,
+    "additive": {
+     "rel_err": 0.37869765777286957,
+     "delta_r": 0.9722703692377939,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.29793557293386297,
+     "delta_r": 0.972270369237794,
+     "recovery": 0.7816935596874051
+    },
+    "shrunk": {
+     "rel_err": 0.37762849569421447,
+     "delta_r": 0.9720441020426611,
+     "recovery": 0.08034202322492949
+    },
+    "ridge": {
+     "rel_err": 0.37134267938516835,
+     "delta_r": 0.962788829742413,
+     "recovery": 0.3672053693349498
+    },
+    "gbm": {
+     "rel_err": 0.22805910531037968,
+     "delta_r": 0.9835156978123538,
+     "recovery": 0.8671338831317005
+    },
+    "tabpfn": {
+     "rel_err": 0.19352303843225224,
+     "delta_r": 0.9865776828928349,
+     "recovery": 0.8969686646532299
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.19345826716651154,
+     "delta_r": 0.9865875449329172,
+     "recovery": 0.8971043713156832
+    }
+   },
+   "CEBPE+KLF1": {
+    "n_cells": 465,
+    "n_genes": 20,
+    "ep_floor": 0.05119129558432306,
+    "additive": {
+     "rel_err": 0.5233933177786215,
+     "delta_r": 0.8948641280564109,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.4496444224843709,
+     "delta_r": 0.894864128056411,
+     "recovery": 0.8158572228635586
+    },
+    "shrunk": {
+     "rel_err": 0.5225899515776374,
+     "delta_r": 0.8953478493715833,
+     "recovery": 0.1625804495931276
+    },
+    "ridge": {
+     "rel_err": 0.45864042262300614,
+     "delta_r": 0.9039386345088563,
+     "recovery": 0.5895946714906449
+    },
+    "gbm": {
+     "rel_err": 0.40926286730465,
+     "delta_r": 0.8803962539057107,
+     "recovery": 0.6331387221266009
+    },
+    "tabpfn": {
+     "rel_err": 0.34779227050507616,
+     "delta_r": 0.9264638288000798,
+     "recovery": 0.8399712319775986
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.3476710425284234,
+     "delta_r": 0.9265194305951893,
+     "recovery": 0.8406061430654043
+    }
+   },
+   "CLDN6+KLF1": {
+    "n_cells": 233,
+    "n_genes": 20,
+    "ep_floor": 0.051779453105130706,
+    "additive": {
+     "rel_err": 0.27750298588600875,
+     "delta_r": 0.959776851541037,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.21863216411337633,
+     "delta_r": 0.959776851541037,
+     "recovery": 0.5831847798048618
+    },
+    "shrunk": {
+     "rel_err": 0.2761559424429838,
+     "delta_r": 0.9598081754748088,
+     "recovery": 0.15656605221228423
+    },
+    "ridge": {
+     "rel_err": 0.19442757830038093,
+     "delta_r": 0.9669336338909954,
+     "recovery": 0.6790150328462251
+    },
+    "gbm": {
+     "rel_err": 0.17851865830364494,
+     "delta_r": 0.9696926426129043,
+     "recovery": 0.7074035433808533
+    },
+    "tabpfn": {
+     "rel_err": 0.21365062853602232,
+     "delta_r": 0.9618528644095443,
+     "recovery": 0.5452774091647553
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.21355279640214936,
+     "delta_r": 0.9618776380211214,
+     "recovery": 0.5457565198686137
+    }
+   },
+   "DUSP9+IGDCC3": {
+    "n_cells": 377,
+    "n_genes": 20,
+    "ep_floor": 0.04110874145781732,
+    "additive": {
+     "rel_err": 0.2712737649078042,
+     "delta_r": 0.9911694790490784,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.17593450439700284,
+     "delta_r": 0.991169479049078,
+     "recovery": 0.8719968721214754
+    },
+    "shrunk": {
+     "rel_err": 0.2700533591102407,
+     "delta_r": 0.9911076776910652,
+     "recovery": 0.28932628372466196
+    },
+    "ridge": {
+     "rel_err": 0.11699629016250955,
+     "delta_r": 0.994820225778917,
+     "recovery": 0.9087755243211604
+    },
+    "gbm": {
+     "rel_err": 0.10439653605266805,
+     "delta_r": 0.9935359293456081,
+     "recovery": 0.9325247165944819
+    },
+    "tabpfn": {
+     "rel_err": 0.06537810326378263,
+     "delta_r": 0.998040178896105,
+     "recovery": 0.9799910540548976
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.06517528060113735,
+     "delta_r": 0.9980563021648151,
+     "recovery": 0.9801385934264208
+    }
+   },
+   "DUSP9+KLF1": {
+    "n_cells": 360,
+    "n_genes": 20,
+    "ep_floor": 0.03297098004000819,
+    "additive": {
+     "rel_err": 0.20865368516724153,
+     "delta_r": 0.9617590206373614,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.1965410544770207,
+     "delta_r": 0.9617590206373616,
+     "recovery": 0.5029874867145777
+    },
+    "shrunk": {
+     "rel_err": 0.2090894626342281,
+     "delta_r": 0.9614263905863413,
+     "recovery": -0.14066100681060817
+    },
+    "ridge": {
+     "rel_err": 0.1666331658393419,
+     "delta_r": 0.9732840900411595,
+     "recovery": 0.7287773335646262
+    },
+    "gbm": {
+     "rel_err": 0.17465488168732735,
+     "delta_r": 0.9760350091413189,
+     "recovery": 0.7224586670587854
+    },
+    "tabpfn": {
+     "rel_err": 0.17932803580151002,
+     "delta_r": 0.9671244556813482,
+     "recovery": 0.6021207598308367
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.17917661611809926,
+     "delta_r": 0.9671754834952141,
+     "recovery": 0.6028132757548244
+    }
+   },
+   "FOXA3+HOXB9": {
+    "n_cells": 323,
+    "n_genes": 20,
+    "ep_floor": 0.06774673080202342,
+    "additive": {
+     "rel_err": 0.2224536528766892,
+     "delta_r": 0.9850185798136581,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.27934394134914614,
+     "delta_r": 0.985018579813658,
+     "recovery": -0.6323274358028537
+    },
+    "shrunk": {
+     "rel_err": 0.22848375638203677,
+     "delta_r": 0.9844805753045749,
+     "recovery": -0.5948243861733596
+    },
+    "ridge": {
+     "rel_err": 0.23180855885188809,
+     "delta_r": 0.9916273519885523,
+     "recovery": 0.16559381335193804
+    },
+    "gbm": {
+     "rel_err": 0.14621784384455846,
+     "delta_r": 0.9937529378338011,
+     "recovery": 0.7530071297953359
+    },
+    "tabpfn": {
+     "rel_err": 0.08801575762396148,
+     "delta_r": 0.9971497185452686,
+     "recovery": 0.9246283901081981
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.08786346185355243,
+     "delta_r": 0.997163336940132,
+     "recovery": 0.9249093474815154
+    }
+   },
+   "IGDCC3+TGFBR2": {
+    "n_cells": 295,
+    "n_genes": 20,
+    "ep_floor": 0.06418792185707042,
+    "additive": {
+     "rel_err": 0.14836057615614365,
+     "delta_r": 0.9888114273189703,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.1388812744533865,
+     "delta_r": 0.9888114273189705,
+     "recovery": 0.3902360768187086
+    },
+    "shrunk": {
+     "rel_err": 0.1532525196268687,
+     "delta_r": 0.9873344369206934,
+     "recovery": -0.26914758153342405
+    },
+    "ridge": {
+     "rel_err": 0.1388103575514082,
+     "delta_r": 0.9893187362338325,
+     "recovery": 0.4866653841125121
+    },
+    "gbm": {
+     "rel_err": 0.17796527694877454,
+     "delta_r": 0.9875661564630953,
+     "recovery": 0.4814937173470477
+    },
+    "tabpfn": {
+     "rel_err": 0.19044339207800717,
+     "delta_r": 0.9867165891472679,
+     "recovery": 0.5643297273045065
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.19030625415707955,
+     "delta_r": 0.9867400254878653,
+     "recovery": 0.5646534809471646
+    }
+   },
+   "KLF1+SET": {
+    "n_cells": 655,
+    "n_genes": 20,
+    "ep_floor": 0.031147540471864972,
+    "additive": {
+     "rel_err": 0.3147026050121927,
+     "delta_r": 0.9222304318189354,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.3169847827485196,
+     "delta_r": 0.9222304318189357,
+     "recovery": 0.42062017914247757
+    },
+    "shrunk": {
+     "rel_err": 0.31179465653744537,
+     "delta_r": 0.923165351266922,
+     "recovery": 0.5554348379223559
+    },
+    "ridge": {
+     "rel_err": 0.29326792711827354,
+     "delta_r": 0.9423682532460546,
+     "recovery": 0.6421395970628713
+    },
+    "gbm": {
+     "rel_err": 0.303661894430501,
+     "delta_r": 0.9236310452011526,
+     "recovery": 0.4498018232912465
+    },
+    "tabpfn": {
+     "rel_err": 0.3180384317197639,
+     "delta_r": 0.9140818564516024,
+     "recovery": 0.32304983518423847
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.3179433837085838,
+     "delta_r": 0.914129463119221,
+     "recovery": 0.3233014253615838
+    }
+   },
+   "KLF1+TGFBR2": {
+    "n_cells": 335,
+    "n_genes": 20,
+    "ep_floor": 0.0529594544357668,
+    "additive": {
+     "rel_err": 0.11874443760790952,
+     "delta_r": 0.9907672245945309,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.09347277240275004,
+     "delta_r": 0.9907672245945307,
+     "recovery": 0.5389900521855926
+    },
+    "shrunk": {
+     "rel_err": 0.11881741072511857,
+     "delta_r": 0.9897956007682561,
+     "recovery": 0.006265489220367844
+    },
+    "ridge": {
+     "rel_err": 0.09201655249921264,
+     "delta_r": 0.9906484670852875,
+     "recovery": 0.5368284443046079
+    },
+    "gbm": {
+     "rel_err": 0.1517852146719127,
+     "delta_r": 0.9736466602607005,
+     "recovery": 0.7867603885741378
+    },
+    "tabpfn": {
+     "rel_err": 0.16799730164467852,
+     "delta_r": 0.967575443697954,
+     "recovery": 0.7309583842430595
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.16788235306895066,
+     "delta_r": 0.9676147068144979,
+     "recovery": 0.7311689036061914
+    }
+   },
+   "MAP2K3+SLC38A2": {
+    "n_cells": 337,
+    "n_genes": 20,
+    "ep_floor": 0.09324951543162882,
+    "additive": {
+     "rel_err": 0.23264822560337028,
+     "delta_r": 0.9709053604195217,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.23718502380025028,
+     "delta_r": 0.9709053604195216,
+     "recovery": 0.16071039730896308
+    },
+    "shrunk": {
+     "rel_err": 0.21964587212547357,
+     "delta_r": 0.9734159880316487,
+     "recovery": 0.3541762514850608
+    },
+    "ridge": {
+     "rel_err": 0.4039089509950674,
+     "delta_r": 0.9091904073527572,
+     "recovery": -0.17100211743615956
+    },
+    "gbm": {
+     "rel_err": 0.43261381745990296,
+     "delta_r": 0.9383121067301722,
+     "recovery": 0.06485056656498644
+    },
+    "tabpfn": {
+     "rel_err": 0.4422699889964718,
+     "delta_r": 0.9507131765318869,
+     "recovery": 0.06050853480399079
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.4419249601609289,
+     "delta_r": 0.9508257979678697,
+     "recovery": 0.0604882970131356
+    }
+   },
+   "OSR2+PTPN12": {
+    "n_cells": 334,
+    "n_genes": 20,
+    "ep_floor": 0.08061055823005334,
+    "additive": {
+     "rel_err": 0.3204727853999175,
+     "delta_r": 0.9552755019255771,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.26501304003697845,
+     "delta_r": 0.9552755019255771,
+     "recovery": 0.6410345985123304
+    },
+    "shrunk": {
+     "rel_err": 0.3257665413493092,
+     "delta_r": 0.9525030497944352,
+     "recovery": -0.06113452717963801
+    },
+    "ridge": {
+     "rel_err": 0.3216488304960874,
+     "delta_r": 0.9461094401698507,
+     "recovery": 0.3470413926794867
+    },
+    "gbm": {
+     "rel_err": 0.3609000628294495,
+     "delta_r": 0.9380922246165798,
+     "recovery": 0.25251924827664024
+    },
+    "tabpfn": {
+     "rel_err": 0.38794515333527935,
+     "delta_r": 0.9319582059678327,
+     "recovery": 0.1837481723851769
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.38774670548658535,
+     "delta_r": 0.9320303032721643,
+     "recovery": 0.18383862532711218
+    }
+   },
+   "PTPN12+PTPN9": {
+    "n_cells": 361,
+    "n_genes": 20,
+    "ep_floor": 0.052882445389818664,
+    "additive": {
+     "rel_err": 0.2175117468506242,
+     "delta_r": 0.9708816564780617,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.26669194536086194,
+     "delta_r": 0.9708816564780617,
+     "recovery": -0.2032758151782479
+    },
+    "shrunk": {
+     "rel_err": 0.2262536591077286,
+     "delta_r": 0.9696605278455418,
+     "recovery": -0.5031867150168877
+    },
+    "ridge": {
+     "rel_err": 0.2034378636441681,
+     "delta_r": 0.9809303045339295,
+     "recovery": 0.4147086005623216
+    },
+    "gbm": {
+     "rel_err": 0.12981957615757048,
+     "delta_r": 0.9867267175828695,
+     "recovery": 0.7551595742150161
+    },
+    "tabpfn": {
+     "rel_err": 0.12879781337879892,
+     "delta_r": 0.9858753168848914,
+     "recovery": 0.7958810559819796
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.12869748842257517,
+     "delta_r": 0.9858946221406981,
+     "recovery": 0.7960874702931061
+    }
+   },
+   "PTPN9+UBASH3B": {
+    "n_cells": 318,
+    "n_genes": 20,
+    "ep_floor": 0.05391637727397196,
+    "additive": {
+     "rel_err": 0.33283386602811293,
+     "delta_r": 0.9666007615537706,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.38463551787489836,
+     "delta_r": 0.9666007615537707,
+     "recovery": -0.6278673928937232
+    },
+    "shrunk": {
+     "rel_err": 0.3397625886761109,
+     "delta_r": 0.9652891858082007,
+     "recovery": -0.7973493467862264
+    },
+    "ridge": {
+     "rel_err": 0.32666840917490103,
+     "delta_r": 0.9746766797582025,
+     "recovery": 0.35545249068613277
+    },
+    "gbm": {
+     "rel_err": 0.24710970626171075,
+     "delta_r": 0.9843225233078693,
+     "recovery": 0.6800733166381562
+    },
+    "tabpfn": {
+     "rel_err": 0.1639362823392088,
+     "delta_r": 0.9912105617837637,
+     "recovery": 0.8596754843663849
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.16382824131748255,
+     "delta_r": 0.9912376362872936,
+     "recovery": 0.8600326820817172
+    }
+   },
+   "RHOXF2+SET": {
+    "n_cells": 316,
+    "n_genes": 20,
+    "ep_floor": 0.05370069071146239,
+    "additive": {
+     "rel_err": 0.21425293457256128,
+     "delta_r": 0.9870320647361355,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.19325757725011167,
+     "delta_r": 0.9870320647361355,
+     "recovery": 0.3857820634306548
+    },
+    "shrunk": {
+     "rel_err": 0.21177455372670032,
+     "delta_r": 0.9870116802701346,
+     "recovery": 0.34589372805253416
+    },
+    "ridge": {
+     "rel_err": 0.21796984520265467,
+     "delta_r": 0.9900997514535366,
+     "recovery": 0.6217080683089121
+    },
+    "gbm": {
+     "rel_err": 0.17006411965273394,
+     "delta_r": 0.9883746060487609,
+     "recovery": 0.5691815989638821
+    },
+    "tabpfn": {
+     "rel_err": 0.17008321265302825,
+     "delta_r": 0.989421812976821,
+     "recovery": 0.6196755036669195
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.1697936741082394,
+     "delta_r": 0.9894634027916862,
+     "recovery": 0.6207472005275863
+    }
+   },
+   "SAMD1+UBASH3B": {
+    "n_cells": 240,
+    "n_genes": 20,
+    "ep_floor": 0.06677294091529726,
+    "additive": {
+     "rel_err": 0.19453426491111162,
+     "delta_r": 0.9827500317074952,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.23580194657494943,
+     "delta_r": 0.9827500317074949,
+     "recovery": -0.3003325309137532
+    },
+    "shrunk": {
+     "rel_err": 0.19828068470140098,
+     "delta_r": 0.9822657231816024,
+     "recovery": -0.6201698968087871
+    },
+    "ridge": {
+     "rel_err": 0.18753160858504278,
+     "delta_r": 0.9880320197715395,
+     "recovery": 0.3789068879341101
+    },
+    "gbm": {
+     "rel_err": 0.10951584566107478,
+     "delta_r": 0.9950727889771417,
+     "recovery": 0.855698081385814
+    },
+    "tabpfn": {
+     "rel_err": 0.1430417359925227,
+     "delta_r": 0.9927686858293177,
+     "recovery": 0.7838430907092858
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.14298835640502122,
+     "delta_r": 0.992774201154588,
+     "recovery": 0.7839507630713183
+    }
+   },
+   "SGK1+TBX3": {
+    "n_cells": 297,
+    "n_genes": 20,
+    "ep_floor": 0.04426623612821633,
+    "additive": {
+     "rel_err": 0.14352019546973682,
+     "delta_r": 0.9912045300179281,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.144359751967504,
+     "delta_r": 0.9912045300179281,
+     "recovery": 0.3773367156875238
+    },
+    "shrunk": {
+     "rel_err": 0.14041589955287564,
+     "delta_r": 0.9915532840424003,
+     "recovery": 0.4996414800069382
+    },
+    "ridge": {
+     "rel_err": 0.21849398458480002,
+     "delta_r": 0.9792797148167255,
+     "recovery": 0.0655845243448714
+    },
+    "gbm": {
+     "rel_err": 0.15785256898930278,
+     "delta_r": 0.9879802112814368,
+     "recovery": 0.2922625417449731
+    },
+    "tabpfn": {
+     "rel_err": 0.13923243128363905,
+     "delta_r": 0.9915522456787098,
+     "recovery": 0.5730756734565692
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.13916093630887033,
+     "delta_r": 0.9915648514355667,
+     "recovery": 0.5734069025183143
+    }
+   }
+  }
+ },
+ "cv_training_pairs": {
+  "folds_seed": 1,
+  "fitted_per_fold": [
+   {
+    "beta": 0.9160015287990216,
+    "ridge": {
+     "degree": 2,
+     "alpha": 316.2277660168379
+    },
+    "gbm": {
+     "num_leaves": 8,
+     "learning_rate": 0.1,
+     "n_estimators": 100,
+     "min_child_samples": 10
+    }
+   },
+   {
+    "beta": 0.8907593643079531,
+    "ridge": {
+     "degree": 2,
+     "alpha": 316.2277660168379
+    },
+    "gbm": {
+     "num_leaves": 16,
+     "learning_rate": 0.1,
+     "n_estimators": 100,
+     "min_child_samples": 10
+    }
+   },
+   {
+    "beta": 0.900672777064974,
+    "ridge": {
+     "degree": 2,
+     "alpha": 316.2277660168379
+    },
+    "gbm": {
+     "num_leaves": 16,
+     "learning_rate": 0.03,
+     "n_estimators": 300,
+     "min_child_samples": 10
+    }
+   },
+   {
+    "beta": 0.918786239786284,
+    "ridge": {
+     "degree": 2,
+     "alpha": 316.2277660168379
+    },
+    "gbm": {
+     "num_leaves": 16,
+     "learning_rate": 0.03,
+     "n_estimators": 100,
+     "min_child_samples": 10
+    }
+   },
+   {
+    "beta": 0.9070590733275793,
+    "ridge": {
+     "degree": 2,
+     "alpha": 316.2277660168379
+    },
+    "gbm": {
+     "num_leaves": 16,
+     "learning_rate": 0.1,
+     "n_estimators": 100,
+     "min_child_samples": 10
+    }
+   }
+  ],
+  "n_pairs": 91,
+  "n_scored": 91,
+  "excluded": [],
+  "mean_ep_floor": 0.07369699649490657,
+  "arms": {
+   "additive": {
+    "mean_ep": {
+     "mean": 0.3116145682561002,
+     "ci": [
+      0.2824268142698754,
+      0.34267616196729134
+     ]
+    },
+    "mean_delta_r": 0.9675599581437683,
+    "geo_mean_ratio_to_additive": 1.0,
+    "pairs_below_additive": 0,
+    "mean_interaction_recovery": null
+   },
+   "scaled": {
+    "mean_ep": {
+     "mean": 0.2992288883960944,
+     "ci": [
+      0.273987906960723,
+      0.3263629623611592
+     ]
+    },
+    "mean_delta_r": 0.9675599581437683,
+    "geo_mean_ratio_to_additive": 0.9698786161053274,
+    "pairs_below_additive": 46,
+    "mean_interaction_recovery": 0.18590984264460214
+   },
+   "shrunk": {
+    "mean_ep": {
+     "mean": 0.31407695355853976,
+     "ci": [
+      0.2850570386562729,
+      0.34515062526242957
+     ]
+    },
+    "mean_delta_r": 0.9668653380071105,
+    "geo_mean_ratio_to_additive": 1.0090515346839872,
+    "pairs_below_additive": 37,
+    "mean_interaction_recovery": -0.09615162257257985
+   },
+   "ridge": {
+    "mean_ep": {
+     "mean": 0.28872652142572675,
+     "ci": [
+      0.2615232370177006,
+      0.31817752466524796
+     ]
+    },
+    "mean_delta_r": 0.9712338988055591,
+    "geo_mean_ratio_to_additive": 0.9277537339596706,
+    "pairs_below_additive": 56,
+    "mean_interaction_recovery": 0.3657752218010653
+   },
+   "gbm": {
+    "mean_ep": {
+     "mean": 0.24764815285358419,
+     "ci": [
+      0.22286117957885285,
+      0.2748296962012635
+     ]
+    },
+    "mean_delta_r": 0.9786424671957907,
+    "geo_mean_ratio_to_additive": 0.7906803989890552,
+    "pairs_below_additive": 72,
+    "mean_interaction_recovery": 0.6078941697762839
+   },
+   "tabpfn": {
+    "mean_ep": {
+     "mean": 0.23258021246459534,
+     "ci": [
+      0.20963966548646307,
+      0.257386619665872
+     ]
+    },
+    "mean_delta_r": 0.9817711825189362,
+    "geo_mean_ratio_to_additive": 0.73810811219078,
+    "pairs_below_additive": 67,
+    "mean_interaction_recovery": 0.658352812393387
+   },
+   "tabpfn_ensemble": {
+    "mean_ep": {
+     "mean": 0.2324415937308468,
+     "ci": [
+      0.20949726474293717,
+      0.25726539860216097
+     ]
+    },
+    "mean_delta_r": 0.9817985525823432,
+    "geo_mean_ratio_to_additive": 0.7375988378669297,
+    "pairs_below_additive": 67,
+    "mean_interaction_recovery": 0.6586554334881046
+   }
+  },
+  "primary_family": {
+   "critical_value": 2.4274976557231045,
+   "contrasts": {
+    "tabpfn-additive": {
+     "diff": -0.07903435579150486,
+     "se": 0.011934478075792935,
+     "ci_unadjusted": [
+      -0.10235522293868207,
+      -0.05585796247696156
+     ],
+     "ci_simultaneous": [
+      -0.10800527334277099,
+      -0.050063438240238727
+     ]
+    },
+    "tabpfn-scaled": {
+     "diff": -0.06664867593149906,
+     "se": 0.011547080848911425,
+     "ci_unadjusted": [
+      -0.0886725425506343,
+      -0.04407362674744421
+     ],
+     "ci_simultaneous": [
+      -0.0946791876226767,
+      -0.038618164240321426
+     ]
+    },
+    "tabpfn-shrunk": {
+     "diff": -0.08149674109394442,
+     "se": 0.011992547799208594,
+     "ci_unadjusted": [
+      -0.10493471485441638,
+      -0.058461104597780866
+     ],
+     "ci_simultaneous": [
+      -0.11060862276267056,
+      -0.05238485942521828
+     ]
+    },
+    "tabpfn-ridge": {
+     "diff": -0.056146308961131444,
+     "se": 0.010307958386527857,
+     "ci_unadjusted": [
+      -0.07618304967467181,
+      -0.03606075386539085
+     ],
+     "ci_simultaneous": [
+      -0.08116885377971914,
+      -0.031123764142543756
+     ]
+    },
+    "tabpfn-gbm": {
+     "diff": -0.015067940388988836,
+     "se": 0.004853783166191052,
+     "ci_unadjusted": [
+      -0.024562080910169676,
+      -0.005774385338602515
+     ],
+     "ci_simultaneous": [
+      -0.026850487646305883,
+      -0.003285393131671791
+     ]
+    }
+   }
+  },
+  "secondary_family": {
+   "critical_value": 2.576893004278849,
+   "contrasts": {
+    "ridge-additive": {
+     "diff": -0.022888046830373425,
+     "se": 0.007117650538373254,
+     "ci_unadjusted": [
+      -0.03675729624155895,
+      -0.009194353779859827
+     ],
+     "ci_simultaneous": [
+      -0.04122947070960904,
+      -0.004546622951137804
+     ]
+    },
+    "gbm-additive": {
+     "diff": -0.06396641540251603,
+     "se": 0.010771014008141,
+     "ci_unadjusted": [
+      -0.08491918652638432,
+      -0.0424079964118087
+     ],
+     "ci_simultaneous": [
+      -0.09172216604908406,
+      -0.036210664755948
+     ]
+    },
+    "scaled-additive": {
+     "diff": -0.012385679860005806,
+     "se": 0.0060895740596798205,
+     "ci_unadjusted": [
+      -0.024213328403013188,
+      -0.00047088163711225513
+     ],
+     "ci_simultaneous": [
+      -0.028077860653432686,
+      0.0033065009334210735
+     ]
+    },
+    "shrunk-additive": {
+     "diff": 0.002462385302439565,
+     "se": 0.0008015179019393172,
+     "ci_unadjusted": [
+      0.0009678072681264817,
+      0.004115239111188464
+     ],
+     "ci_simultaneous": [
+      0.0003969594281278779,
+      0.004527811176751252
+     ]
+    }
+   }
+  },
+  "per_pair": {
+   "AHR+FEV": {
+    "n_cells": 273,
+    "n_genes": 20,
+    "ep_floor": 0.05096216562740949,
+    "additive": {
+     "rel_err": 0.22523323728648956,
+     "delta_r": 0.9776179940358041,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.25002811137583536,
+     "delta_r": 0.9776179940358043,
+     "recovery": -0.26718667304658467
+    },
+    "shrunk": {
+     "rel_err": 0.22799798232920868,
+     "delta_r": 0.977222640162261,
+     "recovery": -0.5112890587769435
+    },
+    "ridge": {
+     "rel_err": 0.21322225812483056,
+     "delta_r": 0.9845182952995034,
+     "recovery": 0.2149889743996899
+    },
+    "gbm": {
+     "rel_err": 0.20917653914685524,
+     "delta_r": 0.9873196135898545,
+     "recovery": 0.37173343097155837
+    },
+    "tabpfn": {
+     "rel_err": 0.241088366740183,
+     "delta_r": 0.9843491602963637,
+     "recovery": 0.22251461776200396
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.24101163617281426,
+     "delta_r": 0.9843757776440171,
+     "recovery": 0.2226951975556095
+    }
+   },
+   "BAK1+BCL2L11": {
+    "n_cells": 174,
+    "n_genes": 4,
+    "ep_floor": 0.1264574326465177,
+    "additive": {
+     "rel_err": 0.6648379578361574,
+     "delta_r": 0.9710422253092965,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.6653671636598621,
+     "delta_r": 0.9710422253092967,
+     "recovery": -0.5640202870503218
+    },
+    "shrunk": {
+     "rel_err": 0.7088881728820935,
+     "delta_r": 0.9721526698908668,
+     "recovery": -0.21093147012382626
+    },
+    "ridge": {
+     "rel_err": 0.8103774085246515,
+     "delta_r": 0.9713512802253107,
+     "recovery": -0.5327118173845966
+    },
+    "gbm": {
+     "rel_err": 0.4487700922137493,
+     "delta_r": 0.9394723531946231,
+     "recovery": 0.380986042641254
+    },
+    "tabpfn": {
+     "rel_err": 0.4261860822706021,
+     "delta_r": 0.9507707413448347,
+     "recovery": 0.4858665535575479
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.42605550665277875,
+     "delta_r": 0.950778414016573,
+     "recovery": 0.48592287020054264
+    }
+   },
+   "BAK1+KLF1": {
+    "n_cells": 387,
+    "n_genes": 20,
+    "ep_floor": 0.04889157220912161,
+    "additive": {
+     "rel_err": 0.08390763617863822,
+     "delta_r": 0.9937735236596648,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.08756784387741068,
+     "delta_r": 0.9937735236596648,
+     "recovery": 0.3364382998420585
+    },
+    "shrunk": {
+     "rel_err": 0.08118685303144746,
+     "delta_r": 0.994456504262667,
+     "recovery": 0.2857113107666657
+    },
+    "ridge": {
+     "rel_err": 0.1130804378772322,
+     "delta_r": 0.9835309420424252,
+     "recovery": -0.27531393813527855
+    },
+    "gbm": {
+     "rel_err": 0.11163110980721844,
+     "delta_r": 0.9851886378226524,
+     "recovery": 0.5865749036703016
+    },
+    "tabpfn": {
+     "rel_err": 0.11254352122415012,
+     "delta_r": 0.986522294496942,
+     "recovery": 0.39227416897663847
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.1124109628205192,
+     "delta_r": 0.9865622932467718,
+     "recovery": 0.39272158470616464
+    }
+   },
+   "BAK1+TMSB4X": {
+    "n_cells": 323,
+    "n_genes": 20,
+    "ep_floor": 0.06748661023936152,
+    "additive": {
+     "rel_err": 0.1437957293193531,
+     "delta_r": 0.9932987182944388,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.14264386791655617,
+     "delta_r": 0.9932987182944384,
+     "recovery": 0.11113701920389603
+    },
+    "shrunk": {
+     "rel_err": 0.1537469475265085,
+     "delta_r": 0.9920962385463132,
+     "recovery": -0.3259772812933321
+    },
+    "ridge": {
+     "rel_err": 0.223284654456147,
+     "delta_r": 0.979947303021859,
+     "recovery": -0.4049348531883016
+    },
+    "gbm": {
+     "rel_err": 0.2709411003583542,
+     "delta_r": 0.9590237518675834,
+     "recovery": 0.13806429619319463
+    },
+    "tabpfn": {
+     "rel_err": 0.27503563690875904,
+     "delta_r": 0.9691489804605898,
+     "recovery": 0.18851233171253776
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.27495263365002076,
+     "delta_r": 0.9691656737107133,
+     "recovery": 0.18855263648303153
+    }
+   },
+   "BPGM+SAMD1": {
+    "n_cells": 299,
+    "n_genes": 20,
+    "ep_floor": 0.05680098066481337,
+    "additive": {
+     "rel_err": 0.2451904403387683,
+     "delta_r": 0.9913810623813407,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.16397445776058958,
+     "delta_r": 0.9913810623813407,
+     "recovery": 0.8758430967263017
+    },
+    "shrunk": {
+     "rel_err": 0.24069647676206735,
+     "delta_r": 0.9906678044730174,
+     "recovery": 0.2494314535293088
+    },
+    "ridge": {
+     "rel_err": 0.13957038668334285,
+     "delta_r": 0.9899597796677592,
+     "recovery": 0.8077364229471687
+    },
+    "gbm": {
+     "rel_err": 0.20306366057796252,
+     "delta_r": 0.9867003976748998,
+     "recovery": 0.5674975891787625
+    },
+    "tabpfn": {
+     "rel_err": 0.16619559010837742,
+     "delta_r": 0.9868832570607614,
+     "recovery": 0.7558451228277986
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.16609566083744887,
+     "delta_r": 0.9869053867221702,
+     "recovery": 0.7560503394955743
+    }
+   },
+   "BPGM+ZBTB1": {
+    "n_cells": 354,
+    "n_genes": 20,
+    "ep_floor": 0.05225262713586142,
+    "additive": {
+     "rel_err": 0.3446997667974352,
+     "delta_r": 0.9884397109020873,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.24406286270690603,
+     "delta_r": 0.9884397109020874,
+     "recovery": 0.9158514189340763
+    },
+    "shrunk": {
+     "rel_err": 0.33968707565985345,
+     "delta_r": 0.9883189388627553,
+     "recovery": 0.36911528355690754
+    },
+    "ridge": {
+     "rel_err": 0.21144683863696012,
+     "delta_r": 0.9879011385291311,
+     "recovery": 0.8458287200531951
+    },
+    "gbm": {
+     "rel_err": 0.19493095934330695,
+     "delta_r": 0.9871960969504929,
+     "recovery": 0.8262520425554805
+    },
+    "tabpfn": {
+     "rel_err": 0.14835603547243165,
+     "delta_r": 0.9913305804565381,
+     "recovery": 0.8861499728287484
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.14825960299836305,
+     "delta_r": 0.9913473168307442,
+     "recovery": 0.8863942335822211
+    }
+   },
+   "C19orf26+TGFBR2": {
+    "n_cells": 319,
+    "n_genes": 20,
+    "ep_floor": 0.07017927470778118,
+    "additive": {
+     "rel_err": 0.3687826980325336,
+     "delta_r": 0.9676424663222057,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.41425654888834157,
+     "delta_r": 0.9676424663222057,
+     "recovery": -0.7790139157639402
+    },
+    "shrunk": {
+     "rel_err": 0.3807171680404003,
+     "delta_r": 0.9662487400969807,
+     "recovery": -0.5830336938370103
+    },
+    "ridge": {
+     "rel_err": 0.3566849600837862,
+     "delta_r": 0.9601372767581651,
+     "recovery": 0.2387250036104933
+    },
+    "gbm": {
+     "rel_err": 0.21870088975834953,
+     "delta_r": 0.9752886499308682,
+     "recovery": 0.8128137858103641
+    },
+    "tabpfn": {
+     "rel_err": 0.214244033035063,
+     "delta_r": 0.9691832178111227,
+     "recovery": 0.8082714600081365
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.21390280135446116,
+     "delta_r": 0.9692526403226986,
+     "recovery": 0.8086937257994231
+    }
+   },
+   "C3orf72+FOXL2": {
+    "n_cells": 58,
+    "n_genes": 20,
+    "ep_floor": 0.20540644012679748,
+    "additive": {
+     "rel_err": 0.5102522397004288,
+     "delta_r": 0.9132182906023035,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.4495448804538704,
+     "delta_r": 0.913218290602304,
+     "recovery": 0.6855959613788578
+    },
+    "shrunk": {
+     "rel_err": 0.5107493846236991,
+     "delta_r": 0.908688946583775,
+     "recovery": -0.021151123887256602
+    },
+    "ridge": {
+     "rel_err": 0.3998787156633809,
+     "delta_r": 0.935791660728308,
+     "recovery": 0.7183340650222708
+    },
+    "gbm": {
+     "rel_err": 0.3776773739867393,
+     "delta_r": 0.9703155974532147,
+     "recovery": 0.7096553306644527
+    },
+    "tabpfn": {
+     "rel_err": 0.32007191693071485,
+     "delta_r": 0.9685270583281596,
+     "recovery": 0.8401972830550744
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.3198643202606018,
+     "delta_r": 0.9685717127443495,
+     "recovery": 0.8414538769706122
+    }
+   },
+   "CBFA2T3+PRDM1": {
+    "n_cells": 105,
+    "n_genes": 20,
+    "ep_floor": 0.09954574869362737,
+    "additive": {
+     "rel_err": 0.2828434773359991,
+     "delta_r": 0.9633862216875706,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.32019417614115075,
+     "delta_r": 0.963386221687571,
+     "recovery": -0.38730508543460557
+    },
+    "shrunk": {
+     "rel_err": 0.2885843468505366,
+     "delta_r": 0.9620760944582692,
+     "recovery": -0.5564209331560777
+    },
+    "ridge": {
+     "rel_err": 0.2688191280632747,
+     "delta_r": 0.9773290210646086,
+     "recovery": 0.5515568132905825
+    },
+    "gbm": {
+     "rel_err": 0.24613341472229033,
+     "delta_r": 0.9852004787002601,
+     "recovery": 0.6170900444449374
+    },
+    "tabpfn": {
+     "rel_err": 0.21825958964827663,
+     "delta_r": 0.9864458649148705,
+     "recovery": 0.7668670486335346
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.21818934934222156,
+     "delta_r": 0.9864646663337742,
+     "recovery": 0.767336190262737
+    }
+   },
+   "CBL+PTPN12": {
+    "n_cells": 331,
+    "n_genes": 20,
+    "ep_floor": 0.04839659288381328,
+    "additive": {
+     "rel_err": 0.254085449218752,
+     "delta_r": 0.9686091863692643,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.29160680771059333,
+     "delta_r": 0.9686091863692641,
+     "recovery": -0.25403586459136
+    },
+    "shrunk": {
+     "rel_err": 0.259565067727731,
+     "delta_r": 0.9674545530027099,
+     "recovery": -0.6569158402564292
+    },
+    "ridge": {
+     "rel_err": 0.27100496507986593,
+     "delta_r": 0.9800812411969549,
+     "recovery": 0.19336031596902872
+    },
+    "gbm": {
+     "rel_err": 0.1537567676780339,
+     "delta_r": 0.9908679187900745,
+     "recovery": 0.8120392704035436
+    },
+    "tabpfn": {
+     "rel_err": 0.14643808997447985,
+     "delta_r": 0.9921375261271833,
+     "recovery": 0.832915903092454
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.14636174747186878,
+     "delta_r": 0.9921585788454408,
+     "recovery": 0.8333739634487359
+    }
+   },
+   "CBL+PTPN9": {
+    "n_cells": 300,
+    "n_genes": 20,
+    "ep_floor": 0.066377118273358,
+    "additive": {
+     "rel_err": 0.2442551584128642,
+     "delta_r": 0.9683103599173462,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.2800983097114349,
+     "delta_r": 0.9683103599173462,
+     "recovery": -0.3183738262885887
+    },
+    "shrunk": {
+     "rel_err": 0.25337510342643127,
+     "delta_r": 0.9665415923565334,
+     "recovery": -0.6425025018312671
+    },
+    "ridge": {
+     "rel_err": 0.21931333207187548,
+     "delta_r": 0.9802272778662473,
+     "recovery": 0.4909736851177264
+    },
+    "gbm": {
+     "rel_err": 0.15556464081703555,
+     "delta_r": 0.9854089280593773,
+     "recovery": 0.7605688172165092
+    },
+    "tabpfn": {
+     "rel_err": 0.17410932702052492,
+     "delta_r": 0.9820893490103283,
+     "recovery": 0.7563751146717931
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.1740068317674494,
+     "delta_r": 0.9821106421375412,
+     "recovery": 0.7565307186519813
+    }
+   },
+   "CBL+UBASH3A": {
+    "n_cells": 64,
+    "n_genes": 20,
+    "ep_floor": 0.1783882776328183,
+    "additive": {
+     "rel_err": 0.5246562310520704,
+     "delta_r": 0.9300339662712155,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.5574152077464095,
+     "delta_r": 0.9300339662712155,
+     "recovery": -0.719552773326328
+    },
+    "shrunk": {
+     "rel_err": 0.5426044351394085,
+     "delta_r": 0.9247769327572051,
+     "recovery": -0.755945708324312
+    },
+    "ridge": {
+     "rel_err": 0.5077823761018418,
+     "delta_r": 0.9244287904129114,
+     "recovery": 0.3498744568938608
+    },
+    "gbm": {
+     "rel_err": 0.31130343094261587,
+     "delta_r": 0.9752116385025353,
+     "recovery": 0.9395904055731236
+    },
+    "tabpfn": {
+     "rel_err": 0.18383639726618992,
+     "delta_r": 0.992444805203374,
+     "recovery": 0.9774538568574979
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.18360685249296693,
+     "delta_r": 0.9924868241200986,
+     "recovery": 0.977649977743297
+    }
+   },
+   "CBL+UBASH3B": {
+    "n_cells": 403,
+    "n_genes": 20,
+    "ep_floor": 0.04325690404532208,
+    "additive": {
+     "rel_err": 0.3989630624238919,
+     "delta_r": 0.9590367745943732,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.45528181630153797,
+     "delta_r": 0.9590367745943734,
+     "recovery": -0.6898567849810116
+    },
+    "shrunk": {
+     "rel_err": 0.403033562142233,
+     "delta_r": 0.9580404605708964,
+     "recovery": -0.8316981537789304
+    },
+    "ridge": {
+     "rel_err": 0.41505889019592984,
+     "delta_r": 0.971559610181645,
+     "recovery": 0.005256741876941021
+    },
+    "gbm": {
+     "rel_err": 0.2621045204529974,
+     "delta_r": 0.985800994038105,
+     "recovery": 0.841444491219991
+    },
+    "tabpfn": {
+     "rel_err": 0.24495528962355473,
+     "delta_r": 0.9909007899531602,
+     "recovery": 0.9079353240541547
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.24492834960001097,
+     "delta_r": 0.9909133832999076,
+     "recovery": 0.9082043819697015
+    }
+   },
+   "CDKN1A+CDKN1B": {
+    "n_cells": 128,
+    "n_genes": 20,
+    "ep_floor": 0.114163998740987,
+    "additive": {
+     "rel_err": 0.39091774741557245,
+     "delta_r": 0.9886533948508847,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.2789326133099134,
+     "delta_r": 0.9886533948508852,
+     "recovery": 0.9217684799510394
+    },
+    "shrunk": {
+     "rel_err": 0.38190841856218566,
+     "delta_r": 0.9885439198135421,
+     "recovery": 0.7440552066962336
+    },
+    "ridge": {
+     "rel_err": 0.24688253428309553,
+     "delta_r": 0.990359765133084,
+     "recovery": 0.8617042191344892
+    },
+    "gbm": {
+     "rel_err": 0.23908751942870524,
+     "delta_r": 0.9846917313406924,
+     "recovery": 0.7791100638824392
+    },
+    "tabpfn": {
+     "rel_err": 0.22259907934824444,
+     "delta_r": 0.9902087411159551,
+     "recovery": 0.8269100260105614
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.22252282293046263,
+     "delta_r": 0.9902204231709876,
+     "recovery": 0.8270780214114392
+    }
+   },
+   "CDKN1B+CDKN1C": {
+    "n_cells": 105,
+    "n_genes": 20,
+    "ep_floor": 0.13176408180421004,
+    "additive": {
+     "rel_err": 0.40007981393756803,
+     "delta_r": 0.9955541445476004,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.2920402320005409,
+     "delta_r": 0.9955541445476005,
+     "recovery": 0.9719062847383044
+    },
+    "shrunk": {
+     "rel_err": 0.38719502406596434,
+     "delta_r": 0.9953392490554953,
+     "recovery": 0.8803802685020204
+    },
+    "ridge": {
+     "rel_err": 0.24298918565160618,
+     "delta_r": 0.9928668895119289,
+     "recovery": 0.8375897079767531
+    },
+    "gbm": {
+     "rel_err": 0.32819055540732567,
+     "delta_r": 0.9950300621723007,
+     "recovery": 0.6485755376348796
+    },
+    "tabpfn": {
+     "rel_err": 0.19751204392990798,
+     "delta_r": 0.993129642199773,
+     "recovery": 0.9108349469481615
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.19700086569175995,
+     "delta_r": 0.9931868003582532,
+     "recovery": 0.9120393755635038
+    }
+   },
+   "CEBPA+CEBPB": {
+    "n_cells": 64,
+    "n_genes": 20,
+    "ep_floor": 0.11004251634169428,
+    "additive": {
+     "rel_err": 0.5689062691191434,
+     "delta_r": 0.9925232167711695,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.44283123615119946,
+     "delta_r": 0.992523216771169,
+     "recovery": 0.9759787942673341
+    },
+    "shrunk": {
+     "rel_err": 0.5653325439297402,
+     "delta_r": 0.9924512075401506,
+     "recovery": 0.8854432480128178
+    },
+    "ridge": {
+     "rel_err": 0.3790804661668093,
+     "delta_r": 0.9954654198666807,
+     "recovery": 0.9565258523377074
+    },
+    "gbm": {
+     "rel_err": 0.36178310102686023,
+     "delta_r": 0.9924940659027953,
+     "recovery": 0.9266563760306104
+    },
+    "tabpfn": {
+     "rel_err": 0.3608425323469979,
+     "delta_r": 0.9955247067318268,
+     "recovery": 0.9396497668621264
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.3608179564482796,
+     "delta_r": 0.9955289168795847,
+     "recovery": 0.9398037855994643
+    }
+   },
+   "CEBPA+JUN": {
+    "n_cells": 53,
+    "n_genes": 20,
+    "ep_floor": 0.09799524694291739,
+    "additive": {
+     "rel_err": 0.1324822188871439,
+     "delta_r": 0.9958093524316738,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.18531847232080115,
+     "delta_r": 0.9958093524316732,
+     "recovery": -0.2745071457261585
+    },
+    "shrunk": {
+     "rel_err": 0.13245347958369866,
+     "delta_r": 0.9955739075114808,
+     "recovery": -0.22639776343291101
+    },
+    "ridge": {
+     "rel_err": 0.21061151486201823,
+     "delta_r": 0.9960900806083642,
+     "recovery": -0.020377424617994497
+    },
+    "gbm": {
+     "rel_err": 0.21484998208026146,
+     "delta_r": 0.9969308539613805,
+     "recovery": 0.0876763412385801
+    },
+    "tabpfn": {
+     "rel_err": 0.18703482685028996,
+     "delta_r": 0.9975244091798178,
+     "recovery": 0.038260983695327495
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.18700919257502474,
+     "delta_r": 0.9975312779421385,
+     "recovery": 0.038228638197333985
+    }
+   },
+   "CEBPA+KLF1": {
+    "n_cells": 303,
+    "n_genes": 20,
+    "ep_floor": 0.05066739416817492,
+    "additive": {
+     "rel_err": 0.21767938992930663,
+     "delta_r": 0.9828813240833667,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.1651844472627287,
+     "delta_r": 0.9828813240833667,
+     "recovery": 0.5901063780950588
+    },
+    "shrunk": {
+     "rel_err": 0.21633243383097095,
+     "delta_r": 0.9829037179783254,
+     "recovery": 0.13939571671284243
+    },
+    "ridge": {
+     "rel_err": 0.19814445285600008,
+     "delta_r": 0.9865751142531829,
+     "recovery": 0.4103186450146387
+    },
+    "gbm": {
+     "rel_err": 0.14772422642975766,
+     "delta_r": 0.9893589478244782,
+     "recovery": 0.7675197528926432
+    },
+    "tabpfn": {
+     "rel_err": 0.12418156208088804,
+     "delta_r": 0.9941989185767417,
+     "recovery": 0.8924313942293359
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.12410259657843177,
+     "delta_r": 0.9942112867427947,
+     "recovery": 0.8927725158651113
+    }
+   },
+   "CEBPA+ZC3HAV1": {
+    "n_cells": 85,
+    "n_genes": 20,
+    "ep_floor": 0.10539038911143761,
+    "additive": {
+     "rel_err": 0.13391455435248328,
+     "delta_r": 0.9964575859418968,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.07952536819583902,
+     "delta_r": 0.9964575859418966,
+     "recovery": 0.8201437606345627
+    },
+    "shrunk": {
+     "rel_err": 0.13084460211474178,
+     "delta_r": 0.9966409709762453,
+     "recovery": 0.36468475791703486
+    },
+    "ridge": {
+     "rel_err": 0.12398366955751232,
+     "delta_r": 0.9954666985524839,
+     "recovery": 0.36666831861586197
+    },
+    "gbm": {
+     "rel_err": 0.11697477205223161,
+     "delta_r": 0.9953391801647493,
+     "recovery": 0.5245575864139834
+    },
+    "tabpfn": {
+     "rel_err": 0.09447371612014095,
+     "delta_r": 0.9965850278550823,
+     "recovery": 0.699958362156259
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.09439259479896377,
+     "delta_r": 0.9965913160668535,
+     "recovery": 0.7006861751602732
+    }
+   },
+   "CEBPB+FOSB": {
+    "n_cells": 70,
+    "n_genes": 20,
+    "ep_floor": 0.1063400765579591,
+    "additive": {
+     "rel_err": 0.22246011172023372,
+     "delta_r": 0.9758797051410746,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.2563385839563727,
+     "delta_r": 0.9758797051410748,
+     "recovery": -0.2251096440502265
+    },
+    "shrunk": {
+     "rel_err": 0.22556370092568764,
+     "delta_r": 0.975301437544017,
+     "recovery": -0.6195204190574674
+    },
+    "ridge": {
+     "rel_err": 0.2476967593365328,
+     "delta_r": 0.983461074860985,
+     "recovery": 0.051255735878325555
+    },
+    "gbm": {
+     "rel_err": 0.29240489261850083,
+     "delta_r": 0.9824828016060255,
+     "recovery": 0.148673698867577
+    },
+    "tabpfn": {
+     "rel_err": 0.2584337068902148,
+     "delta_r": 0.9903807027472817,
+     "recovery": 0.18804004469269864
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.25836561946100683,
+     "delta_r": 0.9904105408393266,
+     "recovery": 0.1881533438396558
+    }
+   },
+   "CEBPB+JUN": {
+    "n_cells": 59,
+    "n_genes": 20,
+    "ep_floor": 0.13050023146723347,
+    "additive": {
+     "rel_err": 0.19264206647853854,
+     "delta_r": 0.9847520470199397,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.24305917516916098,
+     "delta_r": 0.9847520470199397,
+     "recovery": -0.4565418190497159
+    },
+    "shrunk": {
+     "rel_err": 0.19946873603789522,
+     "delta_r": 0.9841043064674492,
+     "recovery": -0.5466797027018887
+    },
+    "ridge": {
+     "rel_err": 0.27243753815129357,
+     "delta_r": 0.9914439113751295,
+     "recovery": -0.07107059216579412
+    },
+    "gbm": {
+     "rel_err": 0.21284665325340166,
+     "delta_r": 0.9915499476463212,
+     "recovery": 0.1713127726010076
+    },
+    "tabpfn": {
+     "rel_err": 0.1499726396126341,
+     "delta_r": 0.9959636998100057,
+     "recovery": 0.6556120491581895
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.1498719455755781,
+     "delta_r": 0.9959786213484411,
+     "recovery": 0.6561621251041174
+    }
+   },
+   "CEBPB+LYL1": {
+    "n_cells": 186,
+    "n_genes": 20,
+    "ep_floor": 0.07855406338275199,
+    "additive": {
+     "rel_err": 0.29373428547229147,
+     "delta_r": 0.9435123262493539,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.2885575414837549,
+     "delta_r": 0.9435123262493539,
+     "recovery": 0.27288749473051926
+    },
+    "shrunk": {
+     "rel_err": 0.2846293903546139,
+     "delta_r": 0.946862435038913,
+     "recovery": 0.4958050942425522
+    },
+    "ridge": {
+     "rel_err": 0.24237061960498552,
+     "delta_r": 0.9617145463532453,
+     "recovery": 0.6300511662629517
+    },
+    "gbm": {
+     "rel_err": 0.22204142142331668,
+     "delta_r": 0.9677600194171072,
+     "recovery": 0.7394295543839083
+    },
+    "tabpfn": {
+     "rel_err": 0.1453672446602008,
+     "delta_r": 0.9855395227871115,
+     "recovery": 0.9085331954156631
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.14529897692784094,
+     "delta_r": 0.9855506627230706,
+     "recovery": 0.9087594880915638
+    }
+   },
+   "CEBPB+MAPK1": {
+    "n_cells": 411,
+    "n_genes": 20,
+    "ep_floor": 0.03982671076370886,
+    "additive": {
+     "rel_err": 0.44405301491736454,
+     "delta_r": 0.9954381957286381,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.3259275964923562,
+     "delta_r": 0.9954381957286381,
+     "recovery": 0.9796499435302045
+    },
+    "shrunk": {
+     "rel_err": 0.44079880291419327,
+     "delta_r": 0.9953465457904428,
+     "recovery": 0.7402119776715461
+    },
+    "ridge": {
+     "rel_err": 0.28273028458611155,
+     "delta_r": 0.9968863313108296,
+     "recovery": 0.9430630379529946
+    },
+    "gbm": {
+     "rel_err": 0.2233425404083045,
+     "delta_r": 0.9887549327551105,
+     "recovery": 0.8886828934645882
+    },
+    "tabpfn": {
+     "rel_err": 0.23275481992102476,
+     "delta_r": 0.9840359043861451,
+     "recovery": 0.8770010973206994
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.23270254928841064,
+     "delta_r": 0.9840522257093833,
+     "recovery": 0.8770954451809292
+    }
+   },
+   "CEBPB+OSR2": {
+    "n_cells": 198,
+    "n_genes": 20,
+    "ep_floor": 0.06647839965716867,
+    "additive": {
+     "rel_err": 0.22996945039155775,
+     "delta_r": 0.9777350647356612,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.14857979299542756,
+     "delta_r": 0.9777350647356614,
+     "recovery": 0.7232890233696668
+    },
+    "shrunk": {
+     "rel_err": 0.22720819444115525,
+     "delta_r": 0.9778743936724418,
+     "recovery": 0.3887848029526758
+    },
+    "ridge": {
+     "rel_err": 0.13501218371822782,
+     "delta_r": 0.9799688355992191,
+     "recovery": 0.7508726937464704
+    },
+    "gbm": {
+     "rel_err": 0.09729368612543017,
+     "delta_r": 0.9898533717582745,
+     "recovery": 0.8838640382512329
+    },
+    "tabpfn": {
+     "rel_err": 0.10079467357229689,
+     "delta_r": 0.9877821098439368,
+     "recovery": 0.8586113758191916
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.10058542253145232,
+     "delta_r": 0.9878290963167777,
+     "recovery": 0.8591459832251714
+    }
+   },
+   "CEBPB+PTPN12": {
+    "n_cells": 324,
+    "n_genes": 20,
+    "ep_floor": 0.06999767172968595,
+    "additive": {
+     "rel_err": 0.3031286949322773,
+     "delta_r": 0.981553900682748,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.2459936948676156,
+     "delta_r": 0.9815539006827477,
+     "recovery": 0.8295313851243081
+    },
+    "shrunk": {
+     "rel_err": 0.29909137995746615,
+     "delta_r": 0.9818106292863853,
+     "recovery": 0.13730910911523164
+    },
+    "ridge": {
+     "rel_err": 0.27710360305589576,
+     "delta_r": 0.9880226461148587,
+     "recovery": 0.3634223678795229
+    },
+    "gbm": {
+     "rel_err": 0.27346612951845084,
+     "delta_r": 0.9894454370285297,
+     "recovery": 0.39742452884298063
+    },
+    "tabpfn": {
+     "rel_err": 0.2872275312549316,
+     "delta_r": 0.9901705064743576,
+     "recovery": 0.3252757151346635
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.2871760969777325,
+     "delta_r": 0.9901805413078734,
+     "recovery": 0.32555819340681535
+    }
+   },
+   "CEBPE+ETS2": {
+    "n_cells": 347,
+    "n_genes": 20,
+    "ep_floor": 0.04140043758550032,
+    "additive": {
+     "rel_err": 0.2919324739666123,
+     "delta_r": 0.9952552939188796,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.18325844119476298,
+     "delta_r": 0.9952552939188793,
+     "recovery": 0.9444180014124507
+    },
+    "shrunk": {
+     "rel_err": 0.29027049729343923,
+     "delta_r": 0.995257289377449,
+     "recovery": 0.8270813155592526
+    },
+    "ridge": {
+     "rel_err": 0.2157408056475318,
+     "delta_r": 0.9929222814725066,
+     "recovery": 0.751960143151998
+    },
+    "gbm": {
+     "rel_err": 0.14881517342203907,
+     "delta_r": 0.996500565654927,
+     "recovery": 0.9661069411312941
+    },
+    "tabpfn": {
+     "rel_err": 0.18356825723395387,
+     "delta_r": 0.9936804794777884,
+     "recovery": 0.951624568091345
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.183216953047466,
+     "delta_r": 0.993741742304832,
+     "recovery": 0.9518262909505685
+    }
+   },
+   "CEBPE+PTPN12": {
+    "n_cells": 404,
+    "n_genes": 20,
+    "ep_floor": 0.06700656533454763,
+    "additive": {
+     "rel_err": 0.7584912014470164,
+     "delta_r": 0.9492123814398514,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.613097150428658,
+     "delta_r": 0.9492123814398522,
+     "recovery": 0.9206822118566138
+    },
+    "shrunk": {
+     "rel_err": 0.7571077306700915,
+     "delta_r": 0.9473173620639443,
+     "recovery": 0.13071735085939068
+    },
+    "ridge": {
+     "rel_err": 0.6926316605658382,
+     "delta_r": 0.9403282436321595,
+     "recovery": 0.4838637473188384
+    },
+    "gbm": {
+     "rel_err": 0.5048209945722232,
+     "delta_r": 0.969152729317616,
+     "recovery": 0.9091255543367743
+    },
+    "tabpfn": {
+     "rel_err": 0.3724754779972179,
+     "delta_r": 0.978277250170749,
+     "recovery": 0.9404086866788989
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.3723411084389046,
+     "delta_r": 0.9783096687625182,
+     "recovery": 0.9406035969879771
+    }
+   },
+   "CEBPE+SET": {
+    "n_cells": 635,
+    "n_genes": 20,
+    "ep_floor": 0.03976538655368438,
+    "additive": {
+     "rel_err": 0.5659759074135008,
+     "delta_r": 0.9395073840146401,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.46747549673533934,
+     "delta_r": 0.9395073840146398,
+     "recovery": 0.8310161210766075
+    },
+    "shrunk": {
+     "rel_err": 0.5637339762066393,
+     "delta_r": 0.9401615586616381,
+     "recovery": 0.3242970305961301
+    },
+    "ridge": {
+     "rel_err": 0.5457080180528254,
+     "delta_r": 0.939065141580195,
+     "recovery": 0.3190934613846062
+    },
+    "gbm": {
+     "rel_err": 0.39548899686837286,
+     "delta_r": 0.9522356975551276,
+     "recovery": 0.7884485143065924
+    },
+    "tabpfn": {
+     "rel_err": 0.4359962648473224,
+     "delta_r": 0.9412470663111664,
+     "recovery": 0.6794458764406555
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.43586403410455354,
+     "delta_r": 0.9412843679227382,
+     "recovery": 0.6799337426560085
+    }
+   },
+   "CEBPE+SPI1": {
+    "n_cells": 177,
+    "n_genes": 20,
+    "ep_floor": 0.053025403823156965,
+    "additive": {
+     "rel_err": 0.17704716651905145,
+     "delta_r": 0.9916678615143756,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.12314138970365118,
+     "delta_r": 0.9916678615143752,
+     "recovery": 0.7052909699815295
+    },
+    "shrunk": {
+     "rel_err": 0.1762517386814675,
+     "delta_r": 0.9915666665737897,
+     "recovery": 0.329432516379753
+    },
+    "ridge": {
+     "rel_err": 0.11968401172991827,
+     "delta_r": 0.9944022514730808,
+     "recovery": 0.8132193653631088
+    },
+    "gbm": {
+     "rel_err": 0.19095211770945833,
+     "delta_r": 0.9930736037376581,
+     "recovery": 0.7749766498514371
+    },
+    "tabpfn": {
+     "rel_err": 0.26153537880106853,
+     "delta_r": 0.9910173462846861,
+     "recovery": 0.7326085023891693
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.2614965011014017,
+     "delta_r": 0.9910324889254837,
+     "recovery": 0.7326610638936022
+    }
+   },
+   "CEBPE+ZC3HAV1": {
+    "n_cells": 406,
+    "n_genes": 20,
+    "ep_floor": 0.0702895399208173,
+    "additive": {
+     "rel_err": 0.856204237630938,
+     "delta_r": 0.9661849911115123,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.7198359729417024,
+     "delta_r": 0.9661849911115122,
+     "recovery": 0.9545425159797218
+    },
+    "shrunk": {
+     "rel_err": 0.8493407733747541,
+     "delta_r": 0.9654253997941702,
+     "recovery": 0.32401373477608947
+    },
+    "ridge": {
+     "rel_err": 0.7196297271625473,
+     "delta_r": 0.9671490708515409,
+     "recovery": 0.7790775888826866
+    },
+    "gbm": {
+     "rel_err": 0.646288559755532,
+     "delta_r": 0.9805477059382113,
+     "recovery": 0.8424395044602965
+    },
+    "tabpfn": {
+     "rel_err": 0.4943113883205245,
+     "delta_r": 0.983556683561646,
+     "recovery": 0.9009403833621791
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.4941778778085208,
+     "delta_r": 0.983586889207442,
+     "recovery": 0.9013244616780189
+    }
+   },
+   "CNN1+ETS2": {
+    "n_cells": 888,
+    "n_genes": 20,
+    "ep_floor": 0.04857171825036982,
+    "additive": {
+     "rel_err": 0.20953474565242175,
+     "delta_r": 0.9816544464258906,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.1822405279909063,
+     "delta_r": 0.9816544464258903,
+     "recovery": 0.47016254429448984
+    },
+    "shrunk": {
+     "rel_err": 0.20943028480184933,
+     "delta_r": 0.9815041240210732,
+     "recovery": 0.06132869065869717
+    },
+    "ridge": {
+     "rel_err": 0.2913606454111141,
+     "delta_r": 0.964254802818389,
+     "recovery": 0.01664069358063253
+    },
+    "gbm": {
+     "rel_err": 0.38465332754348625,
+     "delta_r": 0.9607851311926254,
+     "recovery": -0.14080444925631058
+    },
+    "tabpfn": {
+     "rel_err": 0.37936991714737345,
+     "delta_r": 0.9622950601843848,
+     "recovery": -0.029187546415172624
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.3792644051913375,
+     "delta_r": 0.9623215297246526,
+     "recovery": -0.029199602828934492
+    }
+   },
+   "CNN1+MAPK1": {
+    "n_cells": 395,
+    "n_genes": 20,
+    "ep_floor": 0.07028679856892232,
+    "additive": {
+     "rel_err": 0.3055122308165088,
+     "delta_r": 0.9686253166927288,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.2444055454546377,
+     "delta_r": 0.9686253166927288,
+     "recovery": 0.5588216536832361
+    },
+    "shrunk": {
+     "rel_err": 0.30496743304943513,
+     "delta_r": 0.9689697381828367,
+     "recovery": 0.24290511005992588
+    },
+    "ridge": {
+     "rel_err": 0.2817553856588978,
+     "delta_r": 0.9660650733775602,
+     "recovery": 0.42219773088191126
+    },
+    "gbm": {
+     "rel_err": 0.23962376841584132,
+     "delta_r": 0.977639701022677,
+     "recovery": 0.646334521657556
+    },
+    "tabpfn": {
+     "rel_err": 0.23288965518465768,
+     "delta_r": 0.9730736021633836,
+     "recovery": 0.6326220364864777
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.23278442727978327,
+     "delta_r": 0.9731036377569191,
+     "recovery": 0.6327788538642688
+    }
+   },
+   "CNN1+UBASH3A": {
+    "n_cells": 175,
+    "n_genes": 20,
+    "ep_floor": 0.07105629210249233,
+    "additive": {
+     "rel_err": 0.44372614542052874,
+     "delta_r": 0.9176537744018791,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.4804579555406375,
+     "delta_r": 0.9176537744018792,
+     "recovery": -0.5720715335925574
+    },
+    "shrunk": {
+     "rel_err": 0.45117233562244585,
+     "delta_r": 0.9134116631091725,
+     "recovery": -0.6215601081544943
+    },
+    "ridge": {
+     "rel_err": 0.4347747843500442,
+     "delta_r": 0.9360005810798638,
+     "recovery": 0.2725640431995438
+    },
+    "gbm": {
+     "rel_err": 0.3556893493196506,
+     "delta_r": 0.9587993756490224,
+     "recovery": 0.7712339005445424
+    },
+    "tabpfn": {
+     "rel_err": 0.34753269315449337,
+     "delta_r": 0.9731147374831316,
+     "recovery": 0.8064877951407574
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.34748899704300956,
+     "delta_r": 0.973148734068548,
+     "recovery": 0.8070277779103545
+    }
+   },
+   "CNN1+UBASH3B": {
+    "n_cells": 398,
+    "n_genes": 20,
+    "ep_floor": 0.0332619433089779,
+    "additive": {
+     "rel_err": 0.3017962469607212,
+     "delta_r": 0.9629122154793771,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.3645762057827558,
+     "delta_r": 0.9629122154793771,
+     "recovery": -0.5039222642222921
+    },
+    "shrunk": {
+     "rel_err": 0.304312732842663,
+     "delta_r": 0.9622569281252206,
+     "recovery": -0.7378585384603531
+    },
+    "ridge": {
+     "rel_err": 0.3398366786584623,
+     "delta_r": 0.9723795673669078,
+     "recovery": -0.0939922244855425
+    },
+    "gbm": {
+     "rel_err": 0.2635991824601346,
+     "delta_r": 0.985097360650363,
+     "recovery": 0.5221204267676494
+    },
+    "tabpfn": {
+     "rel_err": 0.2525636562400868,
+     "delta_r": 0.9914690763906631,
+     "recovery": 0.5474056780061787
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.2525410634738039,
+     "delta_r": 0.9914864617731567,
+     "recovery": 0.5476620457101873
+    }
+   },
+   "COL2A1+KLF1": {
+    "n_cells": 296,
+    "n_genes": 20,
+    "ep_floor": 0.04922922682690416,
+    "additive": {
+     "rel_err": 0.2599475995214553,
+     "delta_r": 0.946400090918522,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.25652830875229965,
+     "delta_r": 0.946400090918522,
+     "recovery": 0.3004970224146668
+    },
+    "shrunk": {
+     "rel_err": 0.26102495080575455,
+     "delta_r": 0.9457681548189563,
+     "recovery": -0.1770151987957949
+    },
+    "ridge": {
+     "rel_err": 0.255141520780367,
+     "delta_r": 0.9453416596048201,
+     "recovery": 0.2782579407327707
+    },
+    "gbm": {
+     "rel_err": 0.18363178018369034,
+     "delta_r": 0.9718123892970336,
+     "recovery": 0.8252049992622348
+    },
+    "tabpfn": {
+     "rel_err": 0.20180912964731224,
+     "delta_r": 0.9652951941325179,
+     "recovery": 0.6317750493512914
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.20168483102781498,
+     "delta_r": 0.9653382517225594,
+     "recovery": 0.6322006345983757
+    }
+   },
+   "DLX2+SNAI1": {
+    "n_cells": 128,
+    "n_genes": 20,
+    "ep_floor": 0.0999625467517631,
+    "additive": {
+     "rel_err": 0.3391072498467695,
+     "delta_r": 0.9435599964313626,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.32389895823985226,
+     "delta_r": 0.9435599964313622,
+     "recovery": 0.36235034554442086
+    },
+    "shrunk": {
+     "rel_err": 0.34185975872206487,
+     "delta_r": 0.9421996641134199,
+     "recovery": -0.25176105966535023
+    },
+    "ridge": {
+     "rel_err": 0.2590537147554493,
+     "delta_r": 0.9782786979228002,
+     "recovery": 0.7609777864137381
+    },
+    "gbm": {
+     "rel_err": 0.1771118161841773,
+     "delta_r": 0.9865491136596205,
+     "recovery": 0.8695260900721887
+    },
+    "tabpfn": {
+     "rel_err": 0.17702681909326878,
+     "delta_r": 0.9851660571501695,
+     "recovery": 0.8610363807291833
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.1768642029380161,
+     "delta_r": 0.9852014420513309,
+     "recovery": 0.8612316441188668
+    }
+   },
+   "DUSP9+ETS2": {
+    "n_cells": 780,
+    "n_genes": 20,
+    "ep_floor": 0.037431158514091956,
+    "additive": {
+     "rel_err": 0.35290594437811756,
+     "delta_r": 0.9428522034281058,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.34852680810946907,
+     "delta_r": 0.9428522034281062,
+     "recovery": 0.31678454588674737
+    },
+    "shrunk": {
+     "rel_err": 0.352725702923493,
+     "delta_r": 0.942595354149486,
+     "recovery": -0.23339792776627719
+    },
+    "ridge": {
+     "rel_err": 0.3666787767860299,
+     "delta_r": 0.9430388536129104,
+     "recovery": 0.23927956459580366
+    },
+    "gbm": {
+     "rel_err": 0.3389647110863681,
+     "delta_r": 0.9552862628529843,
+     "recovery": 0.4540047351265451
+    },
+    "tabpfn": {
+     "rel_err": 0.3688997268881629,
+     "delta_r": 0.9450263331580363,
+     "recovery": 0.29757967559217263
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.3688600742010055,
+     "delta_r": 0.9450421995110568,
+     "recovery": 0.2978914882538122
+    }
+   },
+   "DUSP9+MAPK1": {
+    "n_cells": 290,
+    "n_genes": 20,
+    "ep_floor": 0.076608543524948,
+    "additive": {
+     "rel_err": 0.5904738561816811,
+     "delta_r": 0.9346344458107685,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.4863123447235645,
+     "delta_r": 0.9346344458107685,
+     "recovery": 0.8163902120895911
+    },
+    "shrunk": {
+     "rel_err": 0.5873136764158368,
+     "delta_r": 0.9370191567141877,
+     "recovery": 0.20412086194254928
+    },
+    "ridge": {
+     "rel_err": 0.5730883586109871,
+     "delta_r": 0.9207982600338376,
+     "recovery": 0.2756688938112456
+    },
+    "gbm": {
+     "rel_err": 0.434983957237878,
+     "delta_r": 0.9518555310362163,
+     "recovery": 0.6987370382311193
+    },
+    "tabpfn": {
+     "rel_err": 0.48592219822815924,
+     "delta_r": 0.9477701898273189,
+     "recovery": 0.5764924099702777
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.48580415967308327,
+     "delta_r": 0.947798325271344,
+     "recovery": 0.5768510315332204
+    }
+   },
+   "DUSP9+PRTG": {
+    "n_cells": 295,
+    "n_genes": 20,
+    "ep_floor": 0.044455705654024166,
+    "additive": {
+     "rel_err": 0.3387009353202394,
+     "delta_r": 0.9875867462977032,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.2163002197349894,
+     "delta_r": 0.9875867462977034,
+     "recovery": 0.9021548437314919
+    },
+    "shrunk": {
+     "rel_err": 0.337294390425448,
+     "delta_r": 0.98738000869092,
+     "recovery": 0.3135556962923878
+    },
+    "ridge": {
+     "rel_err": 0.12392546216763178,
+     "delta_r": 0.9940305393687603,
+     "recovery": 0.9391858500404919
+    },
+    "gbm": {
+     "rel_err": 0.10194312791825792,
+     "delta_r": 0.9934051658273972,
+     "recovery": 0.9479204471288036
+    },
+    "tabpfn": {
+     "rel_err": 0.11252931958389871,
+     "delta_r": 0.9922313367805957,
+     "recovery": 0.9438895233289002
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.11217931991803551,
+     "delta_r": 0.9922657163042153,
+     "recovery": 0.9441219756338682
+    }
+   },
+   "DUSP9+SNAI1": {
+    "n_cells": 182,
+    "n_genes": 20,
+    "ep_floor": 0.06550364303074117,
+    "additive": {
+     "rel_err": 0.3299622862585753,
+     "delta_r": 0.9622854625235987,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.3725458401938902,
+     "delta_r": 0.9622854625235987,
+     "recovery": -0.5043781115514243
+    },
+    "shrunk": {
+     "rel_err": 0.33623566265298466,
+     "delta_r": 0.9606042556699111,
+     "recovery": -0.632722266137357
+    },
+    "ridge": {
+     "rel_err": 0.3497710271752819,
+     "delta_r": 0.9753383266181257,
+     "recovery": 0.024969717078256445
+    },
+    "gbm": {
+     "rel_err": 0.30062004605576526,
+     "delta_r": 0.9897046736411534,
+     "recovery": 0.4341207653987757
+    },
+    "tabpfn": {
+     "rel_err": 0.28069180174623093,
+     "delta_r": 0.9911993050789206,
+     "recovery": 0.5337463652421616
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.2806446218781376,
+     "delta_r": 0.9912210250535944,
+     "recovery": 0.53408948480799
+    }
+   },
+   "ELMSAN1+LHX1": {
+    "n_cells": 640,
+    "n_genes": 20,
+    "ep_floor": 0.04072896715018593,
+    "additive": {
+     "rel_err": 0.19280931072504026,
+     "delta_r": 0.9719749962017018,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.2124204424066951,
+     "delta_r": 0.9719749962017021,
+     "recovery": 0.11287891796641315
+    },
+    "shrunk": {
+     "rel_err": 0.20174636140026367,
+     "delta_r": 0.9694383083426604,
+     "recovery": -0.3334829247035912
+    },
+    "ridge": {
+     "rel_err": 0.2124055991297869,
+     "delta_r": 0.9683838036473823,
+     "recovery": 0.13004065094265507
+    },
+    "gbm": {
+     "rel_err": 0.20960516773861937,
+     "delta_r": 0.9677431315483475,
+     "recovery": 0.5005895979245653
+    },
+    "tabpfn": {
+     "rel_err": 0.16756454985538996,
+     "delta_r": 0.9802687561728485,
+     "recovery": 0.6400773115641489
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.16727638365116906,
+     "delta_r": 0.9803553736700249,
+     "recovery": 0.640920624718556
+    }
+   },
+   "ELMSAN1+MAP2K3": {
+    "n_cells": 577,
+    "n_genes": 20,
+    "ep_floor": 0.052568124651634546,
+    "additive": {
+     "rel_err": 0.28240890061771506,
+     "delta_r": 0.9628496353829933,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.3226571340035401,
+     "delta_r": 0.9628496353829932,
+     "recovery": -0.30747846431438486
+    },
+    "shrunk": {
+     "rel_err": 0.2940609856168734,
+     "delta_r": 0.9599606288155773,
+     "recovery": -0.5990048128692198
+    },
+    "ridge": {
+     "rel_err": 0.311220544042966,
+     "delta_r": 0.9618040184133458,
+     "recovery": 0.042805324935913575
+    },
+    "gbm": {
+     "rel_err": 0.1481650186828802,
+     "delta_r": 0.9904234534417365,
+     "recovery": 0.8890697177841255
+    },
+    "tabpfn": {
+     "rel_err": 0.16228231481098856,
+     "delta_r": 0.9877472313790291,
+     "recovery": 0.8267191150055186
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.16209542376501693,
+     "delta_r": 0.9877844260897142,
+     "recovery": 0.8271207953285621
+    }
+   },
+   "ELMSAN1+MAP2K6": {
+    "n_cells": 443,
+    "n_genes": 20,
+    "ep_floor": 0.08233800381435635,
+    "additive": {
+     "rel_err": 0.1812305873643794,
+     "delta_r": 0.982625693057421,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.20360301313764936,
+     "delta_r": 0.9826256930574209,
+     "recovery": -0.008736951039038335
+    },
+    "shrunk": {
+     "rel_err": 0.19056303357440754,
+     "delta_r": 0.9811443996776726,
+     "recovery": -0.22873416907215682
+    },
+    "ridge": {
+     "rel_err": 0.24240614145934886,
+     "delta_r": 0.9683297733339203,
+     "recovery": -0.031819315154087466
+    },
+    "gbm": {
+     "rel_err": 0.41664393006900097,
+     "delta_r": 0.9751545387324562,
+     "recovery": 0.16176634635129641
+    },
+    "tabpfn": {
+     "rel_err": 0.3736323583032119,
+     "delta_r": 0.991203993058512,
+     "recovery": 0.44567260947378234
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.37301362456546955,
+     "delta_r": 0.9913620231286122,
+     "recovery": 0.44594486943675693
+    }
+   },
+   "ELMSAN1+ZBTB10": {
+    "n_cells": 176,
+    "n_genes": 20,
+    "ep_floor": 0.09229361984098687,
+    "additive": {
+     "rel_err": 0.2429775121534478,
+     "delta_r": 0.9824653302010449,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.297339013020621,
+     "delta_r": 0.9824653302010443,
+     "recovery": -0.636626084358843
+    },
+    "shrunk": {
+     "rel_err": 0.2508119646589601,
+     "delta_r": 0.9820097279193659,
+     "recovery": -0.48722262797480326
+    },
+    "ridge": {
+     "rel_err": 0.1728590847764957,
+     "delta_r": 0.9871715960219161,
+     "recovery": 0.731543744620629
+    },
+    "gbm": {
+     "rel_err": 0.2059850877854365,
+     "delta_r": 0.985041782594445,
+     "recovery": 0.5487145779508976
+    },
+    "tabpfn": {
+     "rel_err": 0.13939567287708562,
+     "delta_r": 0.9917460322826231,
+     "recovery": 0.8368833582912963
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.13875907718851638,
+     "delta_r": 0.9917766145603558,
+     "recovery": 0.8372133218458999
+    }
+   },
+   "ETS2+IGDCC3": {
+    "n_cells": 437,
+    "n_genes": 20,
+    "ep_floor": 0.06419960415506855,
+    "additive": {
+     "rel_err": 0.3343905796079046,
+     "delta_r": 0.9498231319509582,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.31704810654235094,
+     "delta_r": 0.9498231319509578,
+     "recovery": 0.4768854557429831
+    },
+    "shrunk": {
+     "rel_err": 0.33500586217617556,
+     "delta_r": 0.9490982994627859,
+     "recovery": 0.039620943240309604
+    },
+    "ridge": {
+     "rel_err": 0.2278174904161004,
+     "delta_r": 0.9736750929914132,
+     "recovery": 0.7184356008785955
+    },
+    "gbm": {
+     "rel_err": 0.2148037706025104,
+     "delta_r": 0.9768641311418799,
+     "recovery": 0.7606526676836376
+    },
+    "tabpfn": {
+     "rel_err": 0.17775511383177675,
+     "delta_r": 0.9865356454704131,
+     "recovery": 0.8464217357476915
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.17766343971875784,
+     "delta_r": 0.9865502321602194,
+     "recovery": 0.846539224364386
+    }
+   },
+   "ETS2+IKZF3": {
+    "n_cells": 442,
+    "n_genes": 20,
+    "ep_floor": 0.04039050048554339,
+    "additive": {
+     "rel_err": 0.2787183779473548,
+     "delta_r": 0.9576497152026594,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.30918617856914543,
+     "delta_r": 0.9576497152026592,
+     "recovery": -0.02985685623642981
+    },
+    "shrunk": {
+     "rel_err": 0.2780654461684113,
+     "delta_r": 0.9578159158551931,
+     "recovery": 0.17658649800158316
+    },
+    "ridge": {
+     "rel_err": 0.2211252534607575,
+     "delta_r": 0.9780263030532128,
+     "recovery": 0.855842226526157
+    },
+    "gbm": {
+     "rel_err": 0.17666929102246626,
+     "delta_r": 0.9908886291887281,
+     "recovery": 0.8397826269969295
+    },
+    "tabpfn": {
+     "rel_err": 0.20038922658414746,
+     "delta_r": 0.9889560457945051,
+     "recovery": 0.7130483998570586
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.2003679739752886,
+     "delta_r": 0.9889619266600129,
+     "recovery": 0.7131408434792764
+    }
+   },
+   "ETS2+MAP7D1": {
+    "n_cells": 323,
+    "n_genes": 20,
+    "ep_floor": 0.06226639845872302,
+    "additive": {
+     "rel_err": 0.1777966837428729,
+     "delta_r": 0.9822869524073418,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.2057712296500183,
+     "delta_r": 0.9822869524073418,
+     "recovery": 0.09018571826992028
+    },
+    "shrunk": {
+     "rel_err": 0.1830862287944721,
+     "delta_r": 0.9813930382224891,
+     "recovery": -0.21753204038205426
+    },
+    "ridge": {
+     "rel_err": 0.16453786695886266,
+     "delta_r": 0.986190462968496,
+     "recovery": 0.45727269108126845
+    },
+    "gbm": {
+     "rel_err": 0.18901809053246277,
+     "delta_r": 0.9897032974988358,
+     "recovery": 0.5130066149710403
+    },
+    "tabpfn": {
+     "rel_err": 0.21643179416489075,
+     "delta_r": 0.9847590543613768,
+     "recovery": 0.39566654903243986
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.2163236882884758,
+     "delta_r": 0.9847953411766817,
+     "recovery": 0.39587950108659387
+    }
+   },
+   "ETS2+MAPK1": {
+    "n_cells": 457,
+    "n_genes": 20,
+    "ep_floor": 0.031156152324809106,
+    "additive": {
+     "rel_err": 0.28862714660363176,
+     "delta_r": 0.9775949523580288,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.21766318989845626,
+     "delta_r": 0.9775949523580288,
+     "recovery": 0.7803843317013052
+    },
+    "shrunk": {
+     "rel_err": 0.28776855932743367,
+     "delta_r": 0.9775240706219678,
+     "recovery": 0.5284252021205137
+    },
+    "ridge": {
+     "rel_err": 0.2274442495871503,
+     "delta_r": 0.9776932192928789,
+     "recovery": 0.6954211864893021
+    },
+    "gbm": {
+     "rel_err": 0.2063521510145495,
+     "delta_r": 0.9785305786023937,
+     "recovery": 0.7979654284814132
+    },
+    "tabpfn": {
+     "rel_err": 0.20217180165932058,
+     "delta_r": 0.9833113398117254,
+     "recovery": 0.8264311645231427
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.20201484405536907,
+     "delta_r": 0.9833599019749787,
+     "recovery": 0.8265439428306018
+    }
+   },
+   "ETS2+PRTG": {
+    "n_cells": 440,
+    "n_genes": 20,
+    "ep_floor": 0.06107099128193878,
+    "additive": {
+     "rel_err": 0.2863994405661953,
+     "delta_r": 0.95863829923384,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.28852779259951356,
+     "delta_r": 0.95863829923384,
+     "recovery": 0.35208698386322096
+    },
+    "shrunk": {
+     "rel_err": 0.2889279586319642,
+     "delta_r": 0.9571227834136915,
+     "recovery": -0.3038116156740179
+    },
+    "ridge": {
+     "rel_err": 0.2091775184640061,
+     "delta_r": 0.9787898953505785,
+     "recovery": 0.6979612360845678
+    },
+    "gbm": {
+     "rel_err": 0.15248942450155956,
+     "delta_r": 0.9881938039983406,
+     "recovery": 0.8409735868225928
+    },
+    "tabpfn": {
+     "rel_err": 0.07340147439593157,
+     "delta_r": 0.9968435468550282,
+     "recovery": 0.9623870391202375
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.07320351148876134,
+     "delta_r": 0.9968635364299256,
+     "recovery": 0.9626220438898261
+    }
+   },
+   "ETS2+TGFBR2": {
+    "n_cells": 317,
+    "n_genes": 20,
+    "ep_floor": 0.08775736660155815,
+    "additive": {
+     "rel_err": 0.265163410407672,
+     "delta_r": 0.9742941687362825,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.21751719113476886,
+     "delta_r": 0.9742941687362828,
+     "recovery": 0.5338190983856339
+    },
+    "shrunk": {
+     "rel_err": 0.2754222903312232,
+     "delta_r": 0.9734670648425785,
+     "recovery": -0.13217998801920114
+    },
+    "ridge": {
+     "rel_err": 0.28067762234244104,
+     "delta_r": 0.9635894603535812,
+     "recovery": 0.2075616340700022
+    },
+    "gbm": {
+     "rel_err": 0.23628117831999756,
+     "delta_r": 0.9813430545240731,
+     "recovery": 0.677702580992665
+    },
+    "tabpfn": {
+     "rel_err": 0.17116171892505172,
+     "delta_r": 0.9871204462616824,
+     "recovery": 0.7564333904366572
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.17096462976025048,
+     "delta_r": 0.987144985818562,
+     "recovery": 0.7570495126756388
+    }
+   },
+   "FEV+ISL2": {
+    "n_cells": 284,
+    "n_genes": 20,
+    "ep_floor": 0.04438501529057721,
+    "additive": {
+     "rel_err": 0.2558235689846359,
+     "delta_r": 0.9815081933125204,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.31071623626081607,
+     "delta_r": 0.9815081933125208,
+     "recovery": -0.5331334580717687
+    },
+    "shrunk": {
+     "rel_err": 0.2573567127541856,
+     "delta_r": 0.9815243920774804,
+     "recovery": -0.13404161901351755
+    },
+    "ridge": {
+     "rel_err": 0.2525537820381696,
+     "delta_r": 0.9907668424234625,
+     "recovery": 0.18347268411685383
+    },
+    "gbm": {
+     "rel_err": 0.27763781604917726,
+     "delta_r": 0.9851816312957541,
+     "recovery": 0.029271116279956336
+    },
+    "tabpfn": {
+     "rel_err": 0.31750448064452136,
+     "delta_r": 0.98274505632221,
+     "recovery": -0.19359341933363203
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.3174600976001043,
+     "delta_r": 0.9827706170183812,
+     "recovery": -0.19375055608942585
+    }
+   },
+   "FEV+MAP7D1": {
+    "n_cells": 274,
+    "n_genes": 20,
+    "ep_floor": 0.05240421508215352,
+    "additive": {
+     "rel_err": 0.15260788155643326,
+     "delta_r": 0.9881573979351744,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.19539242113691657,
+     "delta_r": 0.9881573979351739,
+     "recovery": -0.12449647021711836
+    },
+    "shrunk": {
+     "rel_err": 0.15398181522484777,
+     "delta_r": 0.9880030193460755,
+     "recovery": -0.05560921751634819
+    },
+    "ridge": {
+     "rel_err": 0.15289045343861443,
+     "delta_r": 0.9907624563224154,
+     "recovery": 0.3060971192755714
+    },
+    "gbm": {
+     "rel_err": 0.18260087126180588,
+     "delta_r": 0.9891593725187439,
+     "recovery": 0.1616207047398462
+    },
+    "tabpfn": {
+     "rel_err": 0.17475281062348078,
+     "delta_r": 0.9901419831682693,
+     "recovery": 0.30427833361552126
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.17468332939989706,
+     "delta_r": 0.9901572705932407,
+     "recovery": 0.3044605854133044
+    }
+   },
+   "FOSB+IKZF3": {
+    "n_cells": 244,
+    "n_genes": 20,
+    "ep_floor": 0.06414765272756376,
+    "additive": {
+     "rel_err": 0.34990937298765695,
+     "delta_r": 0.976305842754233,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.2791442982859452,
+     "delta_r": 0.976305842754233,
+     "recovery": 0.8069916379005581
+    },
+    "shrunk": {
+     "rel_err": 0.3487391557386316,
+     "delta_r": 0.9760575449627004,
+     "recovery": 0.1605513881877262
+    },
+    "ridge": {
+     "rel_err": 0.3548176521739825,
+     "delta_r": 0.978675089691782,
+     "recovery": 0.05672962160932372
+    },
+    "gbm": {
+     "rel_err": 0.3019090134398913,
+     "delta_r": 0.9867220657886664,
+     "recovery": 0.5414248661242589
+    },
+    "tabpfn": {
+     "rel_err": 0.24532644187025823,
+     "delta_r": 0.9860225504165968,
+     "recovery": 0.77224099054498
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.24524860286546915,
+     "delta_r": 0.9860380068965868,
+     "recovery": 0.7725753390034079
+    }
+   },
+   "FOSB+OSR2": {
+    "n_cells": 373,
+    "n_genes": 20,
+    "ep_floor": 0.043144654374209224,
+    "additive": {
+     "rel_err": 0.19409233560114214,
+     "delta_r": 0.974955353826502,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.2086196886274249,
+     "delta_r": 0.974955353826502,
+     "recovery": 0.021125684189372843
+    },
+    "shrunk": {
+     "rel_err": 0.19563188543330137,
+     "delta_r": 0.9745396823116621,
+     "recovery": -0.21038936887389595
+    },
+    "ridge": {
+     "rel_err": 0.2036280276116546,
+     "delta_r": 0.9786790148473643,
+     "recovery": 0.1787201871239553
+    },
+    "gbm": {
+     "rel_err": 0.2071462366039136,
+     "delta_r": 0.9848432169093003,
+     "recovery": 0.38509730640775164
+    },
+    "tabpfn": {
+     "rel_err": 0.2120847914566637,
+     "delta_r": 0.9876054241283906,
+     "recovery": 0.43131976951359735
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.21204605663370832,
+     "delta_r": 0.9876203249080282,
+     "recovery": 0.4313979842083272
+    }
+   },
+   "FOSB+PTPN12": {
+    "n_cells": 340,
+    "n_genes": 20,
+    "ep_floor": 0.07871503009510791,
+    "additive": {
+     "rel_err": 0.4114793248708723,
+     "delta_r": 0.8867336645819065,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.4090684934999998,
+     "delta_r": 0.8867336645819065,
+     "recovery": 0.2968006207929337
+    },
+    "shrunk": {
+     "rel_err": 0.41193884821490806,
+     "delta_r": 0.8851588725154664,
+     "recovery": -0.05401754575174799
+    },
+    "ridge": {
+     "rel_err": 0.34087425822941936,
+     "delta_r": 0.9314159529187916,
+     "recovery": 0.5463326862283928
+    },
+    "gbm": {
+     "rel_err": 0.35210203558283826,
+     "delta_r": 0.9588689620466232,
+     "recovery": 0.6222943378133198
+    },
+    "tabpfn": {
+     "rel_err": 0.4358138728557208,
+     "delta_r": 0.9531351043637373,
+     "recovery": 0.6232539866801167
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.43566048199224106,
+     "delta_r": 0.9531916839445673,
+     "recovery": 0.6233832345682113
+    }
+   },
+   "FOXA1+FOXA3": {
+    "n_cells": 213,
+    "n_genes": 20,
+    "ep_floor": 0.0734720461278175,
+    "additive": {
+     "rel_err": 0.1771326234965691,
+     "delta_r": 0.9857791938285154,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.21751676848060367,
+     "delta_r": 0.9857791938285154,
+     "recovery": -0.32093377028834624
+    },
+    "shrunk": {
+     "rel_err": 0.18189585969069244,
+     "delta_r": 0.9853924535470571,
+     "recovery": -0.4775254216029143
+    },
+    "ridge": {
+     "rel_err": 0.20177117252065485,
+     "delta_r": 0.9890838596218624,
+     "recovery": 0.01546743110305768
+    },
+    "gbm": {
+     "rel_err": 0.1554879959489986,
+     "delta_r": 0.9907112335462643,
+     "recovery": 0.5347277320675163
+    },
+    "tabpfn": {
+     "rel_err": 0.13890003451997565,
+     "delta_r": 0.9902481775333375,
+     "recovery": 0.670253431873625
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.13881770531857707,
+     "delta_r": 0.9902599063029482,
+     "recovery": 0.6704841561090856
+    }
+   },
+   "FOXA1+FOXL2": {
+    "n_cells": 187,
+    "n_genes": 20,
+    "ep_floor": 0.10287435454837064,
+    "additive": {
+     "rel_err": 0.24902500626600285,
+     "delta_r": 0.9675268293116522,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.26744158847870025,
+     "delta_r": 0.9675268293116522,
+     "recovery": 0.003914055521467651
+    },
+    "shrunk": {
+     "rel_err": 0.2531998863986509,
+     "delta_r": 0.9663379052691462,
+     "recovery": -0.4432521546808292
+    },
+    "ridge": {
+     "rel_err": 0.21827370809868807,
+     "delta_r": 0.978219072031989,
+     "recovery": 0.46854049485678656
+    },
+    "gbm": {
+     "rel_err": 0.13576707282694428,
+     "delta_r": 0.9925216622176032,
+     "recovery": 0.835838344153175
+    },
+    "tabpfn": {
+     "rel_err": 0.1103245226006761,
+     "delta_r": 0.9960814359726448,
+     "recovery": 0.8987419932062197
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.11020748420697987,
+     "delta_r": 0.9960923208424898,
+     "recovery": 0.8989318705638129
+    }
+   },
+   "FOXA1+HOXB9": {
+    "n_cells": 288,
+    "n_genes": 20,
+    "ep_floor": 0.07105217382669324,
+    "additive": {
+     "rel_err": 0.29883645074327747,
+     "delta_r": 0.9740070393218007,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.3523428986090878,
+     "delta_r": 0.9740070393218002,
+     "recovery": -0.5964131821037522
+    },
+    "shrunk": {
+     "rel_err": 0.30536455654022254,
+     "delta_r": 0.9732343651472495,
+     "recovery": -0.6849520967615678
+    },
+    "ridge": {
+     "rel_err": 0.2968126430839564,
+     "delta_r": 0.980734707849145,
+     "recovery": 0.16582602889876377
+    },
+    "gbm": {
+     "rel_err": 0.17936302457317055,
+     "delta_r": 0.9947272261925801,
+     "recovery": 0.8326778588732093
+    },
+    "tabpfn": {
+     "rel_err": 0.15292294103595475,
+     "delta_r": 0.9977841919009959,
+     "recovery": 0.9169384298629076
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.15286378051777397,
+     "delta_r": 0.9977959329530014,
+     "recovery": 0.9171843417918898
+    }
+   },
+   "FOXA1+KLF1": {
+    "n_cells": 359,
+    "n_genes": 20,
+    "ep_floor": 0.06081173406168048,
+    "additive": {
+     "rel_err": 0.2949799486226437,
+     "delta_r": 0.9054527733940385,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.28287108025061064,
+     "delta_r": 0.9054527733940386,
+     "recovery": 0.4591665090129054
+    },
+    "shrunk": {
+     "rel_err": 0.2888524816829975,
+     "delta_r": 0.907430839423725,
+     "recovery": 0.5616573073459867
+    },
+    "ridge": {
+     "rel_err": 0.29876361730390527,
+     "delta_r": 0.8899662308000953,
+     "recovery": 0.09636053841547955
+    },
+    "gbm": {
+     "rel_err": 0.28817906868334736,
+     "delta_r": 0.9048948340280674,
+     "recovery": 0.3200211694256477
+    },
+    "tabpfn": {
+     "rel_err": 0.24411262239001652,
+     "delta_r": 0.9247485149971695,
+     "recovery": 0.5835416402300656
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.24406863528423897,
+     "delta_r": 0.9247722609596142,
+     "recovery": 0.5839631923190551
+    }
+   },
+   "FOXA3+FOXF1": {
+    "n_cells": 172,
+    "n_genes": 20,
+    "ep_floor": 0.11805285163700385,
+    "additive": {
+     "rel_err": 0.21592568647078747,
+     "delta_r": 0.9840913093920108,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.24967587220629242,
+     "delta_r": 0.9840913093920106,
+     "recovery": -0.36203265914084704
+    },
+    "shrunk": {
+     "rel_err": 0.22544603004815017,
+     "delta_r": 0.983059465163709,
+     "recovery": -0.6538518352376446
+    },
+    "ridge": {
+     "rel_err": 0.26066077045439023,
+     "delta_r": 0.98045714090564,
+     "recovery": -0.0020409643230095793
+    },
+    "gbm": {
+     "rel_err": 0.23541163496611836,
+     "delta_r": 0.983484526609423,
+     "recovery": 0.5384859050668831
+    },
+    "tabpfn": {
+     "rel_err": 0.26156702555558153,
+     "delta_r": 0.9847450616663666,
+     "recovery": 0.6071741874124569
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.2614731789502122,
+     "delta_r": 0.9847629769104493,
+     "recovery": 0.6073266811360744
+    }
+   },
+   "FOXA3+FOXL2": {
+    "n_cells": 129,
+    "n_genes": 20,
+    "ep_floor": 0.10751323516301374,
+    "additive": {
+     "rel_err": 0.303402890337476,
+     "delta_r": 0.9662721612762236,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.3498727004375643,
+     "delta_r": 0.966272161276224,
+     "recovery": -0.561291333546804
+    },
+    "shrunk": {
+     "rel_err": 0.3120900547261401,
+     "delta_r": 0.9647881511291648,
+     "recovery": -0.8315931204784885
+    },
+    "ridge": {
+     "rel_err": 0.30107616889308486,
+     "delta_r": 0.9797077463235808,
+     "recovery": 0.22446722089172672
+    },
+    "gbm": {
+     "rel_err": 0.2145714034683414,
+     "delta_r": 0.9866631104722153,
+     "recovery": 0.8635366426091934
+    },
+    "tabpfn": {
+     "rel_err": 0.16558580624411823,
+     "delta_r": 0.9925651876147311,
+     "recovery": 0.9203312672550386
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.16541402574720204,
+     "delta_r": 0.9925883954676519,
+     "recovery": 0.9209477214484816
+    }
+   },
+   "FOXF1+FOXL2": {
+    "n_cells": 192,
+    "n_genes": 20,
+    "ep_floor": 0.09147333169038303,
+    "additive": {
+     "rel_err": 0.3424836408500322,
+     "delta_r": 0.9482195064634287,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.3846712858150493,
+     "delta_r": 0.9482195064634286,
+     "recovery": -0.3807202404366226
+    },
+    "shrunk": {
+     "rel_err": 0.3499946715586515,
+     "delta_r": 0.9463724487381037,
+     "recovery": -0.800530690171451
+    },
+    "ridge": {
+     "rel_err": 0.31822085762392943,
+     "delta_r": 0.973438465704384,
+     "recovery": 0.42787105439341316
+    },
+    "gbm": {
+     "rel_err": 0.22739016801780162,
+     "delta_r": 0.9867863995583316,
+     "recovery": 0.821742928595596
+    },
+    "tabpfn": {
+     "rel_err": 0.21393585342844457,
+     "delta_r": 0.9894432491337354,
+     "recovery": 0.8479572894716739
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.21387703014542594,
+     "delta_r": 0.9894619311251254,
+     "recovery": 0.8481639732720517
+    }
+   },
+   "FOXF1+HOXB9": {
+    "n_cells": 198,
+    "n_genes": 20,
+    "ep_floor": 0.09426738535564504,
+    "additive": {
+     "rel_err": 0.2725369120069301,
+     "delta_r": 0.9686435636847466,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.3233743761524246,
+     "delta_r": 0.9686435636847462,
+     "recovery": -0.41092250416019616
+    },
+    "shrunk": {
+     "rel_err": 0.2834274707154116,
+     "delta_r": 0.9660532383648992,
+     "recovery": -0.8037683156841143
+    },
+    "ridge": {
+     "rel_err": 0.2906334971398656,
+     "delta_r": 0.9829098027128654,
+     "recovery": 0.2542624953805586
+    },
+    "gbm": {
+     "rel_err": 0.14592337591379856,
+     "delta_r": 0.9918465995119126,
+     "recovery": 0.8459725924425896
+    },
+    "tabpfn": {
+     "rel_err": 0.10592740989001041,
+     "delta_r": 0.9942244723569842,
+     "recovery": 0.9289198103002411
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.1056854839457948,
+     "delta_r": 0.9942449563341677,
+     "recovery": 0.9291574821994484
+    }
+   },
+   "FOXL2+MEIS1": {
+    "n_cells": 189,
+    "n_genes": 20,
+    "ep_floor": 0.09068777866338035,
+    "additive": {
+     "rel_err": 0.1918501488170339,
+     "delta_r": 0.9871658993515494,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.25131133250221355,
+     "delta_r": 0.9871658993515494,
+     "recovery": -0.5620398123497737
+    },
+    "shrunk": {
+     "rel_err": 0.2008518584351063,
+     "delta_r": 0.9861843598361086,
+     "recovery": -0.7823678151320934
+    },
+    "ridge": {
+     "rel_err": 0.22861664206466334,
+     "delta_r": 0.9839672636468499,
+     "recovery": 0.00425055270998452
+    },
+    "gbm": {
+     "rel_err": 0.15425448097246228,
+     "delta_r": 0.9889626522241518,
+     "recovery": 0.7699638901781886
+    },
+    "tabpfn": {
+     "rel_err": 0.14734963613237553,
+     "delta_r": 0.9901547188548915,
+     "recovery": 0.7839734664603258
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.147184939719633,
+     "delta_r": 0.9901784319029889,
+     "recovery": 0.7842516661772059
+    }
+   },
+   "FOXL2+POU3F2": {
+    "n_cells": 304,
+    "n_genes": 20,
+    "ep_floor": 0.06402083178093465,
+    "additive": {
+     "rel_err": 0.24309396236852482,
+     "delta_r": 0.9799536084245039,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.295120680679281,
+     "delta_r": 0.9799536084245041,
+     "recovery": -0.4313872588361156
+    },
+    "shrunk": {
+     "rel_err": 0.2509747226981931,
+     "delta_r": 0.9790194917906982,
+     "recovery": -0.7079267153483183
+    },
+    "ridge": {
+     "rel_err": 0.27616687214667246,
+     "delta_r": 0.9833964443241888,
+     "recovery": -0.08576958180700428
+    },
+    "gbm": {
+     "rel_err": 0.13635747337848408,
+     "delta_r": 0.9929334878390327,
+     "recovery": 0.7841266566618507
+    },
+    "tabpfn": {
+     "rel_err": 0.12449583947183007,
+     "delta_r": 0.9944382146694307,
+     "recovery": 0.8558020343804221
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.12439343290364284,
+     "delta_r": 0.9944476799922681,
+     "recovery": 0.8560843519887389
+    }
+   },
+   "FOXL2+ZNF318": {
+    "n_cells": 238,
+    "n_genes": 20,
+    "ep_floor": 0.0861107785356104,
+    "additive": {
+     "rel_err": 0.2994169524144633,
+     "delta_r": 0.961418409594579,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.293904451104059,
+     "delta_r": 0.9614184095945786,
+     "recovery": 0.2625023580141694
+    },
+    "shrunk": {
+     "rel_err": 0.3015506359733991,
+     "delta_r": 0.960130356938427,
+     "recovery": -0.035742686554057414
+    },
+    "ridge": {
+     "rel_err": 0.23688711535685042,
+     "delta_r": 0.9747435670698418,
+     "recovery": 0.6295303026035344
+    },
+    "gbm": {
+     "rel_err": 0.24294524011246185,
+     "delta_r": 0.9839222278110028,
+     "recovery": 0.7079593784916194
+    },
+    "tabpfn": {
+     "rel_err": 0.3083958980368547,
+     "delta_r": 0.9717145179931159,
+     "recovery": 0.6671195525756803
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.3083213253864729,
+     "delta_r": 0.9717286991387755,
+     "recovery": 0.6671911512212716
+    }
+   },
+   "HOXC13+ZC3HAV1": {
+    "n_cells": 602,
+    "n_genes": 20,
+    "ep_floor": 0.05973578390958216,
+    "additive": {
+     "rel_err": 0.24762310073130134,
+     "delta_r": 0.9683243630484586,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.2618120271230044,
+     "delta_r": 0.968324363048459,
+     "recovery": 0.0168002043875828
+    },
+    "shrunk": {
+     "rel_err": 0.23982298051077455,
+     "delta_r": 0.9704353123138468,
+     "recovery": 0.31377387128856754
+    },
+    "ridge": {
+     "rel_err": 0.28280274740556266,
+     "delta_r": 0.9659068815113483,
+     "recovery": 0.3369224076778022
+    },
+    "gbm": {
+     "rel_err": 0.23601400018549168,
+     "delta_r": 0.9833580795245559,
+     "recovery": 0.5899399617375294
+    },
+    "tabpfn": {
+     "rel_err": 0.3096779459341761,
+     "delta_r": 0.9807463748604519,
+     "recovery": 0.5328959267864041
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.30947878059536454,
+     "delta_r": 0.9807849737923351,
+     "recovery": 0.5331534059703708
+    }
+   },
+   "IER5L+LYL1": {
+    "n_cells": 619,
+    "n_genes": 20,
+    "ep_floor": 0.043533711863059724,
+    "additive": {
+     "rel_err": 0.2316989115578623,
+     "delta_r": 0.9743402209524737,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.24073735250495734,
+     "delta_r": 0.9743402209524734,
+     "recovery": -0.01815716548714759
+    },
+    "shrunk": {
+     "rel_err": 0.23177851660631793,
+     "delta_r": 0.974786161813208,
+     "recovery": 0.12843422100520255
+    },
+    "ridge": {
+     "rel_err": 0.2376328304521572,
+     "delta_r": 0.9743400122278005,
+     "recovery": 0.16644004997756512
+    },
+    "gbm": {
+     "rel_err": 0.19928886766935938,
+     "delta_r": 0.9792853929787987,
+     "recovery": 0.4408040705475947
+    },
+    "tabpfn": {
+     "rel_err": 0.17369004806066904,
+     "delta_r": 0.9851028387206396,
+     "recovery": 0.6368864831618516
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.17361721660405613,
+     "delta_r": 0.9851128692614993,
+     "recovery": 0.6371067203917413
+    }
+   },
+   "IGDCC3+MAPK1": {
+    "n_cells": 362,
+    "n_genes": 20,
+    "ep_floor": 0.06939840344850431,
+    "additive": {
+     "rel_err": 0.40991776388803747,
+     "delta_r": 0.9369674090028755,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.3572536252383981,
+     "delta_r": 0.9369674090028756,
+     "recovery": 0.7517069303300147
+    },
+    "shrunk": {
+     "rel_err": 0.4093315242855723,
+     "delta_r": 0.9365455939939348,
+     "recovery": 0.05611055754773375
+    },
+    "ridge": {
+     "rel_err": 0.3444313032390798,
+     "delta_r": 0.9360187396445607,
+     "recovery": 0.6335815303450225
+    },
+    "gbm": {
+     "rel_err": 0.3119617679537016,
+     "delta_r": 0.9540462741022183,
+     "recovery": 0.6961186522064512
+    },
+    "tabpfn": {
+     "rel_err": 0.22470754976268115,
+     "delta_r": 0.9762439242306389,
+     "recovery": 0.8758350155589065
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.2246332171803747,
+     "delta_r": 0.9762637306435343,
+     "recovery": 0.8759882219843051
+    }
+   },
+   "IGDCC3+PRTG": {
+    "n_cells": 139,
+    "n_genes": 20,
+    "ep_floor": 0.09025555706818235,
+    "additive": {
+     "rel_err": 0.6316195251278686,
+     "delta_r": 0.9752547260644032,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.5115267326593138,
+     "delta_r": 0.9752547260644033,
+     "recovery": 0.9410038885497395
+    },
+    "shrunk": {
+     "rel_err": 0.628626924956267,
+     "delta_r": 0.9750048831156989,
+     "recovery": 0.5191265308119628
+    },
+    "ridge": {
+     "rel_err": 0.43560993713046486,
+     "delta_r": 0.9855768517289166,
+     "recovery": 0.8823443074918449
+    },
+    "gbm": {
+     "rel_err": 0.35286041113881816,
+     "delta_r": 0.9899073029666163,
+     "recovery": 0.8880642692656665
+    },
+    "tabpfn": {
+     "rel_err": 0.38654851284484953,
+     "delta_r": 0.98979732621425,
+     "recovery": 0.8746574372025085
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.3865007785134121,
+     "delta_r": 0.989808416300952,
+     "recovery": 0.8748417550418903
+    }
+   },
+   "IKZF3+MAP2K3": {
+    "n_cells": 258,
+    "n_genes": 20,
+    "ep_floor": 0.04985298069135286,
+    "additive": {
+     "rel_err": 0.18323654126396952,
+     "delta_r": 0.9774466950535666,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.19699298582428196,
+     "delta_r": 0.9774466950535666,
+     "recovery": 0.2687636344506027
+    },
+    "shrunk": {
+     "rel_err": 0.18423988064485433,
+     "delta_r": 0.9770790746118478,
+     "recovery": -0.027644246486006697
+    },
+    "ridge": {
+     "rel_err": 0.20299785444124974,
+     "delta_r": 0.9740981131401808,
+     "recovery": 0.06238076259473811
+    },
+    "gbm": {
+     "rel_err": 0.23042749508882573,
+     "delta_r": 0.9660229649595627,
+     "recovery": -0.19972662436054034
+    },
+    "tabpfn": {
+     "rel_err": 0.2070112583251981,
+     "delta_r": 0.9732504330467479,
+     "recovery": 0.13766223623371018
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.20697594835291813,
+     "delta_r": 0.9732597712228802,
+     "recovery": 0.13764876256848063
+    }
+   },
+   "IKZF3+MAP2K6": {
+    "n_cells": 298,
+    "n_genes": 20,
+    "ep_floor": 0.04332585493281424,
+    "additive": {
+     "rel_err": 0.10048845099538098,
+     "delta_r": 0.9926907180847929,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.12801625316924986,
+     "delta_r": 0.9926907180847927,
+     "recovery": 0.23254570622161394
+    },
+    "shrunk": {
+     "rel_err": 0.1023635903750167,
+     "delta_r": 0.9924284448322441,
+     "recovery": -0.20066263619422312
+    },
+    "ridge": {
+     "rel_err": 0.09237125712349221,
+     "delta_r": 0.9943876889542543,
+     "recovery": 0.46892778110302413
+    },
+    "gbm": {
+     "rel_err": 0.0957780738383863,
+     "delta_r": 0.9932733771500752,
+     "recovery": 0.5293263799024748
+    },
+    "tabpfn": {
+     "rel_err": 0.09998183205487969,
+     "delta_r": 0.9929663917226548,
+     "recovery": 0.41169777145918357
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.0998269486034616,
+     "delta_r": 0.9929860766096833,
+     "recovery": 0.4133154628277589
+    }
+   },
+   "IKZF3+MAPK1": {
+    "n_cells": 293,
+    "n_genes": 20,
+    "ep_floor": 0.05882833634072992,
+    "additive": {
+     "rel_err": 0.3937915654547947,
+     "delta_r": 0.9453080879249564,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.3551166944868891,
+     "delta_r": 0.945308087924956,
+     "recovery": 0.5417342104938826
+    },
+    "shrunk": {
+     "rel_err": 0.3910964540376988,
+     "delta_r": 0.9458034508578697,
+     "recovery": 0.37480924066233484
+    },
+    "ridge": {
+     "rel_err": 0.3196693368731461,
+     "delta_r": 0.980759523371957,
+     "recovery": 0.5513327564604811
+    },
+    "gbm": {
+     "rel_err": 0.21348320609988297,
+     "delta_r": 0.9796613015678918,
+     "recovery": 0.8320923922535699
+    },
+    "tabpfn": {
+     "rel_err": 0.19158177564334963,
+     "delta_r": 0.9829860837440099,
+     "recovery": 0.8635953336346782
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.1914259213951864,
+     "delta_r": 0.9830085696974318,
+     "recovery": 0.8637907897190912
+    }
+   },
+   "IRF1+SET": {
+    "n_cells": 418,
+    "n_genes": 20,
+    "ep_floor": 0.036782062475216155,
+    "additive": {
+     "rel_err": 0.17511287993232624,
+     "delta_r": 0.9746525516451346,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.17428341903391661,
+     "delta_r": 0.9746525516451346,
+     "recovery": 0.43922835540073063
+    },
+    "shrunk": {
+     "rel_err": 0.17583798896541622,
+     "delta_r": 0.9742808183923405,
+     "recovery": -0.08604186730986184
+    },
+    "ridge": {
+     "rel_err": 0.18380734583836011,
+     "delta_r": 0.9756599663361154,
+     "recovery": 0.23039116910807078
+    },
+    "gbm": {
+     "rel_err": 0.17128958183327905,
+     "delta_r": 0.9760193623315818,
+     "recovery": 0.5105293266943446
+    },
+    "tabpfn": {
+     "rel_err": 0.1989498682942583,
+     "delta_r": 0.9664415486936558,
+     "recovery": 0.38870883047824095
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.19869828028930278,
+     "delta_r": 0.9665490369727298,
+     "recovery": 0.38923712201424543
+    }
+   },
+   "KIF18B+KIF2C": {
+    "n_cells": 93,
+    "n_genes": 8,
+    "ep_floor": 0.23602479445366337,
+    "additive": {
+     "rel_err": 0.5899747201604474,
+     "delta_r": 0.8677725227528509,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.5890903208260433,
+     "delta_r": 0.8677725227528509,
+     "recovery": 0.31667725048019246
+    },
+    "shrunk": {
+     "rel_err": 0.6144135314726414,
+     "delta_r": 0.8639917694784817,
+     "recovery": 0.1687118557302711
+    },
+    "ridge": {
+     "rel_err": 0.7684148603694587,
+     "delta_r": 0.8040368256080878,
+     "recovery": -0.4167212563921459
+    },
+    "gbm": {
+     "rel_err": 0.7289389312079534,
+     "delta_r": 0.7828515831885309,
+     "recovery": -0.5674050023407828
+    },
+    "tabpfn": {
+     "rel_err": 0.6628169258422262,
+     "delta_r": 0.8461193637316788,
+     "recovery": -0.38453217296858955
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.6626891888993975,
+     "delta_r": 0.8461074638927782,
+     "recovery": -0.3862110393482264
+    }
+   },
+   "MAP2K3+MAP2K6": {
+    "n_cells": 567,
+    "n_genes": 20,
+    "ep_floor": 0.08708656684902281,
+    "additive": {
+     "rel_err": 0.4799955139551505,
+     "delta_r": 0.982082379699682,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.3768530684405854,
+     "delta_r": 0.9820823796996818,
+     "recovery": 0.917685068344826
+    },
+    "shrunk": {
+     "rel_err": 0.465535975140777,
+     "delta_r": 0.9817390935702179,
+     "recovery": 0.6115538241255623
+    },
+    "ridge": {
+     "rel_err": 0.43784256499384566,
+     "delta_r": 0.9673459213221157,
+     "recovery": 0.4004375956476559
+    },
+    "gbm": {
+     "rel_err": 0.8089590209289336,
+     "delta_r": 0.9713811159797411,
+     "recovery": -0.7660696707783153
+    },
+    "tabpfn": {
+     "rel_err": 0.6791142108224895,
+     "delta_r": 0.9798194397972676,
+     "recovery": -0.41611585737710205
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.6790399422539113,
+     "delta_r": 0.9798372233076287,
+     "recovery": -0.4163345720981264
+    }
+   },
+   "MAP2K6+SPI1": {
+    "n_cells": 299,
+    "n_genes": 20,
+    "ep_floor": 0.0705597821821987,
+    "additive": {
+     "rel_err": 0.5031851048479526,
+     "delta_r": 0.956574621864145,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.3960182883300634,
+     "delta_r": 0.9565746218641443,
+     "recovery": 0.8476780903132408
+    },
+    "shrunk": {
+     "rel_err": 0.5010442203378637,
+     "delta_r": 0.9537762444357997,
+     "recovery": -0.044155400585523724
+    },
+    "ridge": {
+     "rel_err": 0.451551728976608,
+     "delta_r": 0.9556934496232758,
+     "recovery": 0.5261502699042787
+    },
+    "gbm": {
+     "rel_err": 0.4324893969758299,
+     "delta_r": 0.9700920559957624,
+     "recovery": 0.5705871363756787
+    },
+    "tabpfn": {
+     "rel_err": 0.43573170910596043,
+     "delta_r": 0.9730298611278684,
+     "recovery": 0.6851627707566769
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.4355894753647611,
+     "delta_r": 0.9730762524066452,
+     "recovery": 0.6867980634055959
+    }
+   },
+   "MAPK1+PRTG": {
+    "n_cells": 488,
+    "n_genes": 20,
+    "ep_floor": 0.060511933285404336,
+    "additive": {
+     "rel_err": 0.4601765927675079,
+     "delta_r": 0.9048381127025006,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.4279684206790699,
+     "delta_r": 0.9048381127025001,
+     "recovery": 0.6519467186803769
+    },
+    "shrunk": {
+     "rel_err": 0.46028974071359746,
+     "delta_r": 0.9034106227380677,
+     "recovery": -0.06058202494326596
+    },
+    "ridge": {
+     "rel_err": 0.4035057070329726,
+     "delta_r": 0.9152703250593845,
+     "recovery": 0.4065072488719619
+    },
+    "gbm": {
+     "rel_err": 0.2325148837288911,
+     "delta_r": 0.9658161155714277,
+     "recovery": 0.9347841885464948
+    },
+    "tabpfn": {
+     "rel_err": 0.165898415441902,
+     "delta_r": 0.9849918284005742,
+     "recovery": 0.9853086557658752
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.16578577445390744,
+     "delta_r": 0.9850222778843666,
+     "recovery": 0.9855107281853159
+    }
+   },
+   "MAPK1+TGFBR2": {
+    "n_cells": 491,
+    "n_genes": 20,
+    "ep_floor": 0.050597047594777705,
+    "additive": {
+     "rel_err": 0.21356871898884375,
+     "delta_r": 0.9842047661050886,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.15832792071161517,
+     "delta_r": 0.9842047661050886,
+     "recovery": 0.6127232044172819
+    },
+    "shrunk": {
+     "rel_err": 0.22007944668507015,
+     "delta_r": 0.9843735159893094,
+     "recovery": -0.056294316948408814
+    },
+    "ridge": {
+     "rel_err": 0.20830057088474055,
+     "delta_r": 0.981065731204599,
+     "recovery": 0.25329906738477836
+    },
+    "gbm": {
+     "rel_err": 0.13809157692252336,
+     "delta_r": 0.9875759319690491,
+     "recovery": 0.7051709102109469
+    },
+    "tabpfn": {
+     "rel_err": 0.12262760204206684,
+     "delta_r": 0.9941243135210929,
+     "recovery": 0.8772106639801244
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.12237744141242018,
+     "delta_r": 0.9941570447928172,
+     "recovery": 0.8776920470190275
+    }
+   },
+   "PRTG+TGFBR2": {
+    "n_cells": 261,
+    "n_genes": 20,
+    "ep_floor": 0.06674632082820099,
+    "additive": {
+     "rel_err": 0.19919795665698115,
+     "delta_r": 0.9849939972599094,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.1581855934114573,
+     "delta_r": 0.9849939972599099,
+     "recovery": 0.5558109856261573
+    },
+    "shrunk": {
+     "rel_err": 0.19992652978042819,
+     "delta_r": 0.9837273707399158,
+     "recovery": -0.0243130577160319
+    },
+    "ridge": {
+     "rel_err": 0.16689673243325298,
+     "delta_r": 0.9884086394640353,
+     "recovery": 0.586048502539287
+    },
+    "gbm": {
+     "rel_err": 0.16706161485395332,
+     "delta_r": 0.9901188654351287,
+     "recovery": 0.5655451804804987
+    },
+    "tabpfn": {
+     "rel_err": 0.218082669150088,
+     "delta_r": 0.9837846215183222,
+     "recovery": 0.21356696764413638
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.21797224996401274,
+     "delta_r": 0.9838055841802316,
+     "recovery": 0.21344665593010964
+    }
+   },
+   "PTPN12+SAMD1": {
+    "n_cells": 347,
+    "n_genes": 20,
+    "ep_floor": 0.0514857951103436,
+    "additive": {
+     "rel_err": 0.19810257473817047,
+     "delta_r": 0.9781101606886534,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.21967328467111538,
+     "delta_r": 0.9781101606886533,
+     "recovery": 0.2607454970368767
+    },
+    "shrunk": {
+     "rel_err": 0.20184838083700238,
+     "delta_r": 0.9773205630725539,
+     "recovery": -0.20164695465779803
+    },
+    "ridge": {
+     "rel_err": 0.24535588109497833,
+     "delta_r": 0.9738680866884886,
+     "recovery": 0.4772777734166032
+    },
+    "gbm": {
+     "rel_err": 0.11975999059496048,
+     "delta_r": 0.9901904960271648,
+     "recovery": 0.7723393474247124
+    },
+    "tabpfn": {
+     "rel_err": 0.168329971958042,
+     "delta_r": 0.9819039101260189,
+     "recovery": 0.7171591138959895
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.16825152584228315,
+     "delta_r": 0.9819219065381789,
+     "recovery": 0.7173132056069295
+    }
+   },
+   "PTPN12+SNAI1": {
+    "n_cells": 280,
+    "n_genes": 20,
+    "ep_floor": 0.08787595400572656,
+    "additive": {
+     "rel_err": 0.22815239020299116,
+     "delta_r": 0.9805154210041838,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.2118776796083984,
+     "delta_r": 0.9805154210041839,
+     "recovery": 0.3382359808285684
+    },
+    "shrunk": {
+     "rel_err": 0.2242804754361498,
+     "delta_r": 0.9799847965492352,
+     "recovery": 0.1350177758898318
+    },
+    "ridge": {
+     "rel_err": 0.19610271719051364,
+     "delta_r": 0.981316054295674,
+     "recovery": 0.503485310821518
+    },
+    "gbm": {
+     "rel_err": 0.285959165079911,
+     "delta_r": 0.9793284494540889,
+     "recovery": 0.20346715266899587
+    },
+    "tabpfn": {
+     "rel_err": 0.30837415241994576,
+     "delta_r": 0.9787058695672198,
+     "recovery": 0.23190477071085816
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.30824739753909347,
+     "delta_r": 0.9787317834791708,
+     "recovery": 0.2320427931604134
+    }
+   },
+   "PTPN12+UBASH3A": {
+    "n_cells": 306,
+    "n_genes": 20,
+    "ep_floor": 0.0523695931394143,
+    "additive": {
+     "rel_err": 0.533515905709691,
+     "delta_r": 0.9375782791065158,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.5681318356503796,
+     "delta_r": 0.9375782791065157,
+     "recovery": -0.7578091301093708
+    },
+    "shrunk": {
+     "rel_err": 0.5445208467971108,
+     "delta_r": 0.9350424531068154,
+     "recovery": -0.6688827285549611
+    },
+    "ridge": {
+     "rel_err": 0.4765279514135045,
+     "delta_r": 0.9588522529793787,
+     "recovery": 0.709138967597595
+    },
+    "gbm": {
+     "rel_err": 0.3740559597323599,
+     "delta_r": 0.9820813710576224,
+     "recovery": 0.8463256428799365
+    },
+    "tabpfn": {
+     "rel_err": 0.34429189909676455,
+     "delta_r": 0.9881916975597901,
+     "recovery": 0.8799824884335349
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.3442693815841208,
+     "delta_r": 0.9882143978515756,
+     "recovery": 0.8801559841147828
+    }
+   },
+   "PTPN12+UBASH3B": {
+    "n_cells": 294,
+    "n_genes": 20,
+    "ep_floor": 0.05362716677192108,
+    "additive": {
+     "rel_err": 0.2982086063073194,
+     "delta_r": 0.9628092719594697,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.3406172791627891,
+     "delta_r": 0.9628092719594697,
+     "recovery": -0.473170003269527
+    },
+    "shrunk": {
+     "rel_err": 0.3033373623952522,
+     "delta_r": 0.9618360349800665,
+     "recovery": -0.6291376269051173
+    },
+    "ridge": {
+     "rel_err": 0.31087690132940343,
+     "delta_r": 0.9716256664822962,
+     "recovery": 0.05102580534066602
+    },
+    "gbm": {
+     "rel_err": 0.16813278055975245,
+     "delta_r": 0.9846733896247346,
+     "recovery": 0.8335880013465302
+    },
+    "tabpfn": {
+     "rel_err": 0.13650008150369883,
+     "delta_r": 0.9883726880651659,
+     "recovery": 0.8716237048512131
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.13634381537322735,
+     "delta_r": 0.9883921118620108,
+     "recovery": 0.8719056521600516
+    }
+   },
+   "PTPN12+ZBTB25": {
+    "n_cells": 302,
+    "n_genes": 20,
+    "ep_floor": 0.048107899590958576,
+    "additive": {
+     "rel_err": 0.2279049631892678,
+     "delta_r": 0.9760095557646455,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.28660212954512315,
+     "delta_r": 0.9760095557646451,
+     "recovery": -0.4521218198971825
+    },
+    "shrunk": {
+     "rel_err": 0.23433700855043987,
+     "delta_r": 0.9744149696074098,
+     "recovery": -0.6547367164964089
+    },
+    "ridge": {
+     "rel_err": 0.28649651717459673,
+     "delta_r": 0.9792279865472586,
+     "recovery": -0.1601851635253432
+    },
+    "gbm": {
+     "rel_err": 0.10535650470583098,
+     "delta_r": 0.9962689292616185,
+     "recovery": 0.89663249028888
+    },
+    "tabpfn": {
+     "rel_err": 0.09181358377448785,
+     "delta_r": 0.9974665937172124,
+     "recovery": 0.9460841010671842
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.09166947818994149,
+     "delta_r": 0.9974841428714403,
+     "recovery": 0.9465149470465454
+    }
+   },
+   "RHOXF2+ZBTB25": {
+    "n_cells": 258,
+    "n_genes": 20,
+    "ep_floor": 0.06185175452886834,
+    "additive": {
+     "rel_err": 0.1615101507097365,
+     "delta_r": 0.992608472459074,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.11972839512415999,
+     "delta_r": 0.9926084724590744,
+     "recovery": 0.6601152224123654
+    },
+    "shrunk": {
+     "rel_err": 0.1583544723108358,
+     "delta_r": 0.992619403090385,
+     "recovery": 0.3650302715249792
+    },
+    "ridge": {
+     "rel_err": 0.10355328087234414,
+     "delta_r": 0.9944547714833835,
+     "recovery": 0.7915909946115218
+    },
+    "gbm": {
+     "rel_err": 0.12677940370864477,
+     "delta_r": 0.9917270108546866,
+     "recovery": 0.7310105894099126
+    },
+    "tabpfn": {
+     "rel_err": 0.08859247689659362,
+     "delta_r": 0.9960906899637688,
+     "recovery": 0.8394012836993848
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.08837443728329333,
+     "delta_r": 0.9961069044995834,
+     "recovery": 0.8400186423425496
+    }
+   },
+   "S1PR2+SGK1": {
+    "n_cells": 349,
+    "n_genes": 20,
+    "ep_floor": 0.056739320058153346,
+    "additive": {
+     "rel_err": 0.3098735957224068,
+     "delta_r": 0.9458746404607671,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.2996543772000919,
+     "delta_r": 0.9458746404607675,
+     "recovery": 0.2773699661666496
+    },
+    "shrunk": {
+     "rel_err": 0.3075197992552224,
+     "delta_r": 0.9460580228759276,
+     "recovery": 0.26588550330237826
+    },
+    "ridge": {
+     "rel_err": 0.25163351314435606,
+     "delta_r": 0.9622990091914382,
+     "recovery": 0.6089212402030488
+    },
+    "gbm": {
+     "rel_err": 0.2607463023265648,
+     "delta_r": 0.9597744821417548,
+     "recovery": 0.5640111491263348
+    },
+    "tabpfn": {
+     "rel_err": 0.2103845890926069,
+     "delta_r": 0.9734691509709127,
+     "recovery": 0.7914615376098862
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.210183244721066,
+     "delta_r": 0.9735172201921708,
+     "recovery": 0.7927826679279346
+    }
+   },
+   "SAMD1+TGFBR2": {
+    "n_cells": 71,
+    "n_genes": 20,
+    "ep_floor": 0.1395721057682565,
+    "additive": {
+     "rel_err": 0.1818462640591775,
+     "delta_r": 0.985872107059449,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.23277184015346256,
+     "delta_r": 0.9858721070594487,
+     "recovery": -0.4294736386961161
+    },
+    "shrunk": {
+     "rel_err": 0.19326659591245846,
+     "delta_r": 0.9848479621524627,
+     "recovery": -0.5755707397182918
+    },
+    "ridge": {
+     "rel_err": 0.13320463866519175,
+     "delta_r": 0.9926588627723278,
+     "recovery": 0.7053706281672472
+    },
+    "gbm": {
+     "rel_err": 0.1409360145141835,
+     "delta_r": 0.9896908159983523,
+     "recovery": 0.7721894953282032
+    },
+    "tabpfn": {
+     "rel_err": 0.15209007318385465,
+     "delta_r": 0.9904346055505023,
+     "recovery": 0.8093329031355795
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.1518149567519384,
+     "delta_r": 0.9904649204462953,
+     "recovery": 0.8096525584648407
+    }
+   },
+   "SGK1+TBX2": {
+    "n_cells": 344,
+    "n_genes": 20,
+    "ep_floor": 0.048381151760527506,
+    "additive": {
+     "rel_err": 0.23265301582273776,
+     "delta_r": 0.9835948723436106,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.1858663886308578,
+     "delta_r": 0.983594872343611,
+     "recovery": 0.6716307299639337
+    },
+    "shrunk": {
+     "rel_err": 0.23015142035266445,
+     "delta_r": 0.9837690303672186,
+     "recovery": 0.3657883667378127
+    },
+    "ridge": {
+     "rel_err": 0.188306748520886,
+     "delta_r": 0.9871943471213729,
+     "recovery": 0.704580789171585
+    },
+    "gbm": {
+     "rel_err": 0.17246374126306677,
+     "delta_r": 0.9897976361239617,
+     "recovery": 0.7038755472676542
+    },
+    "tabpfn": {
+     "rel_err": 0.14421376674681685,
+     "delta_r": 0.9909355142856473,
+     "recovery": 0.8171816433600402
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.144059966168464,
+     "delta_r": 0.9909611212149503,
+     "recovery": 0.8175440592222377
+    }
+   },
+   "SNAI1+UBASH3B": {
+    "n_cells": 297,
+    "n_genes": 20,
+    "ep_floor": 0.08084087082987632,
+    "additive": {
+     "rel_err": 0.15278104594385855,
+     "delta_r": 0.9900289414599445,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.18083793817107713,
+     "delta_r": 0.990028941459944,
+     "recovery": -0.2155558119697577
+    },
+    "shrunk": {
+     "rel_err": 0.15760132226611537,
+     "delta_r": 0.9893527314164712,
+     "recovery": -0.36929140532816357
+    },
+    "ridge": {
+     "rel_err": 0.1788127801586685,
+     "delta_r": 0.9856330098926633,
+     "recovery": -0.02724345684653857
+    },
+    "gbm": {
+     "rel_err": 0.1913048171254446,
+     "delta_r": 0.9863315909981112,
+     "recovery": 0.5937752422303616
+    },
+    "tabpfn": {
+     "rel_err": 0.23533286879358647,
+     "delta_r": 0.984946746112462,
+     "recovery": 0.5946197039460458
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.2350760145287928,
+     "delta_r": 0.9849874853933841,
+     "recovery": 0.59510765960455
+    }
+   },
+   "UBASH3B+ZBTB25": {
+    "n_cells": 253,
+    "n_genes": 20,
+    "ep_floor": 0.06045570051932001,
+    "additive": {
+     "rel_err": 0.28688226761964,
+     "delta_r": 0.9665763064900019,
+     "recovery": NaN
+    },
+    "scaled": {
+     "rel_err": 0.33217555621521483,
+     "delta_r": 0.9665763064900015,
+     "recovery": -0.5463533200802227
+    },
+    "shrunk": {
+     "rel_err": 0.2899415213395974,
+     "delta_r": 0.966924450044762,
+     "recovery": -0.23938629564415742
+    },
+    "ridge": {
+     "rel_err": 0.2877413932597502,
+     "delta_r": 0.9715305106856988,
+     "recovery": 0.2916946298334883
+    },
+    "gbm": {
+     "rel_err": 0.11732149125964156,
+     "delta_r": 0.9919435945280713,
+     "recovery": 0.909119210971531
+    },
+    "tabpfn": {
+     "rel_err": 0.14563359839789405,
+     "delta_r": 0.9907686061068737,
+     "recovery": 0.9116480777954199
+    },
+    "tabpfn_ensemble": {
+     "rel_err": 0.14548998823656145,
+     "delta_r": 0.9907937429788967,
+     "recovery": 0.9118270218848724
+    }
+   }
+  }
+ },
+ "runtime_s": 67.3,
+ "peak_rss_gb": 5.96
+}

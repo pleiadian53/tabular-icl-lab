@@ -159,7 +159,7 @@ def aggregate(seeds: list[int]) -> dict:
         "complete": seeds == SEEDS,
         "problems": problems,
         "evaluation": runs[0]["evaluation"],
-        "environment": runs[0]["environment"],
+        "environment_by_seed": {str(s): r["environment"] for s, r in zip(seeds, runs)},
         "arms": arms,
         "contrasts": maxt_family(diffs, idx),
     }

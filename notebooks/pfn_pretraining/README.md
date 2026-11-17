@@ -18,4 +18,4 @@ The [results ledger](docs/results/index.md) records the numbers. [`01_pretrainin
 
 ## Running
 
-Use the `tabicllab` environment and its Jupyter kernel (see the repository README). The notebook needs only PyTorch and scikit-learn, not TabPFN. On an idle laptop CPU it takes about 40 minutes, most of it the larger model's 2,500 training steps; on a GPU it takes a few minutes.
+Use the `tabicllab` environment and its Jupyter kernel (see the repository README). The notebook needs only PyTorch and scikit-learn, not TabPFN. On an idle laptop CPU it takes about 40 minutes, most of it the larger model's 2,500 training steps; on a data-centre GPU, under three minutes.

@@ -1,5 +1,7 @@
 # R1.7, round 3 (round 1's arms, each pair predicted without any other combination of its
-# genes in the context), on a RunPod pod via SkyPilot. Setup is round 1's.
+# genes in the context), on a RunPod pod via SkyPilot. Setup is round 1's. The GPU list is
+# longer than round 1's because none of its six types was free in CA-MTL-1 at the first
+# launch; the job needs only a few GB of GPU memory, so any of these works.
 #
 # TabPFN runs on the GPU; the ridge and LightGBM grids run on the pod's CPUs. SkyPilot
 # tries the accelerators in order and falls back when one is not available. The pod
@@ -30,6 +32,15 @@ resources:
     - accelerators: L40:1
     - accelerators: RTXA5000:1
     - accelerators: A100-80GB:1
+    - accelerators: RTX4090:1
+    - accelerators: RTX3090:1
+    - accelerators: RTXA4500:1
+    - accelerators: RTXA4000:1
+    - accelerators: L4:1
+    - accelerators: RTX4000-Ada:1
+    - accelerators: RTX6000-Ada:1
+    - accelerators: RTX5090:1
+    - accelerators: H100:1
 volumes:
   /runpod-volume: AI lab extension
 secrets:

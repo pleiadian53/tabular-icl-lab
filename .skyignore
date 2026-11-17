@@ -5,7 +5,7 @@
 /output
 /runs
 /dev
-/notebooks
+/notebooks/L6
 .git
 __pycache__
 *.pyc

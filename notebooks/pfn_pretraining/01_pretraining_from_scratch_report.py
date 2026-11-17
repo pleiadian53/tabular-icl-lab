@@ -53,7 +53,9 @@ covers the problem; on the problem outside both priors, nothing is predicted.
 Run: from this directory, ``python 01_pretraining_from_scratch_report.py --run`` (executes
 the notebook three times on the CPU, then aggregates) or without ``--run`` to aggregate
 existing per-seed reports. ``--seeds 0`` aggregates a subset of the seeds; the report then
-records ``"complete": false`` and every conclusion drawn from it is provisional.
+records ``"complete": false`` and every conclusion drawn from it is provisional. ``--smoke``
+executes the notebook once with 20 steps per pretraining run and checks its report; the GPU
+pod runs it before the full run (``run_r4_3_pod.sh``).
 """
 
 from __future__ import annotations
@@ -85,14 +87,26 @@ CONTRASTS = [
 ]
 
 
-def run_notebook(seed: int, save: bool) -> float:
-    """Execute the notebook with SEED replaced; save it in place only when ``save``."""
+SMOKE_SEED = 99
+
+
+def run_notebook(seed: int, save: bool, steps: int | None = None) -> float:
+    """Execute the notebook with SEED replaced; save it in place only when ``save``.
+
+    ``steps`` replaces every pretraining run's number of steps, for a smoke run that checks
+    the notebook executes end to end without spending the full budget.
+    """
     import nbformat
     from nbclient import NotebookClient
 
     nb = nbformat.read(NOTEBOOK, as_version=4)
     setup = next(c for c in nb.cells if c.cell_type == "code" and "SEED = 0" in c.source)
     setup.source = setup.source.replace("SEED = 0", f"SEED = {seed}")
+    if steps is not None:
+        for cell in nb.cells:
+            if cell.cell_type == "code":
+                cell.source = cell.source.replace("num_steps=750", f"num_steps={steps}").replace(
+                    "num_steps=2500", f"num_steps={steps}")
     start = time.time()
     NotebookClient(nb, timeout=7200, kernel_name="tabicllab", resources={"metadata": {"path": str(HERE)}}).execute()
     if save:
@@ -157,7 +171,17 @@ def main() -> None:
     parser.add_argument("--no-aggregate", action="store_true", help="only run, do not aggregate")
     parser.add_argument("--seeds", type=int, nargs="+", default=SEEDS, metavar="SEED",
                         help="aggregate only these seeds; the report then records itself as incomplete")
+    parser.add_argument("--smoke", action="store_true",
+                        help=f"execute the notebook with seed {SMOKE_SEED} and 20 steps per run, check its report, delete it")
     args = parser.parse_args()
+    if args.smoke:
+        path = REPORTS / f"01-pretraining-from-scratch-seed{SMOKE_SEED}.json"
+        seconds = run_notebook(SMOKE_SEED, save=False, steps=20)
+        report = json.loads(path.read_text())
+        path.unlink()
+        assert set(report["models"]) == set(ARMS.values()), report["models"].keys()
+        print(f"smoke: notebook ran in {seconds:.1f} s on {report['environment']['device']}; report checked and removed")
+        return
     runtimes = {}
     if args.run is not None:
         for seed in args.run or SEEDS:

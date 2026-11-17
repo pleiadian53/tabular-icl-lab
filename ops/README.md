@@ -40,3 +40,4 @@ The NGC image's CUDA build of torch must not be replaced by a PyPI build, so the
 | `skypilot/r1_3.yaml` | R1.3, round 1: TabPFN-3.5 against additivity, its no-interaction variants and tuned learners (`examples/perturbation_response/02_round1_residual_learners.py`) | yes |
 | `skypilot/r1_6.yaml` | R1.6, round 2: round 1's arms cross-validated over all 131 pairs (`examples/perturbation_response/03_round2_confirmation_cv.py`) | yes (weights already on the volume) |
 | `skypilot/r1_7.yaml` | R1.7, round 3: each pair predicted without any other combination of its genes in the context (`examples/perturbation_response/04_round3_leave_genes_out.py`) | yes (weights already on the volume) |
+| `skypilot/r4_3.yaml` | R4.3, pretraining a tabular in-context learner from scratch, seeds 1 and 2 (`notebooks/pfn_pretraining/01_pretraining_from_scratch_report.py`) | no |

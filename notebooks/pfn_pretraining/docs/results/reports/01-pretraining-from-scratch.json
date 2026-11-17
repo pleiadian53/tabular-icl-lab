@@ -1,0 +1,275 @@
+{
+ "protocol": "see the docstring of 01_pretraining_from_scratch_report.py",
+ "seeds": [
+  0
+ ],
+ "complete": false,
+ "problems": [
+  "line",
+  "sine",
+  "sine + fast wave"
+ ],
+ "evaluation": {
+  "n_context": 40,
+  "n_query": 200,
+  "n_draws": 20,
+  "seed": 1234
+ },
+ "environment": {
+  "device": "cpu",
+  "torch": "2.14.1",
+  "python": "3.13.18",
+  "machine": "Darwin arm64",
+  "threads": 4
+ },
+ "arms": {
+  "small_line": {
+   "label": "small, line prior",
+   "parameters": 85538,
+   "train_seconds_by_seed": [
+    415.4
+   ],
+   "accuracy": {
+    "line": 0.96,
+    "sine": 0.8047500000000001,
+    "sine + fast wave": 0.799,
+    "mean": 0.8545833333333334
+   },
+   "accuracy_by_seed": {
+    "line": [
+     0.96
+    ],
+    "sine": [
+     0.8047500000000001
+    ],
+    "sine + fast wave": [
+     0.799
+    ]
+   }
+  },
+  "small_wave": {
+   "label": "small, wave prior",
+   "parameters": 85538,
+   "train_seconds_by_seed": [
+    997.3
+   ],
+   "accuracy": {
+    "line": 0.9492499999999999,
+    "sine": 0.8877499999999999,
+    "sine + fast wave": 0.8845000000000001,
+    "mean": 0.9071666666666666
+   },
+   "accuracy_by_seed": {
+    "line": [
+     0.9492499999999999
+    ],
+    "sine": [
+     0.8877499999999999
+    ],
+    "sine + fast wave": [
+     0.8845000000000001
+    ]
+   }
+  },
+  "large_wave": {
+   "label": "large, wave prior",
+   "parameters": 486242,
+   "train_seconds_by_seed": [
+    10583.1
+   ],
+   "accuracy": {
+    "line": 0.9507499999999999,
+    "sine": 0.9204999999999999,
+    "sine + fast wave": 0.9172500000000001,
+    "mean": 0.9295
+   },
+   "accuracy_by_seed": {
+    "line": [
+     0.9507499999999999
+    ],
+    "sine": [
+     0.9204999999999999
+    ],
+    "sine + fast wave": [
+     0.9172500000000001
+    ]
+   }
+  },
+  "logistic": {
+   "label": "logistic regression",
+   "accuracy": {
+    "line": 0.9397500000000001,
+    "sine": 0.7757499999999999,
+    "sine + fast wave": 0.79825,
+    "mean": 0.8379166666666666
+   }
+  },
+  "forest": {
+   "label": "random forest",
+   "accuracy": {
+    "line": 0.8615,
+    "sine": 0.82675,
+    "sine + fast wave": 0.8459999999999999,
+    "mean": 0.84475
+   }
+  },
+  "ceiling": {
+   "label": "true boundary",
+   "accuracy": {
+    "line": 0.9720000058412552,
+    "sine": 0.9717500030994415,
+    "sine + fast wave": 0.9692500025033951,
+    "mean": 0.9710000038146972
+   }
+  }
+ },
+ "contrasts": {
+  "critical_value": 3.3864907779765474,
+  "contrasts": {
+   "prior: small_wave - small_line | line": {
+    "diff": -0.010749999999999992,
+    "se": 0.0027211404342954958,
+    "ci_unadjusted": [
+     -0.016249999999999976,
+     -0.005749999999999994
+    ],
+    "ci_simultaneous": [
+     -0.019965116986320787,
+     -0.0015348830136791992
+    ]
+   },
+   "prior: small_wave - small_line | sine": {
+    "diff": 0.083,
+    "se": 0.009335839262585991,
+    "ci_unadjusted": [
+     0.06674999999999998,
+     0.10175000000000001
+    ],
+    "ci_simultaneous": [
+     0.05138426643258117,
+     0.11461573356741883
+    ]
+   },
+   "prior: small_wave - small_line | sine + fast wave": {
+    "diff": 0.0855,
+    "se": 0.00717176481253504,
+    "ci_unadjusted": [
+     0.07125000000000001,
+     0.09875
+    ],
+    "ci_simultaneous": [
+     0.061212884600533396,
+     0.10978711539946662
+    ]
+   },
+   "scale: large_wave - small_wave | line": {
+    "diff": 0.0015000000000000013,
+    "se": 0.0032261268941010473,
+    "ci_unadjusted": [
+     -0.004749999999999993,
+     0.007749999999999984
+    ],
+    "ci_simultaneous": [
+     -0.009425248975455316,
+     0.012425248975455319
+    ]
+   },
+   "scale: large_wave - small_wave | sine": {
+    "diff": 0.03275000000000001,
+    "se": 0.005097406461287832,
+    "ci_unadjusted": [
+     0.023250000000000003,
+     0.042749999999999996
+    ],
+    "ci_simultaneous": [
+     0.015487680027250698,
+     0.05001231997274932
+    ]
+   },
+   "scale: large_wave - small_wave | sine + fast wave": {
+    "diff": 0.032750000000000015,
+    "se": 0.006564207171431571,
+    "ci_unadjusted": [
+     0.020500000000000018,
+     0.04575
+    ],
+    "ci_simultaneous": [
+     0.01052037294921948,
+     0.05497962705078055
+    ]
+   },
+   "vs forest: large_wave - forest | line": {
+    "diff": 0.08925000000000001,
+    "se": 0.008273888858457383,
+    "ci_unadjusted": [
+     0.07349999999999998,
+     0.10524999999999998
+    ],
+    "ci_simultaneous": [
+     0.061230551682831175,
+     0.11726944831716885
+    ]
+   },
+   "vs forest: large_wave - forest | sine": {
+    "diff": 0.09375000000000003,
+    "se": 0.008544581231461998,
+    "ci_unadjusted": [
+     0.07775000000000003,
+     0.11025
+    ],
+    "ci_simultaneous": [
+     0.06481385445798249,
+     0.12268614554201757
+    ]
+   },
+   "vs forest: large_wave - forest | sine + fast wave": {
+    "diff": 0.07125000000000001,
+    "se": 0.009211513105033856,
+    "ci_unadjusted": [
+     0.05400000000000001,
+     0.08925000000000001
+    ],
+    "ci_simultaneous": [
+     0.04005529581859274,
+     0.10244470418140728
+    ]
+   },
+   "vs logistic: large_wave - logistic | line": {
+    "diff": 0.010999999999999977,
+    "se": 0.005844475574150515,
+    "ci_unadjusted": [
+     -6.250000000015831e-06,
+     0.022249999999999954
+    ],
+    "ci_simultaneous": [
+     -0.008792262633969929,
+     0.030792262633969884
+    ]
+   },
+   "vs logistic: large_wave - logistic | sine": {
+    "diff": 0.14475,
+    "se": 0.009682288496337826,
+    "ci_unadjusted": [
+     0.12650000000000003,
+     0.16324999999999998
+    ],
+    "ci_simultaneous": [
+     0.11196101929744354,
+     0.17753898070255644
+    ]
+   },
+   "vs logistic: large_wave - logistic | sine + fast wave": {
+    "diff": 0.11900000000000002,
+    "se": 0.007178183320971514,
+    "ci_unadjusted": [
+     0.10500000000000002,
+     0.13274999999999998
+    ],
+    "ci_simultaneous": [
+     0.09469114838090492,
+     0.14330885161909512
+    ]
+   }
+  }
+ }
+}

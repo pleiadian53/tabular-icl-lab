@@ -1,6 +1,6 @@
 # Round 2 — confirmation over all 131 pairs: the in-context learner beats additivity
 
-*Part of [the results ledger](index.md), which holds the standing verdict, the scoreboard and the settings every round shares. This is route item R1.6. Previous: [round 1](round-01-tabpfn-residual.md).*
+*Part of [the results ledger](index.md), which holds the standing verdict, the scoreboard and the settings every round shares. This is route item R1.6. Previous: [round 1](round-01-tabpfn-residual.md) · Next: [round 3](round-03-leave-genes-out.md).*
 
 **Question.** Round 1 found a tie on its twenty test pairs but a clear gain on its larger secondary readouts. With every one of the 131 two-gene combinations predicted by models that never saw it, and all 131 as the primary readout, does TabPFN-3.5, untuned, predict the genetic-interaction residual well enough to beat additivity, and does the gain survive the two references that cannot learn interactions?
 

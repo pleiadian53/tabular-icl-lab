@@ -12,6 +12,9 @@
 /output/
 /runs/
 
+# Downloaded bundles: track the extracted files that matter, never the archive
+*.zip
+
 # Model checkpoints / large binaries
 *.pt
 *.pth

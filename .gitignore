@@ -12,8 +12,23 @@
 /output/
 /runs/
 
-# Downloaded bundles: track the extracted files that matter, never the archive
+# Archives and compressed files (downloaded bundles, packed data): track the
+# extracted files that matter, never the archive itself
 *.zip
+*.tar
+*.tar.*
+*.tgz
+*.tbz
+*.tbz2
+*.txz
+*.gz
+*.bz2
+*.xz
+*.zst
+*.lz4
+*.lzma
+*.7z
+*.rar
 
 # Model checkpoints / large binaries
 *.pt

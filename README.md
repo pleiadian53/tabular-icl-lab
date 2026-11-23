@@ -36,7 +36,7 @@ This lab builds on TabPFN as a library and does not fork it. TabPFN's code is re
 |---|---|
 | `src/tabicllab/` | the lab's code: adapters, feature builders, evaluation |
 | `examples/` | one folder per application, each with its own README and results |
-| `notebooks/` | measurements and rebuilds that the lab's methods start from: what TabPFN does out of the box against references (`tabpfn_capabilities/`), and a tabular in-context learner pretrained from scratch, where the prior is the part the lab will replace (`pfn_pretraining/`) |
+| `notebooks/` | measurements and rebuilds that the lab's methods start from: what TabPFN does out of the box against references (`tabpfn_capabilities/`), a tabular in-context learner pretrained from scratch, where the prior is the part the lab will replace (`pfn_pretraining/`), and transfer to groups absent from the context, with evaluation and references built around the grouping (`grouped_transfer/`) |
 | `docs/` | tutorials and write-ups |
 | `tests/` | unit tests |
 

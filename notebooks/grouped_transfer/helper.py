@@ -5,8 +5,11 @@ belong to a group it has never seen. Many tables are made of groups: cells from 
 same perturbation, patients from the same hospital, readings from the same machine,
 designs that share one building geometry. Rows inside a group share most of what
 determines the target, so a model can do well on new rows of a known group and still
-be far off on a new group. An evaluation that mixes the two answers the easier
-question without saying so.
+be far off on a new group. A random split of rows puts rows of every group into both
+the context and the test set, so every test row belongs to a group the model has
+already seen. The score then measures the easier task, filling in new rows of known
+groups, while it is easily read as a score for new groups. Only a split that holds
+out whole groups measures the harder task.
 
 The table. The UCI Energy Efficiency data (Tsanas and Xifara, 2012; DOI
 10.24432/C51307; CC BY 4.0) holds 768 simulated residential buildings. Each one is a

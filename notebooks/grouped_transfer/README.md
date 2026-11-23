@@ -19,6 +19,19 @@ Each notebook has a page in the [results ledger](docs/results/index.md), which r
 
 [`docs/group_models/`](docs/group_models/README.md) explains the two reference models of notebook 02 from the ground up, on this table. [The first note](docs/group_models/01-mixed-effects.md) covers the linear mixed-effects model: pooling, the two variances, REML, shrinkage, a prediction for an unseen geometry worked by hand, and what a few observed designs of a new geometry change. [The second](docs/group_models/02-two-stage.md) covers the two-stage model: the shift table and Gaussian process regression on the geometry means. [The third](docs/group_models/03-comparison.md) compares the two geometry by geometry and asks what each one's uncertainty is worth.
 
+## Checking a new table for groups
+
+The checks these notebooks make by hand are packaged in [`tabicllab.group_diagnostics`](../../src/tabicllab/group_diagnostics.py), for any table. It proposes grouping keys, including groups that no column names, such as a geometry that shows only as a set of columns constant within it. For each key it reports how much of the target the groups explain and how many independent rows the table is worth, and it compares one fast model's error under a random split and under a split that holds out whole groups. It then states the result in words with a suggested starting point:
+
+```python
+from tabicllab.group_diagnostics import diagnose_groups
+
+diagnosis = diagnose_groups(frame.drop(columns="geometry"), "heating_load", exclude=["cooling_load"])
+print(diagnosis.report())
+```
+
+On this table, without the `geometry` column, it finds the twelve geometries from relative compactness and surface area. It lists wall area, roof area and height as constant within each geometry, labels orientation and glazing as varied inside every geometry, and reports an intraclass correlation of 0.914, about 13 effective rows, an error 17 times larger on held-out geometries than on random rows, and 99% of that error as a per-geometry offset. It takes a few seconds.
+
 ## Data
 
 The UCI Energy Efficiency data: Athanasios Tsanas and Angeliki Xifara (2012), *Energy Efficiency* [dataset], UCI Machine Learning Repository, DOI [10.24432/C51307](https://doi.org/10.24432/C51307), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). `helper.py` downloads the workbook once into the shared data lake, under `energy/uci_energy_efficiency`, checks it against a fixed SHA-256, renames the columns and numbers the designs and geometries in the workbook's order; no value is changed.

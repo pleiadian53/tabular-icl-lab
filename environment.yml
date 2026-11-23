@@ -30,6 +30,11 @@ dependencies:
   - nbclient
   # Model-agnostic explanations (SHAP values) for the capability notebooks.
   - shap
+  # Grouped-transfer notebooks: the gradient-boosting reference, the mixed-effects
+  # reference, and the Excel reader for the UCI Energy Efficiency workbook.
+  - xgboost
+  - statsmodels
+  - openpyxl
   - pip
   - pip:
       - -e ../TabPFN

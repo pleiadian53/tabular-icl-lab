@@ -6,6 +6,8 @@
 /runs
 /dev
 /notebooks/L6
+/notebooks/building_heating_load
+*.zip
 .git
 __pycache__
 *.pyc

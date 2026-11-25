@@ -531,17 +531,77 @@ def plot_group_errors(table: pd.DataFrame, names: pd.Series, metric: str = "sign
     _finish(fig)
 
 
-def plot_predictive_quantiles(quantiles: np.ndarray, actual: float, title: str) -> None:
-    """TabPFN's nine predictive quantiles for one design, with the true value."""
+def design_label(design: pd.Series, names: pd.Series) -> str:
+    """A one-line description of one design: its geometry, glazing setup and orientation.
+
+    ``design`` is one row of the frame, such as ``current.loc["E0505"]``, and ``names``
+    the geometry labels from ``geometry_names``. Glazing distribution 0 means no windows.
+    """
+    if design["glazing_area"] == 0:
+        glazing = "no windows"
+    else:
+        glazing = f"{design['glazing_area']:.0%} glazing, distribution {int(design['glazing_distribution'])}"
+    return f"{design.name}: geometry {names[int(design['geometry'])]}, {glazing}, orientation {int(design['orientation'])}"
+
+
+def predictive_density(output: dict, row: int) -> tuple[np.ndarray, np.ndarray]:
+    """TabPFN's predictive density for one row, as bin edges and one density value per bin.
+
+    ``output`` is the dictionary that ``TabPFNRegressor.predict(..., output_type="full")``
+    returns, and ``row`` the position of a design in the rows that were predicted.
+
+    TabPFN does not assume a shape such as a normal distribution for the target. It
+    cuts the target axis into a fixed grid of a few thousand narrow bins and outputs
+    one logit per bin; a softmax turns the logits into the probability that the target
+    falls in each bin. Within a bin the density is flat, so the density there is the
+    bin's probability divided by its width, and the whole distribution is a histogram
+    with very fine bars. ``output["criterion"]`` holds the grid, already mapped to
+    heating-load units, and ``output["logits"]`` the logits, one row per design.
+
+    The first and last bins are special: beyond the grid, TabPFN spreads their mass as
+    half-normal tails, so that any value has some density. They are left out here,
+    because their bins are hundreds of units wide and their mass is negligible for
+    this table (below one in a hundred thousand for the held-out designs).
+    """
+    edges = output["criterion"].borders.detach().cpu().numpy()
+    probabilities = output["logits"][row].detach().cpu().float().softmax(-1).numpy()
+    density = probabilities / np.diff(edges)
+    return edges[1:-1], density[1:-1]
+
+
+def plot_predictive_distribution(
+    output: dict, current: pd.DataFrame, answers: pd.Series, designs: list[str], names: pd.Series
+) -> None:
+    """TabPFN's predictive density for each listed design, one panel per design.
+
+    ``output`` comes from ``predict(current[features], output_type="full")``, so its rows
+    follow ``current``'s index. Each panel shades the central 80% band (the 10% and 90%
+    quantiles TabPFN reports), marks the mean, which is the point estimate used in the
+    notebooks, the median and the true value, and shows the range holding the central
+    99% of the probability. The panels share one heating-load axis, so the widths of
+    the distributions can be compared directly.
+    """
     if not _PLOTS:
         return
-    fig, ax = plt.subplots(figsize=(6, 1.8))
-    ax.plot(quantiles, np.zeros_like(quantiles), "|", markersize=18, color="tab:blue")
-    ax.plot([quantiles[0], quantiles[-1]], [0, 0], color="tab:blue", lw=2, alpha=0.4)
-    ax.plot(quantiles[4], 0, "o", color="tab:blue", label="median")
-    ax.plot(actual, 0, "x", color="black", markersize=10, label="true value")
-    ax.set_yticks([])
-    ax.set_xlabel("heating load (10% to 90% quantiles)")
-    ax.set_title(title, fontsize=10)
-    ax.legend(fontsize=8, loc="upper right")
+    quantiles = np.asarray(output["quantiles"])
+    fig, axes = plt.subplots(len(designs), 1, figsize=(7, 2.4 * len(designs)), squeeze=False, sharex=True)
+    for ax, design in zip(axes[:, 0], designs):
+        row = current.index.get_loc(design)
+        edges, density = predictive_density(output, row)
+        cumulative = np.cumsum(density * np.diff(edges))
+        shown = slice(np.searchsorted(cumulative, 0.005), np.searchsorted(cumulative, 0.995) + 1)
+        low, high = quantiles[0, row], quantiles[-1, row]
+        ax.stairs(density[shown], edges[shown.start : shown.stop + 1], color="tab:blue", lw=1)
+        middle = (edges[:-1] + edges[1:]) / 2
+        band = (middle >= low) & (middle <= high)
+        ax.fill_between(middle[band], density[band], step="mid", color="tab:blue", alpha=0.25, lw=0,
+                        label=f"80% band, {low:.1f} to {high:.1f}")
+        ax.axvline(output["mean"][row], color="tab:blue", ls="--", lw=1.5, label=f"mean {output['mean'][row]:.2f}")
+        ax.axvline(output["median"][row], color="tab:blue", ls=":", lw=1.5, label=f"median {output['median'][row]:.2f}")
+        ax.axvline(answers[design], color="black", lw=2, label=f"true value {answers[design]:.2f}")
+        ax.set_ylim(bottom=0)
+        ax.set_ylabel("density")
+        ax.set_title(design_label(current.loc[design], names), fontsize=9)
+        ax.legend(fontsize=7, loc="upper right")
+    axes[-1, 0].set_xlabel("heating load, kWh per square metre")
     _finish(fig)

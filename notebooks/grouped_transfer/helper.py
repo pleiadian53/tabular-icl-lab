@@ -27,12 +27,18 @@ cooling load. Every combination appears exactly once, 12 x 4 x 16 = 768, so the 
 is a full factorial design and each geometry is a group of 64 designs with identical
 shape columns.
 
-The split. ``grouped_split`` holds out whole geometries: the third, seventh and
-eleventh in the order they first appear in the source workbook, 192 designs, with the
-other 576 as the context TabPFN learns from. Design identifiers follow the workbook's
-row order (``E0001`` to ``E0768``). The split is fixed so that every number in these
-notebooks refers to the same three unseen geometries; ``leave_one_group_out`` then
-repeats the split for each of the twelve geometries in turn.
+The split. ``grouped_split`` holds out whole geometries. By default it holds out
+``HELD_OUT_GEOMETRIES``, the third, seventh and eleventh in the order they first
+appear in the source workbook, 192 designs, with the other 576 as the context TabPFN
+learns from; together they are one two-storey geometry inside the range of the
+context, one one-storey geometry inside it and one just outside it. The default is
+fixed so that every number in the notebooks' text refers to the same three unseen
+geometries. Any other set can be passed, by name or drawn by ``random_geometries``,
+and ``geometry_table`` and ``plot_geometry_levels`` take the same set so that tables
+and figures mark the geometries actually held out. ``leave_one_group_out`` repeats
+the split for each of the twelve geometries in turn, which is the systematic answer
+to how the results depend on the choice. Design identifiers follow the workbook's row
+order (``E0001`` to ``E0768``).
 
 The model. ``init_tabpfn`` selects local weights: TabPFN-3.5, the lab's main model,
 when a license token is available, and TabPFN-2 otherwise. It keeps TabPFN off Apple's
@@ -166,14 +172,15 @@ def load_energy_efficiency() -> pd.DataFrame:
     return frame
 
 
-def geometry_table(frame: pd.DataFrame) -> pd.DataFrame:
-    """One row per geometry: its shape columns, design count and mean heating load."""
+def geometry_table(frame: pd.DataFrame, held_out=HELD_OUT_GEOMETRIES) -> pd.DataFrame:
+    """One row per geometry: its shape columns, design count, mean heating load, and
+    whether it is among the ``held_out`` geometries."""
     table = frame.groupby("geometry").agg(
         **{c: (c, "first") for c in SHAPE_COLUMNS},
         designs=(TARGET, "size"),
         mean_heating_load=(TARGET, "mean"),
     )
-    table["held_out"] = table.index.isin(HELD_OUT_GEOMETRIES)
+    table["held_out"] = table.index.isin(held_out)
     return table
 
 
@@ -189,15 +196,52 @@ def geometry_names(frame: pd.DataFrame) -> pd.Series:
     )
 
 
+def random_geometries(frame: pd.DataFrame, n: int = 3, seed: int | None = None,
+                      stratify: str | None = "overall_height") -> tuple[int, ...]:
+    """Draw ``n`` geometries at random to hold out, as a sorted tuple of geometry numbers.
+
+    With ``stratify`` set to a column that is constant within each geometry, the draw
+    first takes one geometry from each value of that column and fills the rest from
+    the remaining geometries. The default, ``"overall_height"``, guarantees at least
+    one one-storey and one two-storey geometry. A plain draw of three from twelve
+    puts all three at the same height in 2 of every 11 draws, and such a split says
+    nothing about buildings of the other height. Pass ``stratify=None`` for a plain
+    draw. ``seed`` makes the
+    draw repeatable; ``None`` gives a new draw each call.
+    """
+    rng = np.random.default_rng(seed)
+    geometries = frame.groupby("geometry").first()
+    if not 1 <= n < len(geometries):
+        raise ValueError(f"n must be between 1 and {len(geometries) - 1}, leaving some geometries as context")
+    chosen: list[int] = []
+    if stratify is not None:
+        levels = geometries.groupby(stratify).groups
+        if n < len(levels):
+            raise ValueError(f"n={n} cannot cover the {len(levels)} values of {stratify!r}; use a larger n or stratify=None")
+        chosen = [int(rng.choice(np.asarray(members))) for members in levels.values()]
+    rest = np.setdiff1d(geometries.index.to_numpy(), chosen)
+    chosen += [int(g) for g in rng.choice(rest, size=n - len(chosen), replace=False)]
+    return tuple(sorted(chosen))
+
+
 def grouped_split(frame: pd.DataFrame, held_out=HELD_OUT_GEOMETRIES):
     """Hold out whole geometries. Returns ``(history, current, answers)``.
 
-    ``history`` is every design of the other geometries, with both outcomes: the
-    labelled context. ``current`` is the held-out designs with the design columns and
-    the geometry label only: what a design team would have before simulating.
-    ``answers`` is the held-out heating loads, used only to score predictions.
+    ``held_out`` is any collection of geometry numbers; the default is
+    ``HELD_OUT_GEOMETRIES``, the split the notebooks' text describes, and
+    ``random_geometries`` draws another. ``history`` is every design of the other
+    geometries, with both outcomes: the labelled context. ``current`` is the held-out
+    designs with the design columns and the geometry label only: what a design team
+    would have before simulating. ``answers`` is the held-out heating loads, used only
+    to score predictions.
     """
+    held_out = [int(g) for g in held_out]
+    unknown = sorted(set(held_out) - set(frame["geometry"].unique()))
+    if unknown:
+        raise ValueError(f"no geometry numbered {unknown}; the geometries are numbered 0 to {frame['geometry'].max()}")
     test = frame["geometry"].isin(held_out)
+    if test.all() or not test.any():
+        raise ValueError("held_out must leave at least one geometry on each side of the split")
     history = frame.loc[~test].copy()
     current = frame.loc[test, DESIGN_COLUMNS + ["geometry"]].copy()
     answers = frame.loc[test, TARGET].copy()
@@ -475,9 +519,9 @@ def _finish(fig) -> None:
         plt.show()
 
 
-def plot_geometry_levels(frame: pd.DataFrame) -> None:
+def plot_geometry_levels(frame: pd.DataFrame, held_out=HELD_OUT_GEOMETRIES) -> None:
     """Heating load of every design, one column of points per geometry, ordered by
-    compactness within each height; held-out geometries marked."""
+    compactness within each height; the ``held_out`` geometries marked in orange."""
     if not _PLOTS:
         return
     names = geometry_names(frame)
@@ -486,7 +530,7 @@ def plot_geometry_levels(frame: pd.DataFrame) -> None:
     fig, ax = plt.subplots(figsize=(9, 4))
     for x, g in enumerate(order):
         values = frame.loc[frame["geometry"] == g, TARGET]
-        held = g in HELD_OUT_GEOMETRIES
+        held = g in held_out
         ax.scatter(np.full(len(values), x) + np.random.default_rng(g).uniform(-0.15, 0.15, len(values)), values,
                    s=8, alpha=0.6, color="tab:orange" if held else "tab:blue")
     ax.set_xticks(range(len(order)), [names[g] for g in order], rotation=45, ha="right")
@@ -529,6 +573,26 @@ def plot_group_errors(table: pd.DataFrame, names: pd.Series, metric: str = "sign
     ax.set_ylabel("mean signed error" if metric == "signed" else "MAE")
     ax.legend(fontsize=8)
     _finish(fig)
+
+
+def find_design(current: pd.DataFrame, geometry: int, orientation: int = 2,
+                glazing_area: float = 0.0, glazing_distribution: int = 0) -> str:
+    """The identifier of the design with the given geometry, orientation and glazing setup.
+
+    Every combination appears exactly once in the table, so the match is unique when
+    the geometry is among the rows of ``current``. The defaults describe a design with
+    no windows facing orientation 2; glazing distribution 0 means no windows.
+    """
+    match = current.index[
+        (current["geometry"] == geometry)
+        & (current["orientation"] == orientation)
+        & np.isclose(current["glazing_area"], glazing_area)
+        & (current["glazing_distribution"] == glazing_distribution)
+    ]
+    if len(match) != 1:
+        raise KeyError(f"no single design with geometry {geometry}, orientation {orientation}, "
+                       f"glazing area {glazing_area}, distribution {glazing_distribution} among these rows")
+    return match[0]
 
 
 def design_label(design: pd.Series, names: pd.Series) -> str:

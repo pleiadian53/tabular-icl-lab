@@ -19,6 +19,10 @@ Each notebook has a page in the [results ledger](docs/results/index.md), which r
 
 [`docs/group_models/`](docs/group_models/README.md) explains the two reference models of notebook 02 from the ground up, on this table. [The first note](docs/group_models/01-mixed-effects.md) covers the linear mixed-effects model: pooling, the two variances, REML, shrinkage, a prediction for an unseen geometry worked by hand, and what a few observed designs of a new geometry change. [The second](docs/group_models/02-two-stage.md) covers the two-stage model: the shift table and Gaussian process regression on the geometry means. [The third](docs/group_models/03-comparison.md) compares the two geometry by geometry and asks what each one's uncertainty is worth.
 
+## Notes on the statistics behind the outputs
+
+[`docs/data_science/`](docs/data_science/README.md) explains the statistical ideas the notebooks' outputs rest on, using those outputs. [The first note](docs/data_science/01-predictive-distribution-shape.md) reads the shape of TabPFN's predictive distributions in notebook 01. It covers the peak, the median and the mean, right and left skew, which summary suits which cost of error, the probability below the truth, and what these show on the three held-out geometries.
+
 ## Checking a new table for groups
 
 The checks these notebooks make by hand are packaged in [`tabicllab.group_diagnostics`](../../src/tabicllab/group_diagnostics.py), for any table. It proposes grouping keys, including groups that no column names, such as a geometry that shows only as a set of columns constant within it. For each key it reports how much of the target the groups explain and how many independent rows the table is worth, and it compares one fast model's error under a random split and under a split that holds out whole groups. It then states the result in words with a suggested starting point:

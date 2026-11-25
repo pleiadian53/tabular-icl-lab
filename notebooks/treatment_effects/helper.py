@@ -115,8 +115,19 @@ def _sigmoid(z):
     return 1 / (1 + np.exp(-z))
 
 
-def simulate_care_program(n: int = 2000, selection: float = 1.0, seed: int = SEED) -> pd.DataFrame:
+SCENARIOS = ("smooth", "rules")
+"""The two versions of the program: ``smooth`` (the notebook's) and ``rules`` (harder for
+models without interactions; see ``simulate_care_program``)."""
+
+
+def simulate_care_program(n: int = 2000, selection: float = 1.0, seed: int = SEED,
+                          scenario: str = "smooth") -> pd.DataFrame:
     """Draw ``n`` members of the simulated care program.
+
+    ``scenario`` chooses how outcomes and the coaches' decisions depend on the
+    covariates; the covariates themselves, the noise and the random draws are the same
+    in both, so a seed gives the same members in either scenario. ``smooth``, the
+    default and the notebook's, is described first; ``rules`` follows.
 
     Covariates, drawn independently except where stated:
 
@@ -157,7 +168,27 @@ def simulate_care_program(n: int = 2000, selection: float = 1.0, seed: int = SEE
     The coached members therefore have higher HbA1c and more app days: the same two
     things that make members improve without coaching. That is confounding, and it is
     the reason a plain comparison of the two arms overstates the effect.
+
+    The ``rules`` scenario keeps that structure but makes every part depend on
+    thresholds and combinations of covariates, which a model without interaction terms
+    cannot represent. With ``[...]`` an indicator, 1 when the condition holds and 0
+    otherwise:
+
+    - ``mu0 = 0.1 + 0.3 (h - 8) + 0.35 [h >= 9.5] + 0.3 tanh((a - 12) / 5) (1 + [h >= 9])
+      - 0.3 u [bmi >= 36] - 0.25 ((age - 52.5) / 13)^2``. Engagement matters twice as
+      much for members with a high HbA1c, insulin users with a high BMI improve less, and
+      improvement peaks in middle age.
+    - ``true_effect = 0.1 + 0.45 [h >= 8.5] [a >= 12] + 0.25 max(h - 7.5, 0) (1 - u)
+      + 0.15 [age < 45] [a >= 18] - 0.15 u [bmi >= 36]``. The call helps most when a high
+      HbA1c meets an engaged member, its slope in HbA1c applies only to members not on
+      insulin, and it slightly harms insulin users with a high BMI.
+    - ``true_propensity = sigmoid(-0.7 + selection (1.5 [h >= 9] + 1.1 [a >= 15] [age < 55]
+      + 0.9 [h >= 8] [a >= 10] - 1.0 u [bmi >= 36]))``: coaches follow rules of thumb,
+      calling members with a high HbA1c, young engaged members, and members who are both
+      above 8 and active, and avoiding insulin users with a high BMI.
     """
+    if scenario not in SCENARIOS:
+        raise ValueError(f"scenario must be one of {SCENARIOS}")
     rng = np.random.default_rng(seed)
     age = rng.uniform(30, 75, n)
     h = np.clip(rng.normal(8.0, 1.2, n), 6.0, 13.0)
@@ -168,12 +199,23 @@ def simulate_care_program(n: int = 2000, selection: float = 1.0, seed: int = SEE
     sex = rng.binomial(1, 0.5, n)
     ldl = np.clip(rng.normal(100, 30, n), 40, 250)
 
-    mu0 = 0.35 * (h - 8) + 0.25 * np.tanh((app_days - 12) / 6) - 0.15 * insulin - 0.02 * (bmi - 34) - 0.005 * (age - 52.5)
-    effect = 0.2 + 0.3 * np.maximum(h - 7.5, 0) + 0.25 * _sigmoid((app_days - 15) / 3) - 0.2 * insulin
+    if scenario == "smooth":
+        mu0 = 0.35 * (h - 8) + 0.25 * np.tanh((app_days - 12) / 6) - 0.15 * insulin - 0.02 * (bmi - 34) - 0.005 * (age - 52.5)
+        effect = 0.2 + 0.3 * np.maximum(h - 7.5, 0) + 0.25 * _sigmoid((app_days - 15) / 3) - 0.2 * insulin
+        z = 0.9 * (h - 8) / 1.2 + 0.7 * (app_days - 12) / 6 - 0.3 * (age - 52.5) / 13
+        logit = -0.4 + selection * z
+    else:
+        heavy_insulin = insulin * (bmi >= 36)
+        mu0 = (0.1 + 0.3 * (h - 8) + 0.35 * (h >= 9.5) + 0.3 * np.tanh((app_days - 12) / 5) * (1 + (h >= 9))
+               - 0.3 * heavy_insulin - 0.25 * ((age - 52.5) / 13) ** 2)
+        effect = (0.1 + 0.45 * (h >= 8.5) * (app_days >= 12) + 0.25 * np.maximum(h - 7.5, 0) * (1 - insulin)
+                  + 0.15 * (age < 45) * (app_days >= 18) - 0.15 * heavy_insulin)
+        rules = (1.5 * (h >= 9) + 1.1 * (app_days >= 15) * (age < 55) + 0.9 * (h >= 8) * (app_days >= 10)
+                 - 1.0 * heavy_insulin)
+        logit = -0.7 + selection * rules
     y0 = mu0 + rng.normal(0, 0.5, n)
     y1 = y0 + effect
-    z = 0.9 * (h - 8) / 1.2 + 0.7 * (app_days - 12) / 6 - 0.3 * (age - 52.5) / 13
-    propensity = _sigmoid(-0.4 + selection * z)
+    propensity = _sigmoid(logit)
     coached = rng.binomial(1, propensity)
 
     frame = pd.DataFrame({

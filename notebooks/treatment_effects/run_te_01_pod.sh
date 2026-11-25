@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
-# Treatment effects, notebook 01, on the GPU pod: preflight, a smoke execution (TE_SMOKE=1,
-# 300 members, a light TabPFN), then the full execution. Any preflight or smoke failure stops
-# the job before the full run.
+# Treatment effects, notebook 01, on the GPU pod: preflight, a smoke run, then the full run.
+# Any preflight or smoke failure stops the job before the full run.
+#
+# MODE=notebook (default): execute the notebook, smoke first with TE_SMOKE=1 (300 members, a
+#   light TabPFN), and copy the executed notebook to $OUT.
+# MODE=report: run 01_effects_with_a_known_answer_report.py, smoke first, then every seed of
+#   both scenarios and the aggregate, and copy docs/results/reports/ to $OUT/reports.
 #
 # Nothing is read from the volume except the TabPFN-3.5 weights, which live in this lab's
 # namespace. The executed notebook and the logs are copied to $OUT, to be fetched to the
@@ -46,6 +50,22 @@ EOF
 }
 
 cd "$HERE" || exit 1
+if [ "${MODE:-notebook}" = "report" ]; then
+  echo "==== smoke (report, TE_SMOKE=1) ===="
+  start=$(date +%s)
+  python 01_effects_with_a_known_answer_report.py --smoke > "$OUT/report_smoke.log" 2>&1 \
+    || { echo "SMOKE FAILED"; tail -40 "$OUT/report_smoke.log"; exit 1; }
+  echo "smoke done in $(( $(date +%s) - start )) s"
+  echo "==== full run (report) ===="
+  start=$(date +%s)
+  python -u 01_effects_with_a_known_answer_report.py --run --aggregate 2>&1 | tee "$OUT/report_run.log"
+  status=${PIPESTATUS[0]}
+  echo "full run exit status $status after $(( $(date +%s) - start )) s"
+  mkdir -p "$OUT/reports" && cp -r docs/results/reports/. "$OUT/reports/"
+  ls -la "$OUT/reports" "$OUT/reports/runs" | tail -30
+  echo "Fetch: $OUT/reports/"
+  exit $status
+fi
 echo "==== smoke (TE_SMOKE=1) ===="
 start=$(date +%s)
 TE_SMOKE=1 execute "$OUT/smoke.ipynb" > "$OUT/smoke.log" 2>&1 || { echo "SMOKE FAILED"; tail -40 "$OUT/smoke.log"; exit 1; }

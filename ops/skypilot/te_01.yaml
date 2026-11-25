@@ -12,7 +12,7 @@
 # without its dependencies, pinned to the upstream commit the lab develops against, and its
 # other dependencies are added explicitly, as in r1_7.yaml.
 #
-# Launch from the repo root (see ops/README.md):
+# Launch from the repo root (see ops/README.md); add --env MODE=report for the report:
 #   sky launch -c ticl-te ops/skypilot/te_01.yaml --secret TABPFN_TOKEN="" \
 #     --idle-minutes-to-autostop 30 --down -y --detach-run
 name: ticl-te-01
@@ -35,6 +35,8 @@ resources:
     - accelerators: H100:1
 volumes:
   /runpod-volume: AI lab extension
+envs:
+  MODE: notebook   # or report: --env MODE=report runs the seeds-and-scenarios report instead
 secrets:
   TABPFN_TOKEN: null
 setup: |

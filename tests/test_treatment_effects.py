@@ -108,3 +108,15 @@ def test_overlap_summary_counts_extreme_propensities():
     summary = overlap_summary(t, e)
     assert summary["share_extreme"] == 0.5
     assert 1 <= summary["effective_n_treated"] <= 2
+
+
+def test_every_estimator_runs_on_a_tiny_table():
+    X, t, y, tau, _ = confounded(n=40, seed=5)
+    folds = fold_ids(t, n_folds=2, seed=5)
+    nu = fit_nuisances(X, t, y, linear, logistic, folds)
+    for estimate in (s_learner(X, t, y, linear, folds), t_learner(nu), x_learner(X, t, y, nu, linear, folds),
+                     dr_learner(X, t, y, nu, linear, folds)):
+        assert estimate.shape == (40,) and np.isfinite(estimate).all()
+    for estimate in (naive_difference(t, y), ipw_ate(t, y, nu.e), aipw_ate(t, y, nu)):
+        assert np.isfinite(estimate.estimate) and np.isfinite(estimate.se)
+    assert np.isfinite(cate_scores(t_learner(nu), tau)["pehe"])

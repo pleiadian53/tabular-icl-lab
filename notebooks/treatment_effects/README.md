@@ -8,9 +8,13 @@
 
 | Notebook | What it measures |
 |---|---|
-| [`01_effects_with_a_known_answer.ipynb`](01_effects_with_a_known_answer.ipynb) | On a simulated care program where every member's true effect is known: how far the plain comparison of treated and untreated is off, how well linear models, tuned gradient boosting and TabPFN fit the propensity and outcome models, which estimators recover the average effect (regression adjustment, inverse propensity weighting, the doubly robust AIPW, with DoubleML as a cross-check), which recover each member's effect (S-, T-, X- and DR-learners), how well each targets the members who benefit most, and what happens as the treated and untreated stop overlapping. |
+| [`01_effects_with_a_known_answer.ipynb`](01_effects_with_a_known_answer.ipynb) | On a simulated care program where every member's true effect is known: how far the plain comparison of treated and untreated is off, how well linear models, tuned gradient boosting and TabPFN fit the propensity and outcome models, which estimators recover the average effect (regression adjustment, inverse propensity weighting, the doubly robust AIPW, with DoubleML as a cross-check), which recover each member's effect (S-, T-, X- and DR-learners), how well each targets the members who benefit most, and what happens as the treated and untreated stop overlapping. Repeated over ten draws and in a harder scenario on the [results page](docs/results/01-effects-with-a-known-answer.md). |
 
 Planned: a real observational study with a known textbook answer, a randomized trial used as the ground truth for observational methods (including variance reduction with pre-treatment predictions, CUPED and CUPAC), uplift modelling and treatment policies, and in-context learners pretrained specifically for causal effects.
+
+## Results
+
+The [results ledger](docs/results/index.md) repeats each notebook's analysis over independent draws, records every number in JSON reports written by the notebook's report script, and says what the characterizations add up to.
 
 ## Code
 

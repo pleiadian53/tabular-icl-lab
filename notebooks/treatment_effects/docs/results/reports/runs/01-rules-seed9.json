@@ -1,0 +1,418 @@
+{
+ "scenario": "rules",
+ "seed": 9,
+ "n": 2000,
+ "n_folds": 5,
+ "true_ate": 0.28865276357472547,
+ "true_att": 0.368140038695346,
+ "true_effect_sd": 0.29366018202317107,
+ "overlap": {
+  "propensity_min": 0.15446526508353473,
+  "propensity_max": 0.9426758241011313,
+  "share_extreme": 0.0,
+  "effective_n_treated": 821.8122880419596,
+  "effective_n_control": 766.8042030495469,
+  "n_treated": 973,
+  "n_control": 1027
+ },
+ "plain": {
+  "estimate": 0.6715372725953203,
+  "se": 0.0363626308869186,
+  "error": 0.3828845090205948
+ },
+ "learners": {
+  "linear": {
+   "nuisance_rmse": {
+    "mu0": 0.28826484103998457,
+    "mu1": 0.35694855417647997,
+    "propensity": 0.12704034110679885
+   },
+   "average": {
+    "regression adjustment": {
+     "estimate": 0.36314964493962815,
+     "error": 0.07449688136490268
+    },
+    "IPW": {
+     "estimate": 0.35341431438423637,
+     "se": 0.0380590953928385,
+     "error": 0.0647615508095109,
+     "covered": true
+    },
+    "AIPW": {
+     "estimate": 0.38311984038837554,
+     "se": 0.02782838648843228,
+     "error": 0.09446707681365007,
+     "covered": false
+    }
+   },
+   "individual": {
+    "S-learner": {
+     "pehe": 0.30104466883551023,
+     "ate_error": 0.06603544354476498,
+     "correlation": -0.0020066403106033803,
+     "slope": -3.417679608933698e-05,
+     "targeting": -0.006373601470642457
+    },
+    "T-learner": {
+     "pehe": 0.23451343716107537,
+     "ate_error": 0.07449688136490268,
+     "correlation": 0.7658576445964173,
+     "slope": 0.892809028918997,
+     "targeting": 0.8740807004798987
+    },
+    "X-learner": {
+     "pehe": 0.23094321022909986,
+     "ate_error": 0.07417652961453614,
+     "correlation": 0.77145685351629,
+     "slope": 0.8937450617238791,
+     "targeting": 0.8790334620292029
+    },
+    "DR-learner": {
+     "pehe": 0.2117394892174185,
+     "ate_error": 0.09458951283389827,
+     "correlation": 0.7664836286824005,
+     "slope": 0.6337273244697796,
+     "targeting": 0.8679385584774435
+    }
+   },
+   "seconds": {
+    "nuisances": 0.03388720704242587,
+    "meta_learners": 0.040587756084278226
+   }
+  },
+  "gradient boosting": {
+   "nuisance_rmse": {
+    "mu0": 0.19002565545425162,
+    "mu1": 0.18312049305583727,
+    "propensity": 0.09673018230295351
+   },
+   "average": {
+    "regression adjustment": {
+     "estimate": 0.3439103928585246,
+     "error": 0.055257629283799126
+    },
+    "IPW": {
+     "estimate": 0.4112176370026033,
+     "se": 0.03604666046043825,
+     "error": 0.12256487342787781,
+     "covered": false
+    },
+    "AIPW": {
+     "estimate": 0.3313637541951063,
+     "se": 0.023777106375162445,
+     "error": 0.042710990620380807,
+     "covered": true
+    }
+   },
+   "individual": {
+    "S-learner": {
+     "pehe": 0.15370371970944793,
+     "ate_error": -0.002008312765151732,
+     "correlation": 0.859190946973579,
+     "slope": 0.6436319741130659,
+     "targeting": 0.9148870527287637
+    },
+    "T-learner": {
+     "pehe": 0.21192599530985495,
+     "ate_error": 0.055257629283799126,
+     "correlation": 0.8378934776378394,
+     "slope": 1.0648519520223978,
+     "targeting": 0.8680765918306613
+    },
+    "X-learner": {
+     "pehe": 0.13461126924191427,
+     "ate_error": 0.015992608178641232,
+     "correlation": 0.9115344878717326,
+     "slope": 0.6530831507454984,
+     "targeting": 0.9799198352890179
+    },
+    "DR-learner": {
+     "pehe": 0.15650287110127886,
+     "ate_error": 0.03921999277195637,
+     "correlation": 0.8579221141102943,
+     "slope": 0.7764244472671823,
+     "targeting": 0.9326801517218958
+    }
+   },
+   "seconds": {
+    "nuisances": 7.440176239004359,
+    "meta_learners": 10.6169140660204
+   }
+  },
+  "TabPFN": {
+   "nuisance_rmse": {
+    "mu0": 0.16916433665884018,
+    "mu1": 0.161902233661087,
+    "propensity": 0.09172249690076549
+   },
+   "average": {
+    "regression adjustment": {
+     "estimate": 0.3497104112249866,
+     "error": 0.061057647650261115
+    },
+    "IPW": {
+     "estimate": 0.36315470296636354,
+     "se": 0.03741918118487106,
+     "error": 0.07450193939163807,
+     "covered": false
+    },
+    "AIPW": {
+     "estimate": 0.33384784329849015,
+     "se": 0.024447468543449032,
+     "error": 0.045195079723764686,
+     "covered": true
+    }
+   },
+   "individual": {
+    "S-learner": {
+     "pehe": 0.10797457787182949,
+     "ate_error": 0.03184407059009958,
+     "correlation": 0.9362641500981673,
+     "slope": 0.8719805463993238,
+     "targeting": 0.963383401779754
+    },
+    "T-learner": {
+     "pehe": 0.1742586609415775,
+     "ate_error": 0.061057647650261115,
+     "correlation": 0.8891220529876233,
+     "slope": 1.0709062440912678,
+     "targeting": 0.9408346189997052
+    },
+    "X-learner": {
+     "pehe": 0.11841811541292756,
+     "ate_error": 0.02426858742145588,
+     "correlation": 0.9303444756910838,
+     "slope": 0.7296953216187333,
+     "targeting": 0.9594450732653874
+    },
+    "DR-learner": {
+     "pehe": 0.13078297212006448,
+     "ate_error": 0.05717913120103901,
+     "correlation": 0.9200266533180598,
+     "slope": 0.9227459341915986,
+     "targeting": 0.9679129624685385
+    }
+   },
+   "seconds": {
+    "nuisances": 10.528560074046254,
+    "meta_learners": 15.776117164990865
+   }
+  }
+ },
+ "sweep": [
+  {
+   "selection": 0.0,
+   "overlap": {
+    "propensity_min": 0.3318122278318339,
+    "propensity_max": 0.3318122278318339,
+    "share_extreme": 0.0,
+    "effective_n_treated": 680.0,
+    "effective_n_control": 1320.0,
+    "n_treated": 680,
+    "n_control": 1320
+   },
+   "naive_error": 0.030758423111774458,
+   "learners": {
+    "linear": {
+     "IPW": {
+      "error": 0.03686111602254549,
+      "se": 0.039357343266083186,
+      "covered": true
+     },
+     "AIPW": {
+      "error": 0.03630897823121387,
+      "se": 0.02828772788279649,
+      "covered": true
+     }
+    },
+    "gradient boosting": {
+     "IPW": {
+      "error": 0.03177621690996357,
+      "se": 0.04030254608990249,
+      "covered": true
+     },
+     "AIPW": {
+      "error": 0.02544619402290238,
+      "se": 0.025145667327328848,
+      "covered": true
+     }
+    },
+    "TabPFN": {
+     "IPW": {
+      "error": 0.031329388074398334,
+      "se": 0.03921183637054765,
+      "covered": true
+     },
+     "AIPW": {
+      "error": 0.028289358239910245,
+      "se": 0.024415400689913505,
+      "covered": true
+     }
+    }
+   }
+  },
+  {
+   "selection": 1.0,
+   "overlap": {
+    "propensity_min": 0.15446526508353473,
+    "propensity_max": 0.9426758241011313,
+    "share_extreme": 0.0,
+    "effective_n_treated": 821.8122880419596,
+    "effective_n_control": 766.8042030495469,
+    "n_treated": 973,
+    "n_control": 1027
+   },
+   "naive_error": 0.3828845090205948,
+   "learners": {
+    "linear": {
+     "IPW": {
+      "error": 0.0647615508095109,
+      "se": 0.0380590953928385,
+      "covered": true
+     },
+     "AIPW": {
+      "error": 0.09446707681365007,
+      "se": 0.02782838648843228,
+      "covered": false
+     }
+    },
+    "gradient boosting": {
+     "IPW": {
+      "error": 0.12256487342787781,
+      "se": 0.03604666046043825,
+      "covered": false
+     },
+     "AIPW": {
+      "error": 0.042710990620380807,
+      "se": 0.023777106375162445,
+      "covered": true
+     }
+    },
+    "TabPFN": {
+     "IPW": {
+      "error": 0.07450193939163807,
+      "se": 0.03741918118487106,
+      "covered": false
+     },
+     "AIPW": {
+      "error": 0.045195079723764686,
+      "se": 0.024447468543449032,
+      "covered": true
+     }
+    }
+   }
+  },
+  {
+   "selection": 2.0,
+   "overlap": {
+    "propensity_min": 0.06297335605699649,
+    "propensity_max": 0.9981670610575072,
+    "share_extreme": 0.16,
+    "effective_n_treated": 791.0535603128143,
+    "effective_n_control": 168.47088460308143,
+    "n_treated": 1154,
+    "n_control": 846
+   },
+   "naive_error": 0.510084100500595,
+   "learners": {
+    "linear": {
+     "IPW": {
+      "error": 0.09452885676148448,
+      "se": 0.041844314315467465,
+      "covered": false
+     },
+     "AIPW": {
+      "error": 0.14120777126008827,
+      "se": 0.03060722443588011,
+      "covered": false
+     }
+    },
+    "gradient boosting": {
+     "IPW": {
+      "error": 0.07618394522588057,
+      "se": 0.056248187470126935,
+      "covered": true
+     },
+     "AIPW": {
+      "error": 0.04946782869117866,
+      "se": 0.03287621992336116,
+      "covered": true
+     }
+    },
+    "TabPFN": {
+     "IPW": {
+      "error": -0.005597773293693709,
+      "se": 0.06435523178846414,
+      "covered": true
+     },
+     "AIPW": {
+      "error": 0.024513687216973,
+      "se": 0.04025562725583579,
+      "covered": true
+     }
+    }
+   }
+  },
+  {
+   "selection": 3.0,
+   "overlap": {
+    "propensity_min": 0.024127021417669196,
+    "propensity_max": 0.9999445514752772,
+    "share_extreme": 0.272,
+    "effective_n_treated": 556.2653240742328,
+    "effective_n_control": 243.20678401330196,
+    "n_treated": 1215,
+    "n_control": 785
+   },
+   "naive_error": 0.5530835949341543,
+   "learners": {
+    "linear": {
+     "IPW": {
+      "error": 0.1488323863090515,
+      "se": 0.041625606587478055,
+      "covered": false
+     },
+     "AIPW": {
+      "error": 0.20305071022724092,
+      "se": 0.03224198769267997,
+      "covered": false
+     }
+    },
+    "gradient boosting": {
+     "IPW": {
+      "error": 0.24496087389367827,
+      "se": 0.03747068562279541,
+      "covered": false
+     },
+     "AIPW": {
+      "error": 0.1650147888634919,
+      "se": 0.03156199708175329,
+      "covered": false
+     }
+    },
+    "TabPFN": {
+     "IPW": {
+      "error": 0.20634664001889264,
+      "se": 0.04162426890992665,
+      "covered": false
+     },
+     "AIPW": {
+      "error": 0.12379553792523301,
+      "se": 0.03743363875996419,
+      "covered": false
+     }
+    }
+   }
+  }
+ ],
+ "seconds": 115.40249178395607,
+ "environment": {
+  "python": "3.12.3",
+  "torch": "2.7.0a0+ecf3bae40a.nv25.02",
+  "tabpfn": "9.2.0",
+  "sklearn": "1.9.1",
+  "xgboost": "2.1.3",
+  "device": "NVIDIA A40",
+  "tabpfn_weights": "v3.5"
+ }
+}

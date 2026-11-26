@@ -1,21 +1,21 @@
-# Treatment effects, notebook 01 (notebooks/treatment_effects/01_effects_with_a_known_answer.ipynb),
-# executed end to end on a RunPod GPU pod via SkyPilot. The notebook fits TabPFN several dozen
-# times (cross-fitted nuisances, four meta-learners, a DoubleML cross-check and a sweep over six
-# selection strengths) on 2,000 simulated members, which is minutes on a GPU and far too slow
-# for the laptop's CPU.
+# Treatment-effect notebooks (notebooks/treatment_effects/), executed end to end on a RunPod GPU
+# pod via SkyPilot. Each notebook fits TabPFN dozens of times (cross-fitted nuisances,
+# meta-learners, cross-checks), which is minutes on a GPU and far too slow for the laptop's CPU.
 #
-# No data is read: the notebook simulates its own table. The TabPFN-3.5 weights are already on
-# the network volume, in this lab's namespace, so no token is needed. The executed notebook is
-# copied to /runpod-volume/tabular-icl-lab/output/te_01/ and fetched from there.
+# NOTEBOOK names the notebook to execute; MODE=report runs notebook 01's report script instead.
+# Data are downloaded once into the lake on the network volume, /runpod-volume/tabular-icl-lab/data.
+# The TabPFN-3.5 weights are already on the volume, in this lab's namespace, so no token is
+# needed. Outputs are copied to /runpod-volume/tabular-icl-lab/output/te/<notebook stem>/; fetch
+# them before the pod's autostop deletes it.
 #
 # The NGC image ships a CUDA build of torch that pip must not replace, so TabPFN is installed
 # without its dependencies, pinned to the upstream commit the lab develops against, and its
 # other dependencies are added explicitly, as in r1_7.yaml.
 #
-# Launch from the repo root (see ops/README.md); add --env MODE=report for the report:
-#   sky launch -c ticl-te ops/skypilot/te_01.yaml --secret TABPFN_TOKEN="" \
+# Launch from the repo root (see ops/README.md); add --env NOTEBOOK=... or --env MODE=report:
+#   sky launch -c ticl-te ops/skypilot/te.yaml --secret TABPFN_TOKEN="" \
 #     --idle-minutes-to-autostop 30 --down -y --detach-run
-name: ticl-te-01
+name: ticl-te
 workdir: .
 resources:
   cloud: runpod
@@ -36,7 +36,8 @@ resources:
 volumes:
   /runpod-volume: AI lab extension
 envs:
-  MODE: notebook   # or report: --env MODE=report runs the seeds-and-scenarios report instead
+  NOTEBOOK: 01_effects_with_a_known_answer.ipynb   # --env NOTEBOOK=... for another notebook
+  MODE: notebook   # or report: --env MODE=report runs notebook 01's report script instead
 secrets:
   TABPFN_TOKEN: null
 setup: |
@@ -63,4 +64,4 @@ setup: |
   pip install --no-deps .
   python -m ipykernel install --user --name tabicllab
 run: |
-  bash notebooks/treatment_effects/run_te_01_pod.sh
+  bash notebooks/treatment_effects/run_te_pod.sh

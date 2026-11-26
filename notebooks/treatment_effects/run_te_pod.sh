@@ -1,25 +1,26 @@
 #!/usr/bin/env bash
-# Treatment effects, notebook 01, on the GPU pod: preflight, a smoke run, then the full run.
+# Treatment-effect notebooks on the GPU pod: preflight, a smoke run, then the full run.
 # Any preflight or smoke failure stops the job before the full run.
 #
-# MODE=notebook (default): execute the notebook, smoke first with TE_SMOKE=1 (300 members, a
-#   light TabPFN), and copy the executed notebook to $OUT.
+# MODE=notebook (default): execute $NOTEBOOK (default notebook 01), smoke first with TE_SMOKE=1
+#   (small tables, a light TabPFN), and copy the executed notebook to $OUT.
 # MODE=report: run 01_effects_with_a_known_answer_report.py, smoke first, then every seed of
 #   both scenarios and the aggregate, and copy docs/results/reports/ to $OUT/reports.
 #
-# Nothing is read from the volume except the TabPFN-3.5 weights, which live in this lab's
-# namespace. The executed notebook and the logs are copied to $OUT, to be fetched to the
-# laptop, where the executed notebook replaces the unexecuted one.
+# The TabPFN-3.5 weights live in this lab's namespace on the volume, and data are downloaded
+# once into the lake there ($DATA_LAKE_ROOT). The executed notebook and the logs are copied to
+# $OUT, to be fetched to the laptop, where the executed notebook replaces the unexecuted one.
 #
 # Usage (on the pod, from the repo root):
-#   bash notebooks/treatment_effects/run_te_01_pod.sh
+#   NOTEBOOK=02_observational_study_nhefs.ipynb bash notebooks/treatment_effects/run_te_pod.sh
 set -uo pipefail
 VOL="${VOL:-/runpod-volume}"
-OUT="${OUT:-$VOL/tabular-icl-lab/output/te_01}"
+NOTEBOOK="${NOTEBOOK:-01_effects_with_a_known_answer.ipynb}"
+OUT="${OUT:-$VOL/tabular-icl-lab/output/te/${NOTEBOOK%.ipynb}}"
+export DATA_LAKE_ROOT="${DATA_LAKE_ROOT:-$VOL/tabular-icl-lab/data}"
 export TABPFN_MODEL_CACHE_DIR="${TABPFN_MODEL_CACHE_DIR:-$VOL/tabular-icl-lab/models/tabpfn}"
 export TABPFN_NO_BROWSER=1
 HERE=notebooks/treatment_effects
-NOTEBOOK=01_effects_with_a_known_answer.ipynb
 WEIGHTS="$TABPFN_MODEL_CACHE_DIR/tabpfn-v3.5-20260909.safetensors"
 mkdir -p "$OUT"
 
@@ -36,16 +37,16 @@ EOF
 jupyter kernelspec list | grep -q tabicllab || { echo "PREFLIGHT FAILED: no tabicllab kernel"; exit 1; }
 nproc; free -g | head -2
 
-execute() {   # $1: output path; runs the notebook in place of a copy, from its own folder
-  python - "$1" <<'EOF'
+execute() {   # $1: output path; runs $NOTEBOOK from its own folder, writing the executed copy to $1
+  python - "$NOTEBOOK" "$1" <<'EOF'
 import sys
 import nbformat
 from nbclient import NotebookClient
-nb = nbformat.read("01_effects_with_a_known_answer.ipynb", 4)
+nb = nbformat.read(sys.argv[1], 4)
 try:
     NotebookClient(nb, timeout=7200, kernel_name="tabicllab", resources={"metadata": {"path": "."}}).execute()
 finally:
-    nbformat.write(nb, sys.argv[1])
+    nbformat.write(nb, sys.argv[2])
 EOF
 }
 

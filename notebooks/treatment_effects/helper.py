@@ -17,6 +17,14 @@ called. Real data would show only the outcome of the arm a member was in; here e
 estimate can be scored against each member's true effect. ``simulate_care_program``
 documents every equation.
 
+The observational study. ``load_nhefs`` reads the NHEFS data that Hernán and Robins use
+throughout *Causal Inference: What If*: 1,629 adult smokers examined in 1971 and again
+in 1982, whether they quit smoking in between, and how their weight changed. The file is
+downloaded once from the book's site into the shared data lake (``$DATA_LAKE_ROOT``, by
+default ``~/work/data``) under ``epidemiology/nhefs`` and checked against a fixed
+SHA-256. ``textbook_design`` builds the covariate terms of the book's models, with
+squares and category indicators, which the linear base model uses there.
+
 The base learners. ``base_learners`` returns three pairs of factories, one regressor
 and one classifier each: a linear model, gradient boosting tuned by cross-validated
 grid search, and TabPFN, untuned. Every estimator in the notebooks is run with each of
@@ -24,7 +32,7 @@ the three, so a difference between rows of a results table is a difference betwe
 the models, not between the estimators.
 
 Compute. TabPFN on a laptop CPU is slow, and the notebooks fit it dozens of times, so
-they are executed on a GPU pod (see ``run_te_01_pod.sh``). With the environment
+they are executed on a GPU pod (see ``run_te_pod.sh``). With the environment
 variable ``TE_SMOKE=1`` they run on a small table with a light TabPFN and a one-point
 grid for gradient boosting, which checks that every cell works without the cost.
 ``TE_MEMBERS`` and ``TE_FOLDS`` set the table size and the number of cross-fitting folds
@@ -60,6 +68,17 @@ COVARIATES = [
 ]
 """What the program knows about a member before deciding whether to call them. The last
 two have no part in the simulation: real tables carry columns that matter for nothing."""
+
+DATA_ROOT = Path(os.environ.get("DATA_LAKE_ROOT") or os.environ.get("SSLLAB_DATA_ROOT") or Path.home() / "work" / "data")
+NHEFS_DIR = DATA_ROOT / "epidemiology" / "nhefs"
+_NHEFS_URL = "https://miguelhernan.org/s/nhefs.csv"
+_NHEFS_SHA256 = "6726827bfcebf7324d786211a517d0515532c2405cc71c5a1fab68d7116ea16c"
+
+NHEFS_COVARIATES = ["sex", "race", "age", "education", "smokeintensity", "smokeyrs", "exercise", "active", "wt71"]
+"""The confounders of the book's analysis, measured in 1971: sex (1 female), race (1 not
+white), age in years, education (5 levels, 1 to 5), cigarettes per day, years of
+smoking, recreational exercise (0 much, 1 moderate, 2 little or none), daily activity
+(0 very active, 1 moderately, 2 inactive) and weight in kg."""
 
 TRUTH = ["y0", "y1", "expected_y0", "expected_y1", "true_effect", "true_propensity"]
 """Columns only a simulator has. They are never given to a model."""
@@ -240,6 +259,50 @@ def simulate_care_program(n: int = 2000, selection: float = 1.0, seed: int = SEE
     return frame
 
 
+# ------------------------------------------------------------------ the observational study
+
+
+def load_nhefs(complete_outcome: bool = True) -> pd.DataFrame:
+    """The NHEFS data, downloaded once into the data lake and checked against its SHA-256.
+
+    ``qsmk`` is 1 for people who quit smoking between 1971 and 1982 and ``wt82_71`` is
+    their weight change over that time in kg. With ``complete_outcome`` (the default)
+    the 63 people whose 1982 weight is missing are dropped, leaving 1,566, the sample
+    on which the book reports its unweighted-for-censoring estimates. The book's
+    sequence number ``seqn`` is the index.
+    """
+    import hashlib
+    import urllib.request
+
+    path = NHEFS_DIR / "nhefs.csv"
+    if not path.exists():
+        NHEFS_DIR.mkdir(parents=True, exist_ok=True)
+        request = urllib.request.Request(_NHEFS_URL, headers={"User-Agent": "Mozilla/5.0"})
+        path.write_bytes(urllib.request.urlopen(request, timeout=60).read())
+    digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    if digest != _NHEFS_SHA256:
+        raise ValueError(f"{path} has SHA-256 {digest}, expected {_NHEFS_SHA256}; the upstream file changed")
+    frame = pd.read_csv(path).set_index("seqn")
+    return frame.dropna(subset=["wt82_71"]) if complete_outcome else frame
+
+
+def textbook_design(frame: pd.DataFrame) -> pd.DataFrame:
+    """The covariate terms of the book's propensity and outcome models.
+
+    Sex, race, age and its square, indicators for education levels 2 to 5, cigarettes
+    per day and its square, years of smoking and its square, indicators for exercise
+    levels 1 and 2 and activity levels 1 and 2, and weight and its square: the terms of
+    Program 12.2's propensity model in *What If*.
+    """
+    out = frame[["sex", "race", "age", "smokeintensity", "smokeyrs", "wt71"]].astype(float).copy()
+    for column in ("age", "smokeintensity", "smokeyrs", "wt71"):
+        out[f"{column}^2"] = frame[column].astype(float) ** 2
+    for column, levels in (("education", [2, 3, 4, 5]), ("exercise", [1, 2]), ("active", [1, 2])):
+        for level in levels:
+            out[f"{column}={level}"] = (frame[column] == level).astype(float)
+    return out
+
+
 # ------------------------------------------------------------------------ base learners
 
 
@@ -351,6 +414,83 @@ def plot_effect_estimates(frame: pd.DataFrame, estimates: dict, learners: list[s
                 ax.set_ylabel(f"{method}\nestimated effect")
             if i == len(methods) - 1:
                 ax.set_xlabel("true effect")
+    _finish(fig)
+
+
+def plot_overlap(t, propensities: dict) -> None:
+    """Estimated propensity by arm, one panel per base model."""
+    if not _PLOTS:
+        return
+    t = np.asarray(t)
+    fig, axes = plt.subplots(1, len(propensities), figsize=(4 * len(propensities), 3.0), sharey=True)
+    bins = np.linspace(0, 1, 41)
+    for ax, (name, e) in zip(np.atleast_1d(axes), propensities.items()):
+        ax.hist(e[t == 0], bins=bins, alpha=0.55, density=True, color="tab:blue", label="did not quit")
+        ax.hist(e[t == 1], bins=bins, alpha=0.55, density=True, color="tab:orange", label="quit")
+        ax.set_title(name, fontsize=10)
+        ax.set_xlabel("estimated probability of quitting")
+        ax.set_yticks([])
+    np.atleast_1d(axes)[0].legend(fontsize=8)
+    _finish(fig)
+
+
+def plot_balance(balance: pd.DataFrame) -> None:
+    """Standardized mean differences per covariate, before weighting and after weighting
+    by each base model's propensities; the band marks the usual 0.1 threshold."""
+    if not _PLOTS:
+        return
+    fig, ax = plt.subplots(figsize=(7, 0.35 * len(balance) + 1.2))
+    rows = np.arange(len(balance))
+    markers = {"unweighted": ("o", "black")}
+    palette = ["tab:blue", "tab:green", "tab:orange", "tab:purple"]
+    for k, column in enumerate(balance.columns):
+        marker, colour = markers.get(column, ("s", palette[k % len(palette)]))
+        ax.scatter(balance[column], rows, marker=marker, color=colour, s=28, label=column, zorder=3)
+    ax.axvspan(-0.1, 0.1, color="gray", alpha=0.15, lw=0)
+    ax.axvline(0, color="gray", lw=1)
+    ax.set_yticks(rows, balance.index)
+    ax.invert_yaxis()
+    ax.set_xlabel("standardized mean difference, quit minus did not quit")
+    ax.legend(fontsize=8, loc="upper left", bbox_to_anchor=(1.02, 1), frameon=False)
+    _finish(fig)
+
+
+def plot_gates(groups: dict) -> None:
+    """Doubly robust average effect in each fifth of people ranked by estimated effect,
+    with 95% intervals, one panel per base model."""
+    if not _PLOTS:
+        return
+    fig, axes = plt.subplots(1, len(groups), figsize=(4 * len(groups), 3.2), sharey=True)
+    for ax, (name, rows) in zip(np.atleast_1d(axes), groups.items()):
+        x = [row["group"] for row in rows]
+        y = [row["average"].estimate for row in rows]
+        err = [1.96 * row["average"].se for row in rows]
+        ax.errorbar(x, y, yerr=err, fmt="o", color="tab:blue", capsize=3, label="doubly robust average")
+        ax.plot(x, [row["mean_estimate"] for row in rows], "x", color="black", label="mean estimate")
+        ax.axhline(0, color="gray", lw=1)
+        ax.set_title(name, fontsize=10)
+        ax.set_xlabel("fifth of estimated effect (1 lowest)")
+    np.atleast_1d(axes)[0].set_ylabel("effect on weight change, kg")
+    np.atleast_1d(axes)[0].legend(fontsize=8)
+    _finish(fig)
+
+
+def plot_effect_by_covariate(frame: pd.DataFrame, effects: dict, columns: list[str], labels: dict) -> None:
+    """Each person's estimated effect against a covariate: one row per base model, one
+    column per covariate."""
+    if not _PLOTS:
+        return
+    fig, axes = plt.subplots(len(effects), len(columns), figsize=(3.4 * len(columns), 2.8 * len(effects)),
+                             sharey=True, squeeze=False)
+    for i, (name, tau) in enumerate(effects.items()):
+        for j, column in enumerate(columns):
+            ax = axes[i, j]
+            ax.scatter(frame[column], tau, s=5, alpha=0.35, color="tab:blue")
+            ax.axhline(np.mean(tau), color="black", lw=1)
+            if i == len(effects) - 1:
+                ax.set_xlabel(labels.get(column, column))
+            if j == 0:
+                ax.set_ylabel(f"{name}\nestimated effect, kg")
     _finish(fig)
 
 

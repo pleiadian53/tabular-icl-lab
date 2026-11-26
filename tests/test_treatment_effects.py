@@ -7,14 +7,18 @@ from sklearn.linear_model import LinearRegression, LogisticRegression
 
 from tabicllab.treatment_effects import (
     aipw_ate,
+    blp_test,
     cate_scores,
     dr_learner,
+    dr_pseudo_outcome,
     fit_nuisances,
     fold_ids,
+    gates,
     ipw_ate,
     naive_difference,
     overlap_summary,
     s_learner,
+    standardized_differences,
     t_learner,
     x_learner,
 )
@@ -120,3 +124,29 @@ def test_every_estimator_runs_on_a_tiny_table():
     for estimate in (naive_difference(t, y), ipw_ate(t, y, nu.e), aipw_ate(t, y, nu)):
         assert np.isfinite(estimate.estimate) and np.isfinite(estimate.se)
     assert np.isfinite(cate_scores(t_learner(nu), tau)["pehe"])
+
+
+def test_standardized_differences_balance_after_weighting():
+    X, t, y, tau, e = confounded(n=20000, seed=6)
+    raw = standardized_differences(X, t, names=["x0", "x1", "x2"])
+    assert raw["x0"] > 0.5 and abs(raw["x1"]) < 0.05              # only x0 drives treatment
+    w = np.where(t == 1, 1 / e, 1 / (1 - e))                       # true propensity weights
+    weighted = standardized_differences(X, t, weights=w, names=["x0", "x1", "x2"])
+    assert abs(weighted["x0"]) < 0.05
+
+
+def test_blp_and_gates_detect_real_heterogeneity_and_not_noise():
+    X, t, y, tau, _ = confounded(n=6000, seed=7)
+    folds = fold_ids(t, seed=7)
+    nu = fit_nuisances(X, t, y, linear, logistic, folds)
+    phi = dr_pseudo_outcome(t, y, nu)
+    good = dr_learner(X, t, y, nu, linear, folds)
+    test = blp_test(phi, good)
+    assert abs(test["average"].estimate - tau.mean()) < 0.1
+    low, high = test["heterogeneity"].interval()
+    assert low < 1 < high and low > 0.5                            # real and about the right size
+    groups = gates(phi, good)
+    assert groups[-1]["average"].estimate - groups[0]["average"].estimate > 1.5
+    noise = np.random.default_rng(8).normal(size=len(phi))
+    low, high = blp_test(phi, noise)["heterogeneity"].interval(0.99)
+    assert low < 0 < high                                          # noise predicts nothing

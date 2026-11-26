@@ -299,3 +299,77 @@ def cate_scores(tau_hat, tau, budget: float = 0.3) -> dict:
         "slope": float(np.cov(tau_hat, tau)[0, 1] / tau.var(ddof=1)),
         "targeting": float((tau[chosen].mean() - tau.mean()) / attainable) if attainable > 0 else float("nan"),
     }
+
+
+# ------------------------------------------------------------ checks without ground truth
+
+
+def standardized_differences(X, t, weights=None, names=None) -> dict:
+    """Standardized mean difference of each covariate between treated and untreated.
+
+    For each column, the difference between the (weighted) means of the two arms
+    divided by the pooled unweighted standard deviation, ``sqrt((s1^2 + s0^2) / 2)``.
+    Dividing by the same unweighted spread before and after weighting makes the two
+    comparable. A common rule of thumb reads an absolute value below 0.1 as balanced.
+    ``weights`` are typically inverse propensity weights; ``None`` gives the raw
+    imbalance. Returns ``{name: difference}``.
+    """
+    X, t = _arrays(X, t)
+    w = np.ones(len(t)) if weights is None else np.asarray(weights, dtype=float)
+    names = list(names) if names is not None else [f"x{j}" for j in range(X.shape[1])]
+    out = {}
+    for j, name in enumerate(names):
+        x = X[:, j]
+        m1 = np.average(x[t == 1], weights=w[t == 1])
+        m0 = np.average(x[t == 0], weights=w[t == 0])
+        spread = np.sqrt((x[t == 1].var(ddof=1) + x[t == 0].var(ddof=1)) / 2)
+        out[name] = float((m1 - m0) / spread) if spread > 0 else 0.0
+    return out
+
+
+def blp_test(pseudo_outcome, tau_hat) -> dict:
+    """Best linear predictor test of estimated individual effects (Chernozhukov et al.).
+
+    Regresses the doubly robust pseudo-outcome on a constant and the centred estimate,
+    ``phi = b1 + b2 (tau_hat - mean(tau_hat)) + error``, with heteroskedasticity-robust
+    (HC1) standard errors. ``b1`` estimates the average effect. ``b2`` asks whether the
+    estimates carry real differences between people: 0 means they predict nothing about
+    who benefits more, 1 means they are right on average about how much more, and a
+    value between says the differences are real but overstated. A ``b2`` interval that
+    excludes 0 is evidence of heterogeneity. The estimates should be cross-fitted, so
+    that a person's estimate did not see their own pseudo-outcome.
+    """
+    phi = np.asarray(pseudo_outcome, dtype=float)
+    centred = np.asarray(tau_hat, dtype=float) - np.mean(tau_hat)
+    design = np.column_stack([np.ones(len(phi)), centred])
+    coef, *_ = np.linalg.lstsq(design, phi, rcond=None)
+    resid = phi - design @ coef
+    bread = np.linalg.inv(design.T @ design)
+    meat = (design * resid[:, None] ** 2).T @ design
+    cov = bread @ meat @ bread * len(phi) / (len(phi) - 2)
+    se = np.sqrt(np.diag(cov))
+    return {"average": Estimate(float(coef[0]), float(se[0])), "heterogeneity": Estimate(float(coef[1]), float(se[1]))}
+
+
+def gates(pseudo_outcome, tau_hat, n_groups: int = 5) -> list[dict]:
+    """Group average treatment effects by quantile of the estimated effect.
+
+    People are split into ``n_groups`` equal groups by their estimated effect, and in
+    each group the average effect is estimated as the mean of the doubly robust
+    pseudo-outcome, with its standard error. If the estimates carry real differences,
+    the groups' averages rise from the lowest group to the highest; if they do not,
+    the averages are flat. Each entry gives the group number (1 is the lowest
+    estimates), the mean estimate in the group, and the doubly robust average.
+    """
+    phi = np.asarray(pseudo_outcome, dtype=float)
+    tau_hat = np.asarray(tau_hat, dtype=float)
+    order = np.argsort(tau_hat, kind="stable")
+    out = []
+    for g, members in enumerate(np.array_split(order, n_groups), start=1):
+        out.append({
+            "group": g,
+            "n": int(len(members)),
+            "mean_estimate": float(tau_hat[members].mean()),
+            "average": Estimate(float(phi[members].mean()), float(phi[members].std(ddof=1) / np.sqrt(len(members)))),
+        })
+    return out
